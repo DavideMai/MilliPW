@@ -3,50 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Elenco Ospedali</title>
-    <style>
-        table {
-            width: 80%;
-            margin: 20px auto;
-            border-collapse: collapse;
-        }
-        table, th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
-        form {
-            width: 80%;
-            margin: 20px auto;
-            padding: 10px;
-            border: 1px solid #ccc;
-        }
-        form label {
-            display: inline-block;
-            width: 150px;
-            margin-bottom: 5px;
-        }
-        form input[type="text"], form input[type="number"], form input[type="date"] {
-            width: 200px;
-            padding: 5px;
-            margin-bottom: 10px;
-        }
-        form input[type="submit"] {
-            padding: 8px 15px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        form input[type="submit"]:hover {
-            background-color: #45a049;
-        }
-    </style>
 </head>
 <body>
 
