@@ -1,0 +1,24 @@
+name: Publish updates to Altervista
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-via-ftp:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📦 Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🌍 Upload to Altervista
+        uses: dreadnaut/deploy-to-altervista@v0.1
+        with:
+          ftp-username: ${{ secrets.ALTERVISTA_FTP_USERNAME }}
+          ftp-password: ${{ secrets.ALTERVISTA_FTP_PASSWORD }}
+          exclude-patterns: |
+            .git*
+            README.md
