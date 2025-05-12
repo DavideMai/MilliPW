@@ -1,0 +1,508 @@
+CSSN,Nome,Cognome,Indirizzo,NumeroCivico,LuogoNascita,DataNascita
+GVNRSS80A01L736X,Rossella,Gavin,Via dei Mille,15,Lecco,01/01/1980
+RZZLNE71A05H501C,Elena,Rizzi,Corso Garibaldi,28,Roma,05/01/1971
+BNCGPP95D06E472M,Giuseppe,Bianchi,Via Manzoni,7,Como,06/04/1995
+VRDMRA62S07L219D,Mara,Verdi,Piazza della Vittoria,3,Milano,07/11/1962
+LMRSLV79B08G273Z,Silvio,Lami,Via Roma,10,Firenze,08/02/1979
+RSSGNN83T09H501X,Gianna,Rossi,Largo Argentina,1,Roma,09/12/1983
+MRTGLL91A10B715A,Giulia,Martini,Via Torino,5,Torino,10/01/1991
+CNDLSS68M11D969R,Alessio,Candi,Via Veneto,12,Napoli,11/08/1968
+FRNLNA76P12L219Y,Anna,Ferrari,Corso Buenos Aires,33,Milano,12/10/1976
+LCNGNN81R13L219A,Giovanni,Lo Conte,Via Montenapoleone,18,Milano,13/10/1981
+SNTMRA73S14G224F,Sara,Santi,Via Dante Alighieri,22,Padova,14/11/1973
+BRTGNN90A15H501L,Gennaro,Bruno,Piazza del Plebiscito,1,Napoli,15/01/1990
+MSTFBA65B16L736E,Fabio,Mastroianni,Via Vittorio Veneto,110,Roma,16/02/1965
+RCCLRT82M17E472S,Roberta,Ricci,Corso Umberto I,55,Napoli,17/08/1982
+TLLGNN70D18H501Z,Gianni,Tulli,Via Cavour,8,Roma,18/04/1970
+VRSPLA85E19L736W,Paola,Varsi,Via Garibaldi,77,Lecco,19/05/1985
+MNTLSS78R20H501B,Alessandra,Monti,Via Nazionale,201,Roma,20/10/1978
+RCDGRG93C21F205A,Giorgio,Riccardi,Via Monte Napoleone,5,Milano,21/03/1993
+LMBRRT60A22L219P,Rita,Lombardi,Piazza Duomo,14,Milano,22/01/1960
+SBNLNE75S23G273C,Elisa,Sabini,Via Tornabuoni,3,Firenze,23/11/1975
+MRTGLL82D24H501Y,Marco,Martini,Corso Vittorio Emanuele II,88,Roma,24/04/1982
+CNDLSS98B25D969T,Luca,Candi,Via Toledo,34,Napoli,25/02/1998
+FRNLNA69M26L219R,Simona,Ferrari,Corso Sempione,15,Milano,26/08/1969
+LCNGNN77E27L219S,Andrea,Lo Conte,Via della Spiga,6,Milano,27/05/1977
+SNTMRA94P28G224X,Stefano,Santi,Via Savonarola,18,Padova,28/09/1994
+BRTGNN63A29H501U,Maria,Bruno,Via Chiaia,200,Napoli,29/01/1963
+MSTFBA81S30L736G,Davide,Mastroianni,Via del Tritone,132,Roma,30/11/1981
+RCCLRT74B31E472F,Francesca,Ricci,Via dei Tribunali,228,Napoli,31/02/1974
+TLLGNN99C01H501A,Alessia,Tulli,Via Sistina,121,Roma,01/03/1999
+VRSPLA67M02L736H,Matteo,Varsi,Via Volta,6,Lecco,02/08/1967
+MNTLSS89A03H501C,Federica,Monti,Via del Corso,18,Roma,03/01/1989
+RCDGRG71E04F205B,Paolo,Riccardi,Via Montenapoleone,22,Milano,04/05/1971
+LMBRRT96S05L219Q,Chiara,Lombardi,Piazza San Marco,1,Venezia,05/11/1996
+SBNLNE64M06G273D,Riccardo,Sabini,Via dei Fossi,18,Firenze,06/08/1964
+MRTGLL77T07H501Z,Simone,Martini,Corso Rinascimento,24,Roma,07/12/1977
+CNDLSS85P08D969S,Valentina,Candi,Via Partenope,6,Napoli,08/09/1985
+FRNLNA92D09L219S,Lorenzo,Ferrari,Corso Magenta,77,Milano,09/04/1992
+LCNGNN61B10L219T,Laura,Lo Conte,Via Sant'Andrea,15,Milano,10/02/1961
+SNTMRA79A11G224Y,Marco,Santi,Via Petrarca,10,Padova,11/01/1979
+BRTGNN97E12H501W,Elena,Bruno,Via Toledo,156,Napoli,12/05/1997
+MSTFBA72R13L736H,Luca,Mastroianni,Via Condotti,61,Roma,13/10/1972
+RCCLRT68S14E472G,Silvia,Ricci,Via Foria,11,Napoli,14/11/1968
+TLLGNN84A15H501B,Fabrizio,Tulli,Via Barberini,36,Roma,15/01/1984
+VRSPLA91M16L736I,Francesca,Varsi,Via Manzoni,18,Lecco,16/08/1991
+MNTLSS66D17H501D,Stefano,Monti,Via Nazionale,198,Roma,17/04/1966
+RCDGRG83A18F205C,Alessandra,Riccardi,Via della Spiga,30,Milano,18/01/1983
+LMBRRT79M19L219R,Paolo,Lombardi,Piazza San Marco,45,Venezia,19/08/1979
+SBNLNE95P20G273E,Martina,Sabini,Via Maggio,28,Firenze,20/09/1995
+MRTGLL61B21H501A,Andrea,Martini,Corso Vittorio Emanuele II,101,Roma,21/02/1961
+CNDLSS73S22D969T,Sara,Candi,Via Tribunali,287,Napoli,22/11/1973
+FRNLNA88A23L219T,Riccardo,Ferrari,Corso Sempione,68,Milano,23/01/1988
+LCNGNN99P24L219U,Chiara,Lo Conte,Via Santo Spirito,11,Milano,24/09/1999
+SNTMRA65M25G224Z,Giovanni,Santi,Via Euganea,7,Padova,25/08/1965
+BRTGNN82E26H501X,Laura,Bruno,Via Chiaia,230,Napoli,26/05/1982
+MSTFBA97C27L736I,Marco,Mastroianni,Via del Babuino,93,Roma,27/03/1997
+RCCLRT71A28E472H,Elena,Ricci,Via Duomo,142,Napoli,28/01/1971
+TLLGNN66S29H501C,Silvia,Tulli,Via del Quirinale,28,Roma,29/11/1966
+VRSPLA83D30L736L,Lorenzo,Varsi,Via Cavour,1,Lecco,30/04/1983
+MNTLSS91B31H501E,Francesca,Monti,Via del Tritone,165,Roma,31/02/1991
+RCDGRG68M01F205D,Stefano,Riccardi,Via Monte Napoleone,1,Milano,01/08/1968
+LMBRRT86A02L219S,Martina,Lombardi,Piazza San Marco,78,Venezia,02/01/1986
+SBNLNE73S03G273F,Paolo,Sabini,Via Tornabuoni,22,Firenze,03/11/1973
+MRTGLL98C04H501B,Alessia,Martini,Corso Rinascimento,55,Roma,04/03/1998
+CNDLSS62A05D969V,Fabrizio,Candi,Via Partenope,33,Napoli,05/01/1962
+FRNLNA79M06L219T,Chiara,Ferrari,Corso Magenta,101,Milano,06/08/1979
+LCNGNN95D07L219U,Riccardo,Lo Conte,Via Sant'Andrea,40,Milano,07/04/1995
+SNTMRA69P08G224A,Laura,Santi,Via Petrarca,33,Padova,08/09/1969
+BRTGNN87A09H501Y,Marco,Bruno,Via Toledo,201,Napoli,09/01/1987
+MSTFBA61S10L736A,Elena,Mastroianni,Via Condotti,12,Roma,10/11/1961
+RCCLRT93B11E472I,Giovanni,Ricci,Via Foria,48,Napoli,11/02/1993
+TLLGNN76D12H501D,Alessandra,Tulli,Via Barberini,88,Roma,12/04/1976
+VRSPLA69M13L736M,Paolo,Varsi,Via Manzoni,44,Lecco,13/08/1969
+MNTLSS81E14H501F,Sara,Monti,Via Nazionale,21,Roma,14/05/1981
+RCDGRG98A15F205E,Luca,Riccardi,Via della Spiga,12,Milano,15/01/1998
+LMBRRT65S16L219T,Anna,Lombardi,Piazza San Marco,99,Venezia,16/11/1965
+SBNLNE82M17G273G,Giuseppe,Sabini,Via Maggio,51,Firenze,17/08/1982
+MRTGLL73T18H501C,Francesca,Martini,Corso Vittorio Emanuele II,122,Roma,18/12/1973
+CNDLSS90P19D969R,Stefano,Candi,Via Tribunali,311,Napoli,19/09/1990
+FRNLNA63M20L219U,Martina,Ferrari,Corso Sempione,92,Milano,20/08/1963
+LCNGNN88E21L219V,Fabrizio,Lo Conte,Via Santo Spirito,33,Milano,21/05/1988
+SNTMRA76R22G224B,Chiara,Santi,Via Euganea,29,Padova,22/10/1976
+BRTGNN93A23H501Z,Riccardo,Bruno,Via Chiaia,255,Napoli,23/01/1993
+MSTFBA68C24L736L,Alessia,Mastroianni,Via del Babuino,116,Roma,24/03/1968
+RCCLRT85A25E472I,Paolo,Ricci,Via Duomo,175,Napoli,25/01/1985
+TLLGNN79S26H501D,Laura,Tulli,Via del Quirinale,51,Roma,26/11/1979
+VRSPLA96D27L736O,Marco,Varsi,Via Cavour,22,Lecco,27/04/1996
+MNTLSS60A28H501G,Elena,Monti,Via del Tritone,199,Roma,28/01/1960
+RCDGRG77E29F205F,Andrea,Riccardi,Via Monte Napoleone,33,Milano,29/05/1977
+LMBRRT91A30L219T,Sara,Lombardi,Piazza San Marco,122,Venezia,30/01/1991
+SBNLNE67M31G273H,Giovanni,Sabini,Via Maggio,74,Firenze,31/08/1967
+MRTGLL88C01H501C,Stefano,Martini,Corso Vittorio Emanuele II,145,Roma,01/03/1988
+CNDLSS79A02D969W,Martina,Candi,Via Tribunali,334,Napoli,02/01/1979
+FRNLNA95M03L219V,Fabrizio,Ferrari,Corso Sempione,115,Milano,03/08/1995
+LCNGNN63A04L219Y,Chiara,Lo Conte,Via della Spiga,55,Milano,04/01/1963
+SNTMRA81S05G224C,Riccardo,Santi,Via Savonarola,41,Padova,05/11/1987
+BRTGNN75S06H501Z,Paolo,Bruno,Via Petrarca,8,Napoli,06/11/1975
+MSTFBA92R07L736B,Silvia,Mastroianni,Via del Babuino,15,Roma,07/10/1992
+RCCLRT61A08E472C,Laura,Ricci,Via Duomo,188,Napoli,08/01/1961
+TLLGNN87D09H501E,Marco,Tulli,Via del Quirinale,77,Roma,09/04/1987
+VRSPLA70M10L736N,Elena,Varsi,Via Cavour,45,Lecco,10/08/1970
+MNTLSS98A11H501H,Giovanni,Monti,Via del Tritone,211,Roma,11/01/1998
+RCDGRG64E12F205G,Sara,Riccardi,Via Monte Napoleone,66,Milano,12/05/1964
+LMBRRT81S13L219U,Fabrizio,Lombardi,Piazza San Marco,155,Venezia,13/11/1981
+SBNLNE78M14G273I,Alessia,Sabini,Via Maggio,97,Firenze,14/08/1978
+MRTGLL93T15H501D,Riccardo,Martini,Corso Vittorio Emanuele II,168,Roma,15/12/1993
+CNDLSS67P16D969T,Chiara,Candi,Via Tribunali,357,Napoli,16/09/1967
+FRNLNA84M17L219W,Paolo,Ferrari,Corso Sempione,138,Milano,17/08/1984
+LCNGNN91A18L219X,Martina,Lo Conte,Via della Spiga,79,Milano,18/01/1991
+SNTMRA62S19G224D,Luca,Santi,Via Euganea,52,Padova,19/11/1962
+BRTGNN79E20H501Y,Francesca,Bruno,Via Chiaia,278,Napoli,20/05/1979
+MSTFBA95C21L736M,Andrea,Mastroianni,Via del Babuino,139,Roma,21/03/1995
+RCCLRT64A22E472D,Silvio,Ricci,Via Duomo,211,Napoli,22/01/1964
+TLLGNN90S23H501F,Laura,Tulli,Via del Quirinale,100,Roma,23/11/1990
+VRSPLA73D24L736Q,Marco,Varsi,Via Cavour,68,Lecco,24/04/1973
+MNTLSS95B25H501I,Elena,Monti,Via del Tritone,234,Roma,25/02/1995
+RCDGRG61M26F205H,Giovanni,Riccardi,Via Monte Napoleone,90,Milano,26/08/1961
+LMBRRT76A27L219Z,Sara,Lombardi,Piazza San Marco,178,Venezia,27/01/1976
+SBNLNE92S28G273L,Fabrizio,Sabini,Via Maggio,120,Firenze,28/11/1992
+MRTGLL64T29H501E,Chiara,Martini,Corso Vittorio Emanuele II,191,Roma,29/12/1964
+CNDLSS82P30D969U,Paolo,Candi,Via Tribunali,380,Napoli,30/09/1982
+FRNLNA98M31L219Z,Martina,Ferrari,Corso Sempione,161,Milano,31/08/1998
+LCNGNN66A01L219B,Riccardo,Lo Conte,Via della Spiga,102,Milano,01/01/1966
+SNTMRA84S02G224E,Alessia,Santi,Via Euganea,75,Padova,02/11/1984
+BRTGNN60E03H501A,Stefano,Bruno,Via Chiaia,301,Napoli,03/05/1960
+MSTFBA77R04L736C,Anna,Mastroianni,Via del Babuino,162,Roma,04/10/1977
+RCCLRT99A05E472L,Luca,Ricci,Via Duomo,234,Napoli,05/01/1999
+TLLGNN63D06H501G,Francesca,Tulli,Via del Quirinale,123,Roma,06/04/1963
+VRSPLA88M07L736R,Andrea,Varsi,Via Cavour,91,Lecco,07/08/1988
+MNTLSS71E08H501K,Laura,Monti,Via del Tritone,257,Roma,08/05/1971
+RCDGRG96A09F205I,Marco,Riccardi,Via Monte Napoleone,113,Milano,09/01/1996
+LMBRRT68S10L219V,Elena,Lombardi,Piazza San Marco,201,Venezia,10/11/1968
+SBNLNE85M11G273M,Giovanni,Sabini,Via Maggio,143,Firenze,11/08/1985
+MRTGLL79T12H501F,Paolo,Martini,Corso Vittorio Emanuele II,214,Roma,12/12/1979
+CNDLSS93P13D969V,Sara,Candi,Via Tribunali,403,Napoli,13/09/1993
+FRNLNA66M14L219A,Riccardo,Ferrari,Corso Sempione,184,Milano,14/08/1966
+LCNGNN93A15L219Y,Chiara,Lo Conte,Via della Spiga,125,Milano,15/01/1993
+SNTMRA60S16G224F,Martina,Santi,Via Euganea,98,Padova,16/11/1960
+BRTGNN77E17H501B,Fabrizio,Bruno,Via Chiaia,324,Napoli,17/05/1977
+MSTFBA90R18L736D,Chiara,Mastroianni,Via del Babuino,185,Roma,18/10/1990
+RCCLRT66A19E472E,Stefano,Ricci,Via Duomo,257,Napoli,19/01/1966
+TLLGNN96S20H501G,Alessia,Tulli,Via del Quirinale,146,Roma,20/11/1996
+VRSPLA79D21L736S,Silvio,Varsi,Via Cavour,114,Lecco,21/04/1979
+MNTLSS63E22H501L,Marco,Monti,Via del Tritone,280,Roma,22/05/1963
+RCDGRG91A23F205J,Elena,Riccardi,Via Monte Napoleone,136,Milano,23/01/1991
+LMBRRT73S24L219W,Giovanni,Lombardi,Piazza San Marco,224,Venezia,24/11/1973
+SBNLNE98M25G273N,Laura,Sabini,Via Maggio,166,Firenze,25/08/1998
+MRTGLL67T26H501F,Fabrizio,Martini,Corso Vittorio Emanuele II,237,Roma,26/12/1967
+CNDLSS85P27D969W,Riccardo,Candi,Via Tribunali,426,Napoli,27/09/1985
+FRNLNA60M28L219B,Chiara,Ferrari,Corso Sempione,207,Milano,28/08/1960
+LCNGNN85A29L219Z,Paolo,Lo Conte,Via della Spiga,148,Milano,29/01/1985
+SNTMRA71S30G224G,Martina,Santi,Via Euganea,121,Padova,30/11/1971
+BRTGNN88E31H501C,Alessia,Bruno,Via Chiaia,347,Napoli,31/05/1988
+MSTFBA63R01L736E,Luca,Mastroianni,Via del Babuino,186,Roma,01/10/1963
+RCCLRT91A02E472M,Elena,Ricci,Via Duomo,280,Napoli,02/01/1991
+TLLGNN60D03H501H,Giovanni,Tulli,Via del Quirinale,169,Roma,03/04/1960
+VRSPLA82M04L736T,Sara,Varsi,Via Cavour,137,Lecco,04/08/1982
+MNTLSS68E05H501M,Marco,Monti,Via del Tritone,303,Roma,05/05/1968
+RCDGRG93A06F205K,Chiara,Riccardi,Via Monte Napoleone,159,Milano,06/01/1993
+LMBRRT88S07L219X,Paolo,Lombardi,Piazza San Marco,247,Venezia,07/11/1988
+SBNLNE61M08G273N,Martina,Sabini,Via Maggio,190,Firenze,08/08/1961
+MRTGLL85T09H501G,Fabrizio,Martini,Corso Vittorio Emanuele II,260,Roma,09/12/1985
+CNDLSS99P10D969W,Laura,Candi,Via Tribunali,449,Napoli,10/09/1999
+FRNLNA69M11L219C,Stefano,Ferrari,Corso Sempione,230,Milano,11/08/1969
+LCNGNN69A12L219A,Anna,Lo Conte,Via della Spiga,171,Milano,12/01/1969
+SNTMRA87S13G224H,Riccardo,Santi,Via Euganea,144,Padova,13/11/1987
+BRTGNN63E14H501D,Silvia,Bruno,Via Chiaia,370,Napoli,14/05/1963
+MSTFBA80R15L736F,Alessia,Mastroianni,Via del Babuino,209,Roma,15/10/1980
+RCCLRT69A16E472N,Luca,Ricci,Via Duomo,303,Napoli,16/01/1969
+TLLGNN93S17H501H,Francesca,Tulli,Via del Quirinale,192,Roma,17/11/1993
+VRSPLA62M18L736U,Andrea,Varsi,Via Cavour,160,Lecco,18/08/1962
+MNTLSS99E19H501N,Sara,Monti,Via del Tritone,326,Roma,19/05/1999
+RCDGRG65A20F205L,Paolo,Riccardi,Via Monte Napoleone,182,Milano,20/01/1965
+LMBRRT94S21L219Y,Chiara,Lombardi,Piazza San Marco,270,Venezia,21/11/1994
+SBNLNE68M22G273O,Giovanni,Sabini,Via Maggio,213,Firenze,22/08/1968
+MRTGLL90T23H501H,Laura,Martini,Corso Vittorio Emanuele II,283,Roma,23/12/1990
+CNDLSS60P24D969X,Marco,Candi,Via Tribunali,472,Napoli,24/09/1960
+FRNLNA99M25L219D,Valentina,Ferrari,Corso Sempione,253,Milano,25/08/1999
+LCNGNN66A26L219B,Stefano,Lo Conte,Via della Spiga,194,Milano,26/01/1966
+SNTMRA91S27G224I,Anna,Santi,Via Euganea,167,Padova,27/11/1991
+BRTGNN66E28H501E,Riccardo,Bruno,Via Chiaia,393,Napoli,28/05/1966
+MSTFBA83R29L736H,Silvia,Mastroianni,Via del Babuino,232,Roma,29/10/1983
+RCCLRT98A30E472O,Alessia,Ricci,Via Duomo,326,Napoli,30/01/1998
+TLLGNN69D31H501I,Fabrizio,Tulli,Via del Quirinale,215,Roma,31/04/1969
+VRSPLA99M01L736V,Martina,Varsi,Via Cavour,183,Lecco,01/08/1999
+MNTLSS63E02H501P,Luca,Monti,Via del Tritone,349,Roma,02/05/1963
+RCDGRG96A03F205M,Elena,Riccardi,Via Monte Napoleone,205,Milano,03/01/1996
+LMBRRT62S04L219Z,Giovanni,Lombardi,Piazza San Marco,293,Venezia,04/11/1962
+SBNLNE91M05G273P,Paolo,Sabini,Via Maggio,236,Firenze,05/08/1991
+MRTGLL60T06H501I,Sara,Martini,Corso Vittorio Emanuele II,306,Roma,06/12/1960
+CNDLSS96P07D969Y,Chiara,Candi,Via Tribunali,495,Napoli,07/09/1996
+FRNLNA66M08L219E,Lorenzo,Ferrari,Corso Sempione,276,Milano,08/08/1966
+LCNGNN96A09L219C,Valentina,Lo Conte,Via della Spiga,217,Milano,09/01/1996
+SNTMRA66S10G224L,Marco,Santi,Via Euganea,190,Padova,10/11/1966
+BRTGNN99E11H501F,Andrea,Bruno,Via Chiaia,416,Napoli,11/05/1999
+MSTFBA69R12L736G,Chiara,Mastroianni,Via del Babuino,255,Roma,12/10/1969
+RCCLRT63A13E472P,Stefano,Ricci,Via Duomo,349,Napoli,13/01/1963
+TLLGNN99S14H501I,Martina,Tulli,Via del Quirinale,238,Roma,14/11/1999
+VRSPLA65M15L736X,Alessia,Varsi,Via Cavour,159,Lecco,15/08/1965
+MNTLSS93E16H501P,Paolo,Monti,Via del Tritone,372,Roma,16/05/1993
+RCDGRG62A17F205N,Sara,Riccardi,Via Monte Napoleone,228,Milano,17/01/1962
+LMBRRT99S18L219Z,Fabrizio,Lombardi,Piazza San Marco,316,Venezia,18/11/1999
+SBNLNE65M19G273Q,Elena,Sabini,Via Maggio,259,Firenze,19/08/1965
+MRTGLL96T20H501L,Giovanni,Martini,Corso Vittorio Emanuele II,329,Roma,20/12/1996
+CNDLSS69P21D969Z,Laura,Candi,Via Tribunali,518,Napoli,21/09/1969
+FRNLNA63M22L219F,Marco,Ferrari,Corso Sempione,299,Milano,22/08/1963
+LCNGNN99A23L219D,Silvia,Lo Conte,Via della Spiga,240,Milano,23/01/1999
+SNTMRA63S24G224M,Andrea,Santi,Via Euganea,213,Padova,24/11/1963
+BRTGNN96E25H501G,Martina,Bruno,Via Chiaia,439,Napoli,25/05/1996
+MSTFBA66R26L736H,Riccardo,Mastroianni,Via del Babuino,278,Roma,26/10/1966
+RCCLRT96A27E472Q,Chiara,Ricci,Via Duomo,372,Napoli,27/01/1996
+TLLGNN66D28H501L,Alessia,Tulli,Via del Quirinale,261,Roma,28/04/1966
+VRSPLA93M29L736W,Paolo,Varsi,Via Cavour,182,Lecco,29/08/1993
+MNTLSS66E30H501Q,Sara,Monti,Via del Tritone,395,Roma,30/05/1966
+RCDGRG99A31F205O,Fabrizio,Riccardi,Via Monte Napoleone,251,Milano,31/01/1999
+LMBRRT69S01L219A,Elena,Lombardi,Piazza San Marco,339,Venezia,01/11/1969
+SBNLNE96M02G273R,Giovanni,Sabini,Via Maggio,282,Firenze,02/08/1996
+MRTGLL69T03H501M,Laura,Martini,Corso Vittorio Emanuele II,352,Roma,03/12/1969
+CNDLSS93P04D969A,Marco,Candi,Via Tribunali,541,Napoli,04/09/1993
+FRNLNA66M05L219G,Valentina,Ferrari,Corso Sempione,322,Milano,05/08/1966
+LCNGNN69A06L219C,Stefano,Lo Conte,Via della Spiga,263,Milano,06/01/1969
+SNTMRA96S07G224N,Anna,Santi,Via Euganea,236,Padova,07/11/1996
+BRTGNN69E08H501H,Riccardo,Bruno,Via Chiaia,462,Napoli,08/05/1969
+MSTFBA93R09L736I,Silvia,Mastroianni,Via del Babuino,301,Roma,09/10/1993
+RCCLRT66A10E472R,Alessia,Ricci,Via Duomo,395,Napoli,10/01/1966
+TLLGNN93S11H501M,Paolo,Tulli,Via del Quirinale,284,Roma,11/11/1993
+VRSPLA68M12L736Y,Martina,Varsi,Via Cavour,205,Lecco,12/08/1968
+MNTLSS96E13H501R,Luca,Monti,Via del Tritone,418,Roma,13/05/1996
+RCDGRG69A14F205P,Elena,Riccardi,Via Monte Napoleone,274,Milano,14/01/1969
+LMBRRT93S15L219B,Giovanni,Lombardi,Piazza San Marco,362,Venezia,15/11/1993
+SBNLNE69M16G273S,Paolo,Sabini,Via Maggio,305,Firenze,16/08/1969
+MRTGLL99T17H501M,Sara,Martini,Corso Vittorio Emanuele II,375,Roma,17/12/1999
+CNDLSS63P18D969B,Chiara,Candi,Via Tribunali,564,Napoli,18/09/1963
+FRNLNA93M19L219H,Lorenzo,Ferrari,Corso Sempione,345,Milano,19/08/1993
+LCNGNN63A20L219E,Valentina,Lo Conte,Via della Spiga,286,Milano,20/01/1963
+SNTMRA93S21G224P,Marco,Santi,Via Euganea,259,Padova,21/11/1993
+BRTGNN63E22H501I,Andrea,Bruno,Via Chiaia,485,Napoli,22/05/1963
+MSTFBA96R23L736L,Chiara,Mastroianni,Via del Babuino,324,Roma,23/10/1996
+RCCLRT63A24E472S,Stefano,Ricci,Via Duomo,418,Napoli,24/01/1963
+TLLGNN96S25H501N,Martina,Tulli,Via del Quirinale,307,Roma,25/11/1996
+VRSPLA62M26L736Z,Silvio,Varsi,Via Cavour,228,Lecco,26/08/1962
+MNTLSS96E27H501S,Elena,Monti,Via del Tritone,441,Roma,27/05/1996
+RCDGRG63A28F205Q,Giovanni,Riccardi,Via Monte Napoleone,297,Milano,28/01/1963
+LMBRRT66S29L219C,Paolo,Lombardi,Piazza San Marco,385,Venezia,29/11/1966
+SBNLNE93M30G273T,Sara,Sabini,Via Maggio,328,Firenze,30/08/1993
+MRTGLL66T31H501N,Fabrizio,Martini,Corso Vittorio Emanuele II,398,Roma,31/12/1966
+CNDLSS90P01D969C,Riccardo,Candi,Via Tribunali,587,Napoli,01/09/1990
+FRNLNA96M02L219I,Chiara,Ferrari,Corso Sempione,368,Milano,02/08/1996
+LCNGNN66A03L219F,Alessia,Lo Conte,Via della Spiga,309,Milano,03/01/1966
+SNTMRA90S04G224Q,Marco,Santi,Via Euganea,282,Padova,04/11/1990
+BRTGNN90E05H501K,Silvia,Bruno,Via Chiaia,508,Napoli,05/05/1990
+MSTFBA63R06L736M,Elena,Mastroianni,Via del Babuino,347,Roma,06/10/1963
+RCCLRT93A07E472T,Giovanni,Ricci,Via Duomo,441,Napoli,07/01/1993
+TLLGNN63D08H501M,Laura,Tulli,Via del Quirinale,330,Roma,08/04/1963
+VRSPLA90M09L736Z,Marco,Varsi,Via Cavour,251,Lecco,09/08/1990
+MNTLSS60E10H501S,Chiara,Monti,Via del Tritone,464,Roma,10/05/1960
+RCDGRG96A11F205R,Paolo,Riccardi,Via Monte Napoleone,320,Milano,11/01/1996
+LMBRRT60S12L219D,Martina,Lombardi,Piazza San Marco,408,Venezia,12/11/1960
+SBNLNE90M13G273U,Alessia,Sabini,Via Maggio,351,Firenze,13/08/1990
+MRTGLL60T14H501O,Riccardo,Martini,Corso Vittorio Emanuele II,421,Roma,14/12/1960
+CNDLSS96P15D969D,Chiara,Candi,Via Tribunali,610,Napoli,15/09/1996
+FRNLNA90M16L219L,Paolo,Ferrari,Corso Sempione,391,Milano,16/08/1990
+LCNGNN60A17L219G,Martina,Lo Conte,Via della Spiga,332,Milano,17/01/1960
+SNTMRA90S18G224R,Luca,Santi,Via Euganea,305,Padova,18/11/1990
+BRTGNN60E19H501L,Francesca,Bruno,Via Chiaia,531,Napoli,19/05/1960
+MSTFBA90R20L736N,Andrea,Mastroianni,Via del Babuino,370,Roma,20/10/1990
+RCCLRT60A21E472U,Silvio,Ricci,Via Duomo,464,Napoli,21/01/1960
+TLLGNN90S22H501O,Laura,Tulli,Via del Quirinale,353,Roma,22/11/1990
+VRSPLA60M23L736A,Marco,Varsi,Via Cavour,274,Lecco,23/08/1960
+MNTLSS90E24H501S,Elena,Monti,Via del Tritone,487,Roma,24/05/1990
+RCDGRG60A25F205S,Giovanni,Riccardi,Via Monte Napoleone,343,Milano,25/01/1960
+LMBRRT90S26L219E,Sara,Lombardi,Piazza San Marco,431,Venezia,26/11/1990
+SBNLNE60M27G273T,Fabrizio,Sabini,Via Maggio,374,Firenze,27/08/1960
+MRTGLL90T28H501O,Chiara,Martini,Corso Vittorio Emanuele II,444,Roma,28/12/1990
+CNDLSS60P29D969E,Paolo,Candi,Via Tribunali,633,Napoli,29/09/1960
+FRNLNA90M30L219M,Martina,Ferrari,Corso Sempione,414,Milano,30/08/1990
+LCNGNN60A31L219H,Riccardo,Lo Conte,Via della Spiga,355,Milano,31/01/1960
+SNTMRA60S01G224S,Alessia,Santi,Via Euganea,328,Padova,01/11/1960
+BRTGNN93E02H501M,Stefano,Bruno,Via Chiaia,554,Napoli,02/05/1993
+MSTFBA60R03L736P,Anna,Mastroianni,Via del Babuino,392,Roma,03/10/1960
+RCCLRT90A04E472V,Luca,Ricci,Via Duomo,487,Napoli,04/01/1990
+TLLGNN60D05H501N,Francesca,Tulli,Via del Quirinale,376,Roma,05/04/1960
+VRSPLA96M06L736A,Andrea,Varsi,Via Cavour,297,Lecco,06/08/1996
+MNTLSS60E07H501T,Laura,Monti,Via del Tritone,510,Roma,07/05/1960
+RCDGRG90A08F205T,Marco,Riccardi,Via Monte Napoleone,366,Milano,08/01/1990
+LMBRRT60S09L219F,Elena,Lombardi,Piazza San Marco,455,Venezia,09/11/1960
+SBNLNE93M10G273V,Giovanni,Sabini,Via Maggio,397,Firenze,10/08/1993
+MRTGLL60T11H501P,Paolo,Martini,Corso Vittorio Emanuele II,467,Roma,11/12/1960
+CNDLSS93P12D969F,Sara,Candi,Via Tribunali,656,Napoli,12/09/1993
+FRNLNA60M13L219N,Riccardo,Ferrari,Corso Sempione,437,Milano,13/08/1960
+LCNGNN93A14L219G,Chiara,Lo Conte,Via della Spiga,378,Milano,14/01/1993
+SNTMRA60S15G224T,Martina,Santi,Via Euganea,351,Padova,15/11/1960
+BRTGNN96E16H501L,Fabrizio,Bruno,Via Chiaia,577,Napoli,16/05/1996
+MSTFBA60R17L736Q,Chiara,Mastroianni,Via del Babuino,415,Roma,17/10/1960
+RCCLRT96A18E472W,Stefano,Ricci,Via Duomo,510,Napoli,18/01/1996
+TLLGNN60S19H501P,Alessia,Tulli,Via del Quirinale,399,Roma,19/11/1960
+VRSPLA99M20L736B,Silvio,Varsi,Via Cavour,320,Lecco,20/08/1999
+MNTLSS60E21H501U,Marco,Monti,Via del Tritone,533,Roma,21/05/1960
+RCDGRG93A22F205T,Elena,Riccardi,Via Monte Napoleone,390,Milano,22/01/1993
+LMBRRT63S23L219G,Giovanni,Lombardi,Piazza San Marco,478,Venezia,23/11/1963
+SBNLNE96M24G273W,Paolo,Sabini,Via Maggio,420,Firenze,24/08/1996
+MRTGLL63T25H501Q,Sara,Martini,Corso Vittorio Emanuele II,480,Roma,25/12/1963
+CNDLSS90P26D969G,Fabrizio,Candi,Via Tribunali,679,Napoli,26/09/1990
+FRNLNA96M27L219O,Chiara,Ferrari,Corso Sempione,460,Milano,27/08/1996
+LCNGNN63A28L219I,Alessia,Lo Conte,Via della Spiga,401,Milano,28/01/1963
+SNTMRA93S29G224T,Marco,Santi,Via Euganea,374,Padova,29/11/1993
+BRTGNN66E30H501M,Andrea,Bruno,Via Chiaia,600,Napoli,30/05/1966
+MSTFBA60R31L736R,Chiara,Mastroianni,Via del Babuino,438,Roma,31/10/1960
+RCCLRT99A01E472X,Stefano,Ricci,Via Duomo,533,Napoli,01/01/1999
+TLLGNN63D02H501P,Martina,Tulli,Via del Quirinale,422,Roma,02/04/1963
+VRSPLA63M03L736B,Silvio,Varsi,Via Cavour,343,Lecco,03/08/1963
+MNTLSS99E04H501T,Marco,Monti,Via del Tritone,556,Roma,04/05/1999
+RCDGRG63A05F205U,Elena,Riccardi,Via Monte Napoleone,412,Milano,05/01/1963
+LMBRRT66S06L219H,Giovanni,Lombardi,Piazza San Marco,501,Venezia,06/11/1966
+SBNLNE99M07G273X,Paolo,Sabini,Via Maggio,442,Firenze,07/08/1999
+MRTGLL66T08H501R,Sara,Martini,Corso Vittorio Emanuele II,503,Roma,08/12/1966
+CNDLSS63P09D969G,Chiara,Candi,Via Tribunali,702,Napoli,09/09/1963
+FRNLNA99M10L219P,Lorenzo,Ferrari,Corso Sempione,483,Milano,10/08/1999
+LCNGNN63A11L219I,Valentina,Lo Conte,Via della Spiga,424,Milano,11/01/1963
+SNTMRA63S12G224U,Marco,Santi,Via Euganea,397,Padova,12/11/1963
+BRTGNN99E13H501N,Andrea,Bruno,Via Chiaia,623,Napoli,13/05/1999
+MSTFBA63R14L736S,Chiara,Mastroianni,Via del Babuino,461,Roma,14/10/1963
+RCCLRT63A15E472W,Stefano,Ricci,Via Duomo,556,Napoli,15/01/1963
+TLLGNN99S16H501Q,Alessia,Tulli,Via del Quirinale,445,Roma,16/11/1999
+VRSPLA66M17L736C,Martina,Varsi,Via Cavour,366,Lecco,17/08/1966
+MNTLSS63E18H501V,Luca,Monti,Via del Tritone,579,Roma,18/05/1963
+RCDGRG99A19F205V,Elena,Riccardi,Via Monte Napoleone,434,Milano,19/01/1999
+LMBRRT69S20L219I,Giovanni,Lombardi,Piazza San Marco,524,Venezia,20/11/1969
+SBNLNE63M21G273U,Paolo,Sabini,Via Maggio,465,Firenze,21/08/1963
+MRTGLL96T22H501S,Sara,Martini,Corso Vittorio Emanuele II,526,Roma,22/12/1996
+CNDLSS66P23D969H,Chiara,Candi,Via Tribunali,725,Napoli,23/09/1966
+FRNLNA60M24L219Q,Lorenzo,Ferrari,Corso Sempione,506,Milano,24/08/1960
+LCNGNN96A25L219D,Valentina,Lo Conte,Via della Spiga,447,Milano,25/01/1996
+SNTMRA66S26G224V,Marco,Santi,Via Euganea,420,Padova,26/11/1966
+BRTGNN69E27H501O,Andrea,Bruno,Via Chiaia,646,Napoli,27/05/1969
+MSTFBA66R28L736T,Chiara,Mastroianni,Via del Babuino,484,Roma,28/10/1966
+RCCLRT66A29E472Y,Stefano,Ricci,Via Duomo,579,Napoli,29/01/1966
+TLLGNN96S30H501R,Martina,Tulli,Via del Quirinale,468,Roma,30/11/1996
+VRSPLA69M31L736D,Silvio,Varsi,Via Cavour,389,Lecco,31/08/1969
+MNTLSS66E01H501W,Marco,Monti,Via del Tritone,602,Roma,01/05/1966
+RCDGRG66A02F205W,Elena,Riccardi,Via Monte Napoleone,457,Milano,02/01/1966
+LMBRRT96S03L219C,Giovanni,Lombardi,Piazza San Marco,547,Venezia,03/11/1996
+SBNLNE66M04G273W,Paolo,Sabini,Via Maggio,488,Firenze,04/08/1966
+MRTGLL93T05H501T,Sara,Martini,Corso Vittorio Emanuele II,549,Roma,05/12/1993
+CNDLSS69P06D969I,Chiara,Candi,Via Tribunali,748,Napoli,06/09/1969
+FRNLNA63M07L219R,Lorenzo,Ferrari,Corso Sempione,529,Milano,07/08/1963
+LCNGNN93A08L219F,Valentina,Lo Conte,Via della Spiga,470,Milano,08/01/1993
+SNTMRA69S09G224W,Marco,Santi,Via Euganea,443,Padova,09/11/1969
+BRTGNN93E10H501P,Andrea,Bruno,Via Chiaia,669,Napoli,10/05/1993
+MSTFBA69R11L736U,Chiara,Mastroianni,Via del Babuino,507,Roma,11/10/1969
+RCCLRT69A12E472Z,Stefano,Ricci,Via Duomo,602,Napoli,12/01/1969
+TLLGNN93S13H501S,Alessia,Tulli,Via del Quirinale,491,Roma,13/11/1993
+VRSPLA96M14L736E,Martina,Varsi,Via Cavour,412,Lecco,14/08/1996
+MNTLSS69E15H501X,Luca,Monti,Via del Tritone,625,Roma,15/05/1969
+RCDGRG69A16F205X,Elena,Riccardi,Via Monte Napoleone,486,Milano,16/01/1969
+LMBRRT99S17L219D,Giovanni,Lombardi,Piazza San Marco,570,Venezia,17/11/1999
+SBNLNE69M18G273X,Paolo,Sabini,Via Maggio,519,Firenze,18/08/1969
+MRTGLL69T19H501T,Sara,Martini,Corso Vittorio Emanuele II,572,Roma,19/12/1969
+CNDLSS66P20D969L,Chiara,Candi,Via Tribunali,771,Napoli,20/09/1966
+FRNLNA66M21L219S,Lorenzo,Ferrari,Corso Sempione,552,Milano,21/08/1966
+LCNGNN96A22L219G,Valentina,Lo Conte,Via della Spiga,493,Milano,22/01/1996
+SNTMRA69S23G224X,Marco,Santi,Via Euganea,466,Padova,23/11/1969
+BRTGNN66E24H501Q,Andrea,Bruno,Via Chiaia,692,Napoli,24/05/1966
+MSTFBA66R25L736V,Chiara,Mastroianni,Via del Babuino,530,Roma,25/10/1966
+RCCLRT66A26E472A,Stefano,Ricci,Via Duomo,625,Napoli,26/01/1966
+TLLGNN96S27H501T,Alessia,Tulli,Via del Quirinale,514,Roma,27/11/1996
+VRSPLA69M28L736G,Martina,Varsi,Via Cavour,435,Lecco,28/08/1969
+MNTLSS66E29H501Y,Luca,Monti,Via del Tritone,648,Roma,29/05/1966
+RCDGRG66A30F205Y,Elena,Riccardi,Via Monte Napoleone,507,Milano,30/01/1966
+LMBRRT66S31L219D,Giovanni,Lombardi,Piazza San Marco,593,Venezia,31/11/1966
+SBNLNE96M01G273Y,Paolo,Sabini,Via Maggio,540,Firenze,01/08/1996
+MRTGLL66T02H501S,Sara,Martini,Corso Vittorio Emanuele II,595,Roma,02/12/1966
+CNDLSS69P03D969M,Chiara,Candi,Via Tribunali,794,Napoli,03/09/1969
+FRNLNA69M04L219T,Lorenzo,Ferrari,Corso Sempione,575,Milano,04/08/1969
+LCNGNN66A05L219I,Valentina,Lo Conte,Via della Spiga,516,Milano,05/01/1966
+SNTMRA66S06G224Y,Marco,Santi,Via Euganea,489,Padova,06/11/1966
+BRTGNN96E07H501R,Andrea,Bruno,Via Chiaia,715,Napoli,07/05/1996
+MSTFBA69R08L736W,Chiara,Mastroianni,Via del Babuino,553,Roma,08/10/1969
+RCCLRT69A09E472B,Stefano,Ricci,Via Duomo,648,Napoli,09/01/1969
+TLLGNN96S10H501S,Martina,Tulli,Via del Quirinale,537,Roma,10/11/1996
+VRSPLA66M11L736F,Silvio,Varsi,Via Cavour,458,Lecco,11/08/1966
+MNTLSS96E12H501Y,Marco,Monti,Via del Tritone,671,Roma,12/05/1996
+RCDGRG69A13F205Z,Elena,Riccardi,Via Monte Napoleone,529,Milano,13/01/1969
+LMBRRT69S14L219E,Giovanni,Lombardi,Piazza San Marco,616,Venezia,14/11/1969
+SBNLNE69M15G273Z,Paolo,Sabini,Via Maggio,561,Firenze,15/08/1969
+MRTGLL69T16H501U,Sara,Martini,Corso Vittorio Emanuele II,618,Roma,16/12/1969
+CNDLSS63P17D969N,Chiara,Candi,Via Tribunali,817,Napoli,17/09/1963
+FRNLNA63M18L219T,Lorenzo,Ferrari,Corso Sempione,598,Milano,18/08/1963
+LCNGNN99A19L219E,Valentina,Lo Conte,Via della Spiga,538,Milano,19/01/1999
+SNTMRA63S20G224Z,Marco,Santi,Via Euganea,511,Padova,20/11/1963
+BRTGNN63E21H501R,Andrea,Bruno,Via Chiaia,738,Napoli,21/05/1963
+MSTFBA63R22L736T,Chiara,Mastroianni,Via del Babuino,576,Roma,22/10/1963
+RCCLRT63A23E472B,Stefano,Ricci,Via Duomo,671,Napoli,23/01/1963
+TLLGNN99S24H501S,Alessia,Tulli,Via del Quirinale,560,Roma,24/11/1999
+VRSPLA63M25L736H,Martina,Varsi,Via Cavour,481,Lecco,25/08/1963
+MNTLSS99E26H501Z,Luca,Monti,Via del Tritone,694,Roma,26/05/1999
+RCDGRG63A27F205A,Elena,Riccardi,Via Monte Napoleone,550,Milano,27/01/1963
+LMBRRT63S28L219I,Giovanni,Lombardi,Piazza San Marco,639,Venezia,28/11/1963
+SBNLNE63M29G273Z,Paolo,Sabini,Via Maggio,592,Firenze,29/08/1963
+MRTGLL63T30H501U,Sara,Martini,Corso Vittorio Emanuele II,641,Roma,30/12/1963
+CNDLSS69P31D969N,Chiara,Candi,Via Tribunali,840,Napoli,31/09/1969
+FRNLNA99M01L219Q,Lorenzo,Ferrari,Corso Sempione,621,Milano,01/08/1999
+LCNGNN63A02L219K,Valentina,Lo Conte,Via della Spiga,560,Milano,02/01/1963
+SNTMRA63S03G224A,Marco,Santi,Via Euganea,534,Padova,03/11/1963
+BRTGNN99E04H501S,Andrea,Bruno,Via Chiaia,761,Napoli,04/05/1999
+MSTFBA69R05L736A,Chiara,Mastroianni,Via del Babuino,599,Roma,05/10/1969
+RCCLRT69A06E472C,Stefano,Ricci,Via Duomo,694,Napoli,06/01/1969
+TLLGNN99S07H501T,Alessia,Tulli,Via del Quirinale,583,Roma,07/11/1999
+VRSPLA69M08L736I,Martina,Varsi,Via Cavour,504,Lecco,08/08/1969
+MNTLSS69E09H501Z,Luca,Monti,Via del Tritone,717,Roma,09/05/1969
+RCDGRG69A10F205B,Elena,Riccardi,Via Monte Napoleone,576,Milano,10/01/1969
+LMBRRT69S11L219F,Giovanni,Lombardi,Piazza San Marco,661,Venezia,11/11/1969
+SBNLNE99M12G273A,Paolo,Sabini,Via Maggio,614,Firenze,12/08/1999
+MRTGLL69T13H501V,Sara,Martini,Corso Vittorio Emanuele II,663,Roma,13/12/1969
+CNDLSS66P14D969O,Chiara,Candi,Via Tribunali,863,Napoli,14/09/1966
+FRNLNA66M15L219U,Lorenzo,Ferrari,Corso Sempione,643,Milano,15/08/1966
+LCNGNN99A16L219F,Valentina,Lo Conte,Via della Spiga,581,Milano,16/01/1999
+SNTMRA66S17G224B,Marco,Santi,Via Euganea,555,Padova,17/11/1966
+BRTGNN66E18H501R,Andrea,Bruno,Via Chiaia,784,Napoli,18/05/1966
+MSTFBA66R19L736W,Chiara,Mastroianni,Via del Babuino,617,Roma,19/10/1966
+RCCLRT66A20E472D,Stefano,Ricci,Via Duomo,717,Napoli,20/01/1966
+TLLGNN99S21H501U,Alessia,Tulli,Via del Quirinale,605,Roma,21/11/1999
+VRSPLA66M22L736I,Martina,Varsi,Via Cavour,526,Lecco,22/08/1966
+MNTLSS66E23H501Z,Luca,Monti,Via del Tritone,739,Roma,23/05/1966
+RCDGRG66A24F205B,Elena,Riccardi,Via Monte Napoleone,600,Milano,24/01/1966
+LMBRRT66S25L219J,Giovanni,Lombardi,Piazza San Marco,684,Venezia,25/11/1966
+SBNLNE66M26G273B,Paolo,Sabini,Via Maggio,637,Firenze,26/08/1966
+MRTGLL66T27H501W,Sara,Martini,Corso Vittorio Emanuele II,686,Roma,27/12/1966
+CNDLSS63P28D969P,Chiara,Candi,Via Tribunali,886,Napoli,28/09/1963
+FRNLNA63M29L219U,Lorenzo,Ferrari,Corso Sempione,666,Milano,29/08/1963
+LCNGNN96A30L219H,Valentina,Lo Conte,Via della Spiga,602,Milano,30/01/1996
+SNTMRA63S31G224B,Marco,Santi,Via Euganea,579,Padova,31/11/1963
+BRTGNN63E01H501S,Andrea,Bruno,Via Chiaia,807,Napoli,01/05/1963
+MSTFBA63R02L736U,Chiara,Mastroianni,Via del Babuino,641,Roma,02/10/1963
+RCCLRT63A03E472D,Stefano,Ricci,Via Duomo,739,Napoli,03/01/1963
+TLLGNN96S04H501U,Alessia,Tulli,Via del Quirinale,626,Roma,04/11/1996
+VRSPLA63M05L736K,Martina,Varsi,Via Cavour,547,Lecco,05/08/1963
+MNTLSS63E06H501A,Luca,Monti,Via del Tritone,762,Roma,06/05/1963
+RCDGRG63A07F205C,Elena,Riccardi,Via Monte Napoleone,621,Milano,07/01/1963
+LMBRRT63S08L219K,Giovanni,Lombardi,Piazza San Marco,707,Venezia,08/11/1963
+SBNLNE63M09G273C,Paolo,Sabini,Via Maggio,660,Firenze,09/08/1963
+MRTGLL63T10H501V,Sara,Martini,Corso Vittorio Emanuele II,709,Roma,10/12/1963
+CNDLSS60P11D969F,Chiara,Candi,Via Tribunali,909,Napoli,11/09/1960
+FRNLNA60M12L219V,Lorenzo,Ferrari,Corso Sempione,689,Milano,12/08/1960
+LCNGNN93A13L219L,Valentina,Lo Conte,Via della Spiga,623,Milano,13/01/1993
+SNTMRA60S14G224C,Marco,Santi,Via Euganea,596,Padova,14/11/1960
+BRTGNN60E15H501T,Andrea,Bruno,Via Chiaia,830,Napoli,15/05/1960
+MSTFBA60R16L736V,Chiara,Mastroianni,Via del Babuino,663,Roma,16/10/1960
+RCCLRT60A17E472D,Stefano,Ricci,Via Duomo,762,Napoli,17/01/1960
+TLLGNN93S18H501T,Alessia,Tulli,Via del Quirinale,647,Roma,18/11/1993
+VRSPLA60M19L736D,Martina,Varsi,Via Cavour,568,Lecco,19/08/1960
+MNTLSS60E20H501A,Luca,Monti,Via del Tritone,785,Roma,20/05/1960
+RCDGRG60A21F205D,Elena,Riccardi,Via Monte Napoleone,641,Milano,21/01/1960
+LMBRRT60S22L219L,Giovanni,Lombardi,Piazza San Marco,732,Venezia,22/11/1960
+SBNLNE60M23G273D,Paolo,Sabini,Via Maggio,680,Firenze,23/08/1960
+MRTGLL60T24H501W,Sara,Martini,Corso Vittorio Emanuele II,734,Roma,24/12/1960
+CNDLSS66P25D969Q,Chiara,Candi,Via Tribunali,932,Napoli,25/09/1966
+FRNLNA60M26L219W,Lorenzo,Ferrari,Corso Sempione,712,Milano,26/08/1960
+LCNGNN90A27L219M,Valentina,Lo Conte,Via della Spiga,665,Milano,27/01/1990
+SNTMRA60S28G224D,Marco,Santi,Via Euganea,618,Padova,28/11/1960
+BRTGNN60E29H501U,Andrea,Bruno,Via Chiaia,853,Napoli,29/05/1960
+MSTFBA60R30L736W,Chiara,Mastroianni,Via del Babuino,701,Roma,30/10/1960
+RCCLRT60A31E472E,Stefano,Ricci,Via Duomo,785,Napoli,31/01/1960
+TLLGNN90S01H501W,Alessia,Tulli,Via del Quirinale,689,Roma,01/11/1990
+VRSPLA60M02L736E,Martina,Varsi,Via Cavour,590,Lecco,02/08/1960
+MNTLSS60E03H501B,Luca,Monti,Via del Tritone,808,Roma,03/05/1960
+RCDGRG60A04F205E,Elena,Riccardi,Via Monte Napoleone,663,Milano,04/01/1960
+LMBRRT60S05L219M,Giovanni,Lombardi,Piazza San Marco,755,Venezia,05/11/1960
+SBNLNE90M06G273E,Paolo,Sabini,Via Maggio,704,Firenze,06/08/1990
+MRTGLL60T07H501X,Sara,Martini,Corso Vittorio Emanuele II,757,Roma,07/12/1960
+CNDLSS69P08D969R,Chiara,Candi,Via Tribunali,955,Napoli,08/09/1969
+FRNLNA90M09L219S,Lorenzo,Ferrari,Corso Sempione,735,Milano,09/08/1990
+LCNGNN60A10L219L,Valentina,Lo Conte,Via della Spiga,687,Milano,10/01/1960
+SNTMRA60S11G224E,Marco,Santi,Via Euganea,641,Padova,11/11/1960
+BRTGNN90E12H501T,Andrea,Bruno,Via Chiaia,876,Napoli,12/05/1990
+MSTFBA60R13L736X,Chiara,Mastroianni,Via del Babuino,724,Roma,13/10/1960
+RCCLRT60A14E472F,Stefano,Ricci,Via Duomo,808,Napoli,14/01/1960
+TLLGNN90S15H501X,Alessia,Tulli,Via del Quirinale,711,Roma,15/11/1990
+VRSPLA60M16L736L,Martina,Varsi,Via Cavour,612,Lecco,16/08/1960
+MNTLSS60E17H501C,Luca,Monti,Via del Tritone,831,Roma,17/05/1960
+RCDGRG60A18F205F,Elena,Riccardi,Via Monte Napoleone,685,Milano,18/01/1960
+LMBRRT60S19L219N,Giovanni,Lombardi,Piazza San Marco,778,Venezia,19/11/1960
+SBNLNE60M20G273E,Paolo,Sabini,Via Maggio,727,Firenze,20/08/1960
+MRTGLL99T21H501X,Sara,Martini,Corso Vittorio Emanuele II,780,Roma,21/12/1999
+CNDLSS60P22D969S,Chiara,Candi,Via Tribunali,978,Napoli,22/09/1960
+FRNLNA90M23L219T,Lorenzo,Ferrari,Corso Sempione,758,Milano,23/08/1990
+LCNGNN60A24L219M,Valentina,Lo Conte,Via della Spiga,710,Milano,24/01/1960
+SNTMRA99S25G224A,Marco,Santi,Via Euganea,664,Padova,25/11/1999
+BRTGNN60E26H501V,Andrea,Bruno,Via Chiaia,899,Napoli,26/05/1960
+MSTFBA99R27L736A,Chiara,Mastroianni,Via del Babuino,747,Roma,27/10/1999
+RCCLRT60A28E472G,Stefano,Ricci,Via Duomo,831,Napoli,28/01/1960
+TLLGNN99S29H501W,Alessia,Tulli,Via del Quirinale,734,Roma,29/11/1999
+VRSPLA99M30L736F,Martina,Varsi,Via Cavour,633,Lecco,30/08/1999
+MNTLSS99E31H501A,Luca,Monti,Via del Tritone,854,Roma,31/05/1999
+RCDGRG99A01F205G,Elena,Riccardi,Via Monte Napoleone,708,Milano,01/01/1999
+LMBRRT99S02L219O,Giovanni,Lombardi,Piazza San Marco,801,Venezia,02/11/1999
+SBNLNE99M03G273A,Paolo,Sabini,Via Maggio,751,Firenze,03/08/1999
+MRTGLL99T04H501Y,Sara,Martini,Corso Vittorio Emanuele II,803,Roma,04/12/1999
+CNDLSS63P05D969S,Chiara,Candi,Via Tribunali,999,Napoli,05/09/1963
+FRNLNA99M06L219R,Lorenzo,Ferrari,Corso Sempione,781,Milano,06/08/1999
+LCNGNN99A07L219O,Valentina,Lo Conte,Via della Spiga,733,Milano,07/01/1999
+SNTMRA99S08G224B,Marco,Santi,Via Euganea,687,Padova,08/11/1999
+BRTGNN99E09H501T,Andrea,Bruno,Via Chiaia,920,Napoli,09/05/1999
+MSTFBA99R10L736B,Chiara,Mastroianni,Via del Babuino,770,Roma,10/10/1999
+RCCLRT99A11E472H,Stefano,Ricci,Via Duomo,854,Napoli,11/01/1999
+TLLGNN63S12H501T,Alessia,Tulli,Via del Quirinale,758,Roma,12/11/1963
+VRSPLA99M13L736G,Martina,Varsi,Via Cavour,655,Lecco,13/08/1999
+MNTLSS99E14H501B,Luca,Monti,Via del Tritone,877,Roma,14/05/1999
