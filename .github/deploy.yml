@@ -16,6 +16,7 @@ jobs:
 
       - name: 🌍 Upload to Altervista
         uses: dreadnaut/deploy-to-altervista@v0.1
+        working-directory: ./app
         with:
           ftp-username: ${{ secrets.ALTERVISTA_FTP_USERNAME }}
           ftp-password: ${{ secrets.ALTERVISTA_FTP_PASSWORD }}
