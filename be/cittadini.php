@@ -65,6 +65,9 @@
         <label for="Indirizzo">Indirizzo:</label>
         <input type="text" name="Indirizzo" id="Indirizzo"><br>
 
+        <label for="NumeroCivico">Numero civico:</label>
+        <input type="int" name="NumeroCivico" id="NumeroCivico"><br>
+
         <label for="LuogoNascita">Luogo di nascita:</label>
         <input type="text" name="LuogoNascita" id="LuogoNascita"><br>
 
@@ -98,6 +101,10 @@
             if (isset($_GET['Indirizzo']) && $_GET['Indirizzo'] != '') {
                 $sql .= " AND Indirizzo LIKE :Indirizzo";
                 $params[':Indirizzo'] = '%' . $_GET['Indirizzo'] . '%';
+            }
+            if (isset($_GET['NumeroCivico']) && $_GET['NumeroCivico'] != '') {
+                $sql .= " AND NumeroCivico LIKE :NumeroCivico";
+                $params[':NumeroCivico'] = '%' . $_GET['NumeroCivico'] . '%';
             }
             if (isset($_GET['LuogoNascita']) && $_GET['LuogoNascita'] != '') {
                 $sql .= " AND LuogoNascita LIKE :LuogoNascita";
