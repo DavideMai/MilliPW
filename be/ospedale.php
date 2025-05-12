@@ -53,11 +53,11 @@
     <h2>Elenco Ospedali</h2>
 
     <form method="GET" action="">
-        <label for="Codice">Codice:</label>
-        <input type="text" name="Codice" id="Codice"><br>
+        <label for="IDOspedale">ID:</label>
+        <input type="text" name="IDOspedale" id="IDOspedale"><br>
 
-        <label for="Nome">Nome:</label>
-        <input type="text" name="Nome" id="Nome"><br>
+        <label for="NomeOspedale">Nome:</label>
+        <input type="text" name="NomeOspedale" id="NomeOspedale"><br>
 
         <label for="Citta">Città:</label>
         <input type="text" name="Citta" id="Citta"><br>
@@ -77,13 +77,13 @@
             $params = [];
 
             // Costruisci la query dinamicamente in base ai campi compilati nel form
-            if (isset($_GET['CSSN']) && $_GET['CSSN'] != '') {
-                $sql .= " AND CSSN LIKE :CSSN ";
-                $params[':CSSN'] = '%' . $_GET['CSSN'] . '%'; // Usa LIKE per la ricerca parziale
+            if (isset($_GET['IDOspedale']) && $_GET['IDOspedale'] != '') {
+                $sql .= " AND IDOspedale LIKE :IDOspedale ";
+                $params[':IDOspedale'] = '%' . $_GET['IDOspedale'] . '%'; // Usa LIKE per la ricerca parziale
             }
-            if (isset($_GET['Nome']) && $_GET['Nome'] != '') {
-                $sql .= " AND Nome LIKE :Nome";
-                $params[':Nome'] = '%' . $_GET['Nome'] . '%';
+            if (isset($_GET['NomeOspedale']) && $_GET['NomeOspedale'] != '') {
+                $sql .= " AND NomeOspedale LIKE :NomeOspedale";
+                $params[':NomeOspedale'] = '%' . $_GET['NomeOspedale'] . '%';
             }
             if (isset($_GET['Citta']) && $_GET['Citta'] != '') {
                 $sql .= " AND Citta LIKE :Citta";
