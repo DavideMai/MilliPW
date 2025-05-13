@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Elenco Ricoveri</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 <body>
 
