@@ -20,19 +20,6 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y git-ftp
 
-      - name: Align remote pointer (git-ftp catchup)
-        env:
-          FTP_USER: ${{ secrets.ALTERVISTA_FTP_USERNAME }}
-          FTP_PASS: ${{ secrets.ALTERVISTA_FTP_PASSWORD }}
-        run: |
-          git ftp catchup \
-            --syncroot ./app \
-            --remote-root / \
-            --user "$FTP_USER" \
-            --passwd "$FTP_PASS" \
-            ftp://ftp.${{ secrets.ALTERVISTA_FTP_USERNAME }}.altervista.org/
-
-
       - name: 🌍 Upload to Altervista
         uses: dreadnaut/deploy-to-altervista@v0.1
         with:
