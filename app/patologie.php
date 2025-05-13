@@ -6,7 +6,10 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 <body>
-
+<?php
+    include 'header.html';	
+	include 'nav.html';
+?>
     <h2>Elenco Ricoveri</h2>
 
     <form method="GET" action="">
