@@ -15,14 +15,21 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Full git-ftp init (forced)
+      - name: Install git-ftp
         run: |
-          sudo apt-get update && sudo apt-get install -y git-ftp
-          git ftp init --force \
+          sudo apt-get update
+          sudo apt-get install -y git-ftp
+
+      - name: Align remote pointer (git-ftp catchup)
+        env:
+          FTP_USER: ${{ secrets.ALTERVISTA_FTP_USERNAME }}
+          FTP_PASS: ${{ secrets.ALTERVISTA_FTP_PASSWORD }}
+        run: |
+          git ftp catchup \
             --syncroot ./app \
             --remote-root / \
-            --user "${{ secrets.ALTERVISTA_FTP_USERNAME }}" \
-            --passwd "${{ secrets.ALTERVISTA_FTP_PASSWORD }}" \
+            --user "$FTP_USER" \
+            --passwd "$FTP_PASS" \
             ftp://ftp.${{ secrets.ALTERVISTA_FTP_USERNAME }}.altervista.org/
 
 
