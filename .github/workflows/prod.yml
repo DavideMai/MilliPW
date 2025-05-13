@@ -15,19 +15,16 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install git-ftp
+      - name: Full git-ftp init (forced)
         run: |
-            sudo apt-get update
-            sudo apt-get install -y git-ftp
-
-      - name: Full git-ftp init
-        run: |
-          git ftp init \
+          sudo apt-get update && sudo apt-get install -y git-ftp
+          git ftp init --force \
             --syncroot ./app \
             --remote-root / \
             --user "${{ secrets.ALTERVISTA_FTP_USERNAME }}" \
             --passwd "${{ secrets.ALTERVISTA_FTP_PASSWORD }}" \
             ftp://ftp.${{ secrets.ALTERVISTA_FTP_USERNAME }}.altervista.org/
+
 
       - name: 🌍 Upload to Altervista
         uses: dreadnaut/deploy-to-altervista@v0.1
