@@ -15,6 +15,13 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Delete remote .git-ftp.log
+        run: |
+          curl --silent \
+               --user "${{ secrets.ALT_USER }}:${{ secrets.ALT_PASS }}" \
+               -Q "-DELE .git-ftp.log" \
+               ftp://ftp.${{ secrets.ALT_USER }}.altervista.org/
+
       - name: 🌍 Upload to Altervista
         uses: dreadnaut/deploy-to-altervista@v0.1
         with:
