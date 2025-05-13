@@ -15,12 +15,14 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Delete remote .git-ftp.log
+      - name: Full git-ftp init
         run: |
-          curl --silent \
-               --user "${{ secrets.ALT_USER }}:${{ secrets.ALT_PASS }}" \
-               -Q "-DELE .git-ftp.log" \
-               ftp://ftp.${{ secrets.ALT_USER }}.altervista.org/
+          git ftp init \
+            --syncroot ./app \
+            --remote-root / \
+            --user ${{ secrets.ALTERVISTA_FTP_USERNAME }} \
+            --passwd  ${{ secrets.ALTERVISTA_FTP_PASSWORD }} \
+            ftp://ftp.${{ secrets.ALTERVISTA_FTP_USERNAME }}.altervista.org/
 
       - name: 🌍 Upload to Altervista
         uses: dreadnaut/deploy-to-altervista@v0.1
