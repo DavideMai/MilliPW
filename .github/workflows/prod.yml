@@ -1,4 +1,5 @@
 name: Publish updates to Altervista
+
 on:
   push:
     branches:
@@ -13,14 +14,15 @@ jobs:
       - name: 📦 Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0 # Fetch full history to ensure all commits are available
 
       - name: 🌍 Upload to Altervista
-        uses: dreadnaut/deploy-to-altervista@v0.1
-        with:
-          local-root: ./app
-          ftp-username: ${{ secrets.ALTERVISTA_FTP_USERNAME }}
-          ftp-password: ${{ secrets.ALTERVISTA_FTP_PASSWORD }}
-          exclude-patterns: |
-            .git*
-            README.md
+        run: |
+          GIT_FTP=https://raw.githubusercontent.com/git-ftp/git-ftp/1.6.0/git-ftp
+          curl --silent --show-error $GIT_FTP > .git/git-ftp
+          chmod 755 .git/git-ftp
+          # Force upload if SHA1 object is not found
+          .git/git-ftp push --force
+        env:
+          FTP_USERNAME: ${{ secrets.ALTERVISTA_FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.ALTERVISTA_FTP_PASSWORD }}
