@@ -15,12 +15,12 @@ jobs:
         with:
           fetch-depth: 0
 
-     
       - name: 🌍 Upload to Altervista
         uses: dreadnaut/deploy-to-altervista@v0.1
+        working-directory: ./app  # <--- Imposta la working directory per questo step
         with:
-          local-root: ./app/
-          remote-root: /
+          local-root: .           # <--- Cambia local-root a "." (directory corrente)
+          remote-root: /          # La remote-root rimane la radice del server
           ftp-username: ${{ secrets.ALTERVISTA_FTP_USERNAME }}
           ftp-password: ${{ secrets.ALTERVISTA_FTP_PASSWORD }}
           exclude-patterns: |
