@@ -17,7 +17,15 @@ jobs:
 
       - name: 📂 Change working directory
         run: cd app
-        
+
+      - name: ⚙️ Reset Git-FTP Remote
+        run: |
+          if command -v git-ftp >/dev/null 2>&1; then
+            git ftp init --reinit -v -u "${{ secrets.ALTERVISTA_FTP_USERNAME }}" -p "${{ secrets.ALTERVISTA_FTP_PASSWORD }}" "ftp://${{ secrets.ALTERVISTA_FTP_HOST }}"
+          else
+            echo "git-ftp is not installed. Skipping remote reset."
+          fi
+
       - name: 🌍 Upload to Altervista
         uses: dreadnaut/deploy-to-altervista@v0.1
         with:
