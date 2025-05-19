@@ -7,15 +7,12 @@
 </head>
 <body>
 <?php
-    include 'header.html';	
-	include 'nav.html';
+    include 'header.html';  
+    include 'nav.html';
 ?>
     <h2>Elenco Ospedali</h2>
 
     <form method="GET" action="">
-        <label for="IDOspedale">ID:</label>
-        <input type="text" name="IDOspedale" id="IDOspedale"><br>
-
         <label for="NomeOspedale">Nome:</label>
         <input type="text" name="NomeOspedale" id="NomeOspedale"><br>
 
@@ -33,14 +30,10 @@
 
     if (!$error) {
         try {
-            $sql = "SELECT * FROM Ospedali WHERE 1=1"; // Inizia con una condizione sempre vera per facilitare l'aggiunta di AND
+            $sql = "SELECT * FROM Ospedali WHERE 1=1";
             $params = [];
 
             // Costruisci la query dinamicamente in base ai campi compilati nel form
-            if (isset($_GET['IDOspedale']) && $_GET['IDOspedale'] != '') {
-                $sql .= " AND IDOspedale LIKE :IDOspedale ";
-                $params[':IDOspedale'] = '%' . $_GET['IDOspedale'] . '%'; // Usa LIKE per la ricerca parziale
-            }
             if (isset($_GET['NomeOspedale']) && $_GET['NomeOspedale'] != '') {
                 $sql .= " AND NomeOspedale LIKE :NomeOspedale";
                 $params[':NomeOspedale'] = '%' . $_GET['NomeOspedale'] . '%';
@@ -63,15 +56,20 @@
             if (count ($ospedali) > 0) {
                 echo "<table>";
                 echo "<thead><tr>";
-                foreach   (  $ospedali[0] as $colonna => $valore) {
-                    echo "<th>" . htmlspecialchars($colonna) . "</th>";
+                $firstRow = $ospedali[0];
+                foreach   (  $firstRow as $colonna => $valore) {
+                    if ($colonna != "IDOspedale") { // Escludi la colonna IDOspedale
+                        echo "<th>" . htmlspecialchars($colonna) . "</th>";
+                    }
                 }
                 echo "</tr></thead><tbody>";
 
                 foreach    ( $ospedali as $ospedale) {
                     echo "<tr>";
-                    foreach ($ospedale as $valore) {
-                        echo "<td>" . htmlspecialchars($valore) . "</td>";
+                    foreach ($ospedale as $colonna => $valore) {
+                        if ($colonna != "IDOspedale") { // Escludi la colonna IDOspedale
+                            echo "<td>" . htmlspecialchars($valore) . "</td>";
+                        }
                     }
                     echo "</tr>";
                 }

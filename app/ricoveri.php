@@ -7,23 +7,20 @@
 </head>
 <body>
 <?php
-    include 'header.html';	
-	include 'nav.html';
+    include 'header.html';
+    include 'nav.html';
 ?>
     <h2>Elenco Ricoveri</h2>
 
     <form method="GET" action="">
-        <label for="IDRicovero">ID Ricovero:</label>
-        <input type="text" name="IDRicovero" id="IDRicovero"><br>
-
         <label for="CSSNCittadino">CSSN Cittadino:</label>
         <input type="text" name="CSSNCittadino" id="CSSNCittadino"><br>
 
-        <label for="IDOspedale">ID Ospedale:</label>
-        <input type="text" name="IDOspedale" id="IDOspedale"><br>
+        <label for="NomeOspedale">Nome Ospedale:</label>
+        <input type="text" name="NomeOspedale" id="NomeOspedale"><br>
 
-        <label for="IDPatologia">ID Patologia:</label>
-        <input type="text" name="IDPatologia" id="IDPatologia"><br>
+        <label for="NomePatologia">Nome Patologia:</label>
+        <input type="text" name="NomePatologia" id="NomePatologia"><br>
 
         <label for="DataRicovero">Data Ricovero:</label>
         <input type="date" name="DataRicovero" id="DataRicovero"><br>
@@ -45,47 +42,46 @@
 
     if (!$error) {
         try {
-            $sql = "SELECT * FROM Ricoveri WHERE 1=1"; // Inizia con una condizione sempre vera per facilitare l'aggiunta di AND
+            $sql = "SELECT r.IDRicovero, r.CSSNCittadino, o.NomeOspedale, p.NomePatologia, r.DataRicovero, r.DurataRicovero, r.CostoRicovero, r.MotivoRicovero 
+                    FROM Ricoveri r
+                    JOIN Ospedali o ON r.IDOspedale = o.IDOspedale
+                    JOIN Patologie p ON r.IDPatologia = p.IDPatologia
+                    WHERE 1=1";
             $params = [];
 
             // Costruisci la query dinamicamente in base ai campi compilati nel form
-            if (isset($_GET['IDRicovero']) && $_GET['IDRicovero'] != '') {
-                $sql .= " AND IDRicovero LIKE :IDRicovero";
-                $params[':IDRicovero'] = '%' . $_GET['IDRicovero'] . '%'; // Usa LIKE per la ricerca parziale
-            }
             if (isset($_GET['CSSNCittadino']) && $_GET['CSSNCittadino'] != '') {
-                $sql .= " AND CSSNCittadino LIKE :CSSNCittadino";
+                $sql .= " AND r.CSSNCittadino LIKE :CSSNCittadino";
                 $params[':CSSNCittadino'] = '%' . $_GET['CSSNCittadino'] . '%';
             }
-            if (isset($_GET['IDOspedale']) && $_GET['IDOspedale'] != '') {
-                $sql .= " AND IDOspedale LIKE :IDOspedale";
-                $params[':IDOspedale'] = '%' . $_GET['IDOspedale'] . '%';
+            if (isset($_GET['NomeOspedale']) && $_GET['NomeOspedale'] != '') {
+                $sql .= " AND o.NomeOspedale LIKE :NomeOspedale";
+                $params[':NomeOspedale'] = '%' . $_GET['NomeOspedale'] . '%';
             }
-            if (isset($_GET['IDPatologia']) && $_GET['IDPatologia'] != '') {
-                $sql .= " AND IDPatologia LIKE :IDPatologia";
-                $params[':IDPatologia'] = '%' . $_GET['IDPatologia'] . '%';
+            if (isset($_GET['NomePatologia']) && $_GET['NomePatologia'] != '') {
+                $sql .= " AND p.NomePatologia LIKE :NomePatologia";
+                $params[':NomePatologia'] = '%' . $_GET['NomePatologia'] . '%';
             }
             if (isset($_GET['DataRicovero']) && $_GET['DataRicovero'] != '') {
-                $sql .= " AND DataRicovero = :DataRicovero";
+                $sql .= " AND r.DataRicovero = :DataRicovero";
                 $params[':DataRicovero'] = $_GET['DataRicovero'];
             }
             if (isset($_GET['DurataRicovero']) && $_GET['DurataRicovero'] != '') {
-                $sql .= " AND DurataRicovero = :DurataRicovero";
+                $sql .= " AND r.DurataRicovero = :DurataRicovero";
                 $params[':DurataRicovero'] = $_GET['DurataRicovero'];
             }
             if (isset($_GET['CostoRicovero']) && $_GET['CostoRicovero'] != '') {
-                $sql .= " AND CostoRicovero = :CostoRicovero";
+                $sql .= " AND r.CostoRicovero = :CostoRicovero";
                 $params[':CostoRicovero'] = $_GET['CostoRicovero'];
             }
             if (isset($_GET['MotivoRicovero']) && $_GET['MotivoRicovero'] != '') {
-                $sql .= " AND MotivoRicovero LIKE :MotivoRicovero";
+                $sql .= " AND r.MotivoRicovero LIKE :MotivoRicovero";
                 $params[':MotivoRicovero'] = '%' . $_GET['MotivoRicovero'] . '%';
             }
 
             $stmt = $conn->prepare($sql);
             $stmt->execute($params);
             $ricoveri = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
 
             if (count($ricoveri) > 0) {
                 echo "<table>";
