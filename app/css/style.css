@@ -46,33 +46,95 @@ form input[type="submit"]:hover {
 }
 
 .navbar {
-  background-color: #ff00ff; /* Magenta di sfondo */
-  padding: 10px 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Leggera ombra */
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky; /* Navbar fissa in alto */
+  top: 0;
+  z-index: 100; /* Assicura che sia sopra altri elementi */
 }
 
-.navbar-list {
-  list-style-type: none;
+.navbar-container {
+  display: flex;
+  justify-content: space-between; /* Distribuisce gli elementi */
+  align-items: center; /* Allinea verticalmente */
+  padding: 15px 20px;
+  max-width: 1200px; /* Larghezza massima */
+  margin: 0 auto; /* Centra orizzontalmente */
+}
+
+.navbar-brand {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+/* --- Menu --- */
+.navbar-menu {
+  list-style: none;
+  display: flex;
   margin: 0;
   padding: 0;
-  text-align: center; /* Centra gli elementi */
 }
 
 .navbar-item {
-  display: inline; /* Elementi in linea orizzontale */
-  margin: 0 15px; /* Spazio tra le voci */
+  margin: 0 15px;
 }
 
 .navbar-link {
   text-decoration: none;
-  color: #333; /* Colore del testo grigio scuro */
-  font-weight: bold;
+  color: #555;
+  font-weight: 500;
   padding: 8px 12px;
-  border-radius: 5px;
-  transition: background-color 0.3s, color 0.3s; /* Transizione graduale */
+  border-radius: 4px;
+  transition: color 0.3s, background-color 0.3s;
 }
 
-.navbar-link:hover {
-  background-color: #007bff; /* Blu al passaggio del mouse */
-  color: #fff; /* Testo bianco al passaggio del mouse */
+.navbar-link:hover,
+.navbar-link.active {
+  color: #007bff;
+  background-color: rgba(0, 123, 255, 0.1); /* Sfondo leggero */
+}
+
+.navbar-link.active {
+  font-weight: bold;
+}
+
+/* --- Menu Hamburger (Mobile) --- */
+.navbar-toggle {
+  display: none; /* Nascondi di default */
+  font-size: 1.5em;
+  color: #555;
+  cursor: pointer;
+}
+
+/* --- Media Query (Mobile) --- */
+@media (max-width: 768px) {
+  .navbar-menu {
+      display: none; /* Nascondi il menu su schermi piccoli */
+      flex-direction: column;
+      position: absolute;
+      top: 100%; /* Sotto la navbar */
+      left: 0;
+      width: 100%;
+      background-color: #fff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 10px 0;
+  }
+
+  .navbar-item {
+      margin: 0;
+      text-align: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+  }
+
+  .navbar-toggle {
+      display: block; /* Mostra l'icona del menu */
+  }
+
+  .navbar-menu.active {
+      display: flex; /* Mostra il menu quando attivo */
+  }
 }
