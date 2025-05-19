@@ -40,7 +40,7 @@
     <?php
     include 'connect.php';
 
-    if (!$error) {
+    if (!$error) { //commento per commit
         try {
             $sql = "SELECT r.IDRicovero, r.CSSNCittadino, o.NomeOspedale, p.NomePatologia, r.DataRicovero, r.DurataRicovero, r.CostoRicovero, r.MotivoRicovero 
                     FROM Ricoveri r

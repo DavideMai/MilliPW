@@ -31,7 +31,7 @@
     if (!$error) {
         try {
             $sql = "SELECT * FROM Ospedali WHERE 1=1";
-            $params = [];
+            $params = []; //Commento per commit
 
             // Costruisci la query dinamicamente in base ai campi compilati nel form
             if (isset($_GET['NomeOspedale']) && $_GET['NomeOspedale'] != '') {
