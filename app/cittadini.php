@@ -107,7 +107,7 @@
     }
     ?>
 <?php
-    include 'footer.html';
+    include 'footer.html'; //commento
 ?>
 </body>
 </html>

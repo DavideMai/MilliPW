@@ -13,6 +13,6 @@
 												PDO::ERRMODE_EXCEPTION);
 	} catch(PDOException$e) {
 		echo "DB Error: " . $e->getMessage();
-		$error = true;
+		$error = true; //commento
 	}
 ?>
