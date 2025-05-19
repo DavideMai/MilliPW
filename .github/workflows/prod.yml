@@ -21,7 +21,12 @@ jobs:
       - name: ⚙️ Reset Git-FTP Remote
         run: |
           if command -v git-ftp >/dev/null 2>&1; then
-            git ftp init --reinit -v -u "${{ secrets.ALTERVISTA_FTP_USERNAME }}" -p "${{ secrets.ALTERVISTA_FTP_PASSWORD }}" "ftp://${{ secrets.ALTERVISTA_FTP_HOST }}"
+            # Extract hostname from the secret if it includes the protocol
+            FTP_HOST="${{ secrets.ALTERVISTA_FTP_HOST }}"
+            if [[ "$FTP_HOST" == "ftp://"* ]]; then
+              FTP_HOST="${FTP_HOST#ftp://}"
+            fi
+            git ftp init --reinit -v -u "${{ secrets.ALTERVISTA_FTP_USERNAME }}" -p "${{ secrets.ALTERVISTA_FTP_PASSWORD }}" "$FTP_HOST"
           else
             echo "git-ftp is not installed. Skipping remote reset."
           fi
