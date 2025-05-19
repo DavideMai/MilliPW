@@ -63,7 +63,7 @@
                             echo "<td>" . htmlspecialchars($valore) . "</td>";
                         }
                     }
-                    echo "</tr>"; //commento per commit
+                    echo "</tr>"; //commento per commit ehhehe
                 }
 
                 echo "</tbody></table>";
