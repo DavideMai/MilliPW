@@ -24,6 +24,35 @@
         <input type="submit" value="Cerca Ospedali">
     </form>
 
+    <h1>Aggiungi un nuovo ospedale</h1>
+    <form action="inserisci_ospedale.php" method="POST">
+        <div>
+            <label for="nomeOspedale">Nome Ospedale:</label>
+            <input type="text" id="nomeOspedale" name="nomeOspedale" required>
+        </div>
+        <div>
+            <label for="indirizzo">Indirizzo:</label>
+            <input type="text" id="indirizzo" name="indirizzo" required>
+        </div>
+        <div>
+            <label for="numeroCivico">Numero Civico:</label>
+            <input type="number" id="numeroCivico" name="numeroCivico" required>
+        </div>
+        <div>
+            <label for="citta">Città:</label>
+            <input type="text" id="citta" name="citta" required>
+        </div>
+        <div>
+            <label for="numeroTelefonico">Numero Telefonico:</label>
+            <input type="number" id="numeroTelefonico" name="numeroTelefonico" required>
+        </div>
+        <div>
+            <label for="codiceSanitarioDirettore">Codice Sanitario Direttore:</label>
+            <input type="text" id="codiceSanitarioDirettore" name="codiceSanitarioDirettore" required>
+        </div>
+        <button type="submit">Salva Ospedale</button>
+    </form>
+    
     <?php
     include 'connect.php';
 
