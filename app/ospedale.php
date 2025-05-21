@@ -37,7 +37,7 @@
         </div>
         <div>
             <label for="numeroCivico">Numero Civico:</label>
-            <input type="number" id="numeroCivico" name="numeroCivico" required>
+            <input type="text" id="numeroCivico" name="numeroCivico" pattern="[0-9]*" inputmode="numeric" required>
         </div>
         <div>
             <label for="citta">Città:</label>
@@ -45,7 +45,7 @@
         </div>
         <div>
             <label for="numeroTelefonico">Numero Telefonico:</label>
-            <input type="number" id="numeroTelefonico" name="numeroTelefonico" required>
+            <input type="text" id="numeroTelefonico" name="numeroTelefonico" pattern="[0-9]*" inputmode="tel" required>
         </div>
         <div>
             <label for="codiceSanitarioDirettore">Codice Sanitario Direttore:</label>
