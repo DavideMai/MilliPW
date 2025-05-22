@@ -36,13 +36,13 @@ form input[type="date"] {
 }
 form input[type="submit"] {
   padding: 8px 15px;
-  background-color: #4caf50;
+  background-color: #800000;
   color: white;
   border: none;
   cursor: pointer;
 }
 form input[type="submit"]:hover {
-  background-color: #45a049;
+  background-color: #800000;
 }
 
 /* Navbar Container */
@@ -108,7 +108,7 @@ form input[type="submit"]:hover {
   display: block;
   margin-top: 5px;
   right: 0;
-  background: #3498db;
+  background: #800000;
   transition: width 0.3s ease;
 }
 
@@ -116,11 +116,11 @@ form input[type="submit"]:hover {
 .navbar-link.active::after {
   width: 100%;
   left: 0;
-  background: #3498db;
+  background: #800000;
 }
 
 .navbar-link.active {
-  color: #3498db; /* Active link color */
+  color: #800000; /* Active link color */
   font-weight: bold;
 }
 
@@ -138,7 +138,7 @@ form input[type="submit"]:hover {
       display: none; /* Hide menu by default on small screens */
       flex-direction: column; /* Stack items vertically */
       width: 100%;
-      background-color: #34495e; /* Slightly different background for mobile menu */
+      background-color: #800000; /* Slightly different background for mobile menu */
       position: absolute;
       top: 60px; /* Adjust based on navbar height */
       left: 0;
