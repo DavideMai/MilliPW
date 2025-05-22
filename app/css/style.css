@@ -18,62 +18,68 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 
-/* Nuovo contenitore per i form */
+/* Nuovo contenitore per i form (già presente, solo per contesto) */
 .forms-container {
-    display: flex; /* Abilita Flexbox per disporre i form orizzontalmente */
-    flex-wrap: wrap; /* Permette ai form di andare a capo su una nuova riga se lo spazio non è sufficiente */
-    justify-content: space-around; /* Distribuisce i form con spazio equo attorno a essi */
-    align-items: flex-start; /* Allinea i form all'inizio dell'asse verticale (utile se hanno altezze diverse) */
-    gap: 20px; /* Spazio tra i form */
-    padding: 20px; /* Spazio interno al contenitore */
-    max-width: 1200px; /* Larghezza massima del contenitore dei form */
-    margin: 20px auto; /* Centra il contenitore nella pagina */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
 }
 
 
-/* Modifiche ai form esistenti */
+/* Modifiche ai form esistenti per disporre i campi in orizzontale */
 form {
-  /* La larghezza e il margine sono gestiti dal .forms-container */
-  /* Rimuovi o commenta le seguenti righe se erano presenti: */
-  /* width: 80%; */
-  /* margin: 20px auto; */
-
-  width: 45%; /* Larghezza per ogni form (es. due form per riga con 5% di spazio tra loro). Modifica se hai più/meno form. */
-  padding: 15px; /* Padding interno al form */
+  /* Manteniamo le proprietà del contenitore form */
+  width: 45%; /* Larghezza per ogni form, regola come necessario */
+  padding: 15px;
   border: 1px solid #ccc;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Ombra sottile per i form */
-  border-radius: 8px; /* Bordi smussati per i form */
-  box-sizing: border-box; /* Include padding e border nella larghezza totale */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  box-sizing: border-box;
+
+  /* NUOVE PROPRIETÀ PER DISPORRE I CAMPI IN LINEA */
+  display: flex; /* Abilita Flexbox per i figli del form */
+  flex-wrap: wrap; /* Permette agli elementi del form di andare a capo se lo spazio non è sufficiente */
+  align-items: center; /* Allinea verticalmente gli elementi al centro */
+  gap: 15px; /* Spazio tra gli elementi del form (label, input, submit) */
 }
 
 form label {
-  display: inline-block;
-  width: 150px;
-  margin-bottom: 5px;
+  /* Non è più necessario display: inline-block o una larghezza fissa se flex gestisce lo spazio */
+  /* width: 150px; -- Rimosso o commentato */
+  margin-bottom: 0; /* Rimuove il margine inferiore */
+  white-space: nowrap; /* Impedisce al testo dell'etichetta di andare a capo */
 }
 form input[type="text"],
 form input[type="number"],
 form input[type="date"] {
-  width: calc(100% - 160px); /* Regola la larghezza degli input per adattarsi al nuovo layout del form, considerando il label */
-  padding: 8px; /* Padding leggermente aumentato per gli input */
-  margin-bottom: 10px;
+  /* width: calc(100% - 160px); -- Rimosso o commentato, flex gestirà la larghezza */
+  flex-grow: 1; /* Permette all'input di occupare lo spazio disponibile */
+  max-width: 250px; /* Limite massimo per la larghezza degli input */
+  padding: 8px;
+  margin-bottom: 0; /* Rimuove il margine inferiore */
   border: 1px solid #ddd;
-  border-radius: 4px; /* Bordi smussati per gli input */
+  border-radius: 4px;
 }
 form input[type="submit"] {
-  padding: 10px 20px; /* Dimensioni maggiori per il bottone */
+  padding: 10px 20px;
   background-color: #800000;
   color: white;
   border: none;
   cursor: pointer;
-  border-radius: 5px; /* Bordi smussati per il bottone */
-  transition: background-color 0.3s ease; /* Transizione per l'hover */
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  margin-top: 0; /* Assicurati che non ci sia margine superiore che sbilanci */
 }
 form input[type="submit"]:hover {
-  background-color: #a00000; /* Colore più scuro all'hover */
+  background-color: #a00000;
 }
 
-/* Navbar (existing content from previous update) */
+/* Navbar (existing content) */
 .navbar {
   background-color: #5c0120;
   padding: 10px 20px;
@@ -147,6 +153,7 @@ form input[type="submit"]:hover {
 
 .navbar-link.active {
   color: #ecf0f1;
+  font-weight: bold;
 }
 
 .navbar-toggle {
