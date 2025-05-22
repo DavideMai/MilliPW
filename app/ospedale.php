@@ -28,30 +28,23 @@
     <h1>Aggiungi un nuovo ospedale</h1>
     <div class="forms-container">
         <form action="inserisci_ospedale.php" method="POST">
-            <div>
                 <label for="nomeOspedale">Nome Ospedale:</label>
                 <input type="text" id="nomeOspedale" name="nomeOspedale" required>
-            </div>
-            <div>
+
                 <label for="indirizzo">Indirizzo:</label>
                 <input type="text" id="indirizzo" name="indirizzo" required>
-            </div>
-            <div>
+
                 <label for="numeroCivico">Numero Civico:</label>
                 <input type="text" id="numeroCivico" name="numeroCivico" pattern="[0-9]*" inputmode="numeric" required>
-            </div>
-            <div>
+
                 <label for="citta">Città:</label>
                 <input type="text" id="citta" name="citta" required>
-            </div>
-            <div>
+
                 <label for="numeroTelefonico">Numero Telefonico:</label>
                 <input type="text" id="numeroTelefonico" name="numeroTelefonico" pattern="[0-9]*" inputmode="tel" required>
-            </div>
-            <div>
+
                 <label for="codiceSanitarioDirettore">Codice Sanitario Direttore:</label>
                 <input type="text" id="codiceSanitarioDirettore" name="codiceSanitarioDirettore" required>
-            </div>
             <input type="submit" value="Inserisci Ospedale">
         </form>
     </div>
