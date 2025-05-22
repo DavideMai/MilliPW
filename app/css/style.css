@@ -18,7 +18,7 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 
-/* Nuovo contenitore per i form */
+/* Modifiche al contenitore per i form */
 .forms-container {
     display: flex;
     flex-wrap: wrap; /* Manteniamo wrap qui per il contenitore dei form multipli */
@@ -26,8 +26,9 @@ tr:nth-child(even) {
     align-items: flex-start;
     gap: 20px;
     padding: 20px;
-    max-width: 1200px;
+    width: 100%; /* <-- CAMBIATO DA 'max-width: 1200px' a 'width: 100%' */
     margin: 20px auto;
+    box-sizing: border-box; /* <-- AGGIUNTO per includere il padding nella larghezza */
 }
 
 
@@ -41,30 +42,29 @@ form {
   border-radius: 8px;
   box-sizing: border-box;
 
-  /* NUOVE PROPRIETÀ PER IMPEDIRE IL WRAPPING INTERNO AL FORM */
+  /* PROPRIETÀ PER IMPEDIRE IL WRAPPING INTERNO AL FORM */
   display: flex;
-  flex-wrap: nowrap; /* <-- CAMBIATO DA 'wrap' a 'nowrap' qui */
+  flex-wrap: nowrap;
   align-items: center;
   gap: 15px;
-  overflow-x: auto; /* Aggiunto per permettere lo scroll orizzontale se non c'è spazio */
-  -webkit-overflow-scrolling: touch; /* Migliora lo scrolling su dispositivi touch */
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 form label {
   margin-bottom: 0;
-  white-space: nowrap; /* Impedisce al testo dell'etichetta di andare a capo */
-  flex-shrink: 0; /* Impedisce all'etichetta di ridursi se lo spazio è limitato */
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 form input[type="text"],
 form input[type="number"],
 form input[type="date"] {
-  flex-grow: 1; /* Permette all'input di occupare lo spazio disponibile */
-  /* max-width: 250px; -- Rimosso per permettere all'input di ridursi quanto necessario */
+  flex-grow: 1;
   padding: 8px;
   margin-bottom: 0;
   border: 1px solid #ddd;
   border-radius: 4px;
-  min-width: 80px; /* Aggiunto un min-width per evitare che diventino troppo piccoli illeggibili */
+  min-width: 80px;
 }
 form input[type="submit"] {
   padding: 10px 20px;
@@ -75,7 +75,7 @@ form input[type="submit"] {
   border-radius: 5px;
   transition: background-color 0.3s ease;
   margin-top: 0;
-  flex-shrink: 0; /* Impedisce al bottone di ridursi */
+  flex-shrink: 0;
 }
 form input[type="submit"]:hover {
   background-color: #a00000;
