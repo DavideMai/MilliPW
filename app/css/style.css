@@ -1,3 +1,4 @@
+/* General styles for tables and forms (existing content) */
 table {
   width: 80%;
   margin: 20px auto;
@@ -51,6 +52,7 @@ form input[type="submit"]:hover {
   padding: 10px 20px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Subtle shadow */
   color: #ecf0f1; /* Light text color */
+  border-radius: 8px; /* Bordi smussati per l'intera navbar */
 }
 
 .navbar-container {
@@ -77,6 +79,7 @@ form input[type="submit"]:hover {
   margin: 0;
   padding: 0;
   display: flex; /* Make menu items horizontal */
+  flex-wrap: wrap; /* Permette agli elementi di andare a capo se non c'è spazio */
 }
 
 .navbar-item {
@@ -120,14 +123,27 @@ form input[type="submit"]:hover {
 }
 
 .navbar-link.active {
-  color: #800000; /* Active link color */
+  color: #ecf0f1; /* Il tasto Home ora ha lo stesso colore degli altri link */
   font-weight: bold;
 }
 
-/* Navbar Toggle (for responsive design - typically hidden on desktop) */
+/* Navbar Toggle (typically for responsive design - now hidden by default) */
 .navbar-toggle {
-  display: none; /* Hide by default on larger screens */
+  display: none; /* Always hidden as per request to keep all options visible */
   color: #ecf0f1;
   font-size: 2em;
   cursor: pointer;
+}
+
+/* Responsive Adjustments: Removed rules that hide the menu */
+@media (max-width: 768px) {
+    /* Manteniamo le voci del menu visibili e permettiamo il wrapping */
+    .navbar-menu {
+        /* Non nascondiamo più il display, ma gestiamo lo spazio */
+        /* Potresti voler ridurre il margin-left o aggiungere padding qui */
+        margin-left: 10px; /* Esempio: riduci spazio tra elementi su schermi piccoli */
+    }
+
+    /* Rimuovi completamente le regole di display:none e flex-direction:column per .navbar-menu se vuoi che sia sempre orizzontale/wraps */
+    /* Ho già rimosso la display:none; nella versione sopra, e la flex-direction: column è stata rimossa per mantenere la flessibilità. */
 }
