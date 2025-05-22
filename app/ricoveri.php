@@ -5,8 +5,8 @@
     <title>Elenco Ricoveri</title>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
-<>
-<div?php
+<body>
+<?php
     include 'header.html';
     include 'nav.html';
 ?>
@@ -43,7 +43,7 @@
 
             <input type="submit" value="Cerca Ricoveri">
         </form>
-    </di>
+</div>
 
     <?php
     include 'connect.php';
