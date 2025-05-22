@@ -5,7 +5,7 @@ try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $stmt = $conn->prepare("SELECT COUNT(*) FROM ospedali WHERE CodiceSanitarioDirettore = :codiceDirettore");
+    $stmt = $conn->prepare("SELECT COUNT(*) FROM Ospedali WHERE CodiceSanitarioDirettore = :codiceDirettore");
     $stmt->bindParam(':codiceDirettore', $_POST['codiceSanitarioDirettore']);
     $stmt->execute();
     $count = $stmt->fetchColumn();
