@@ -11,15 +11,16 @@
     include 'nav.html';
 ?>
     <h2>Elenco Patologie</h2>
+    <div class="forms-container">
+        <form method="GET" action="">
+            <label for="NomePatologia">Nome Patologia:</label>
+            <input type="text" name="NomePatologia" id="NomePatologia"><br>
 
-    <form method="GET" action="">
-        <label for="NomePatologia">Nome Patologia:</label>
-        <input type="text" name="NomePatologia" id="NomePatologia"><br>
-
-        <label for="Tipologia">Tipologia:</label>
-        <input type="text" name="Tipologia" id="Tipologia"><br>
-        <input type="submit" value="Cerca Patologie">
-    </form>
+            <label for="Tipologia">Tipologia:</label>
+            <input type="text" name="Tipologia" id="Tipologia"><br>
+            <input type="submit" value="Cerca Patologie">
+        </form>
+    </div>
 
     <?php
     include 'connect.php';
