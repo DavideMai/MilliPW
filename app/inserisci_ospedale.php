@@ -5,8 +5,22 @@ try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $stmt = $conn->prepare("INSERT INTO Ospedali (NomeOspedale, Indirizzo, NumeroCivico, Citta, NumeroTelefono, CodiceSanitarioDirettore) VALUES (:nomeOspedale, :indirizzo, :numeroCivico, :citta, :numeroTelefonico, :codiceSanitarioDirettore)");
+    $stmt = $conn->prepare("SELECT MAX(IDOspedale) AS IDOspedaleMassimo FROM Ospedali");
+    $stmt->execute();
 
+    $risultato = $stmt->fetch(PDO::FETCH_ASSOC);
+    $newId = 0;
+    
+    if ($risultato && !is_null($risultato['IDOspedaleMassimo'])) {
+        $maxId = $risultato['IDOspedaleMassimo'];
+        $newId = $maxId + 1;
+    } else {
+        $newId = 1;
+    }
+    
+    $stmt = $conn->prepare("INSERT INTO Ospedali (IDOspedale, NomeOspedale, Indirizzo, NumeroCivico, Citta, NumeroTelefono, CodiceSanitarioDirettore) VALUES (:id, :nomeOspedale, :indirizzo, :numeroCivico, :citta, :numeroTelefonico, :codiceSanitarioDirettore)");
+
+    $stmt->bindParam(':id', $newId);
     $stmt->bindParam(':nomeOspedale', $_POST['nomeOspedale']);
     $stmt->bindParam(':indirizzo', $_POST['indirizzo']);
     $stmt->bindParam(':numeroCivico', $_POST['numeroCivico']);
