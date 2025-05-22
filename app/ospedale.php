@@ -11,51 +11,67 @@
     include 'nav.html';
 ?>
     <h2>Elenco Ospedali</h2>
+    <div class="forms-container">
+        <form method="GET" action="">
+            <label for="NomeOspedale">Nome:</label>
+            <input type="text" name="NomeOspedale" id="NomeOspedale">
 
-    <form method="GET" action="">
-        <label for="NomeOspedale">Nome:</label>
-        <input type="text" name="NomeOspedale" id="NomeOspedale"><br>
+            <label for="Citta">Città:</label>
+            <input type="text" name="Citta" id="Citta">
 
-        <label for="Citta">Città:</label>
-        <input type="text" name="Citta" id="Citta"><br>
+            <label for="Indirizzo">Indirizzo:</label>
+            <input type="text" name="Indirizzo" id="Indirizzo">
 
-        <label for="Indirizzo">Indirizzo:</label>
-        <input type="text" name="Indirizzo" id="Indirizzo"><br>
-
-        <input type="submit" value="Cerca Ospedali">
-    </form>
-
+            <input type="submit" value="Cerca Ospedali">
+        </form>
+    </div>
     <h1>Aggiungi un nuovo ospedale</h1>
-    <form action="inserisci_ospedale.php" method="POST">
-        <div>
-            <label for="nomeOspedale">Nome Ospedale:</label>
-            <input type="text" id="nomeOspedale" name="nomeOspedale" required>
-        </div>
-        <div>
-            <label for="indirizzo">Indirizzo:</label>
-            <input type="text" id="indirizzo" name="indirizzo" required>
-        </div>
-        <div>
-            <label for="numeroCivico">Numero Civico:</label>
-            <input type="text" id="numeroCivico" name="numeroCivico" pattern="[0-9]*" inputmode="numeric" required>
-        </div>
-        <div>
-            <label for="citta">Città:</label>
-            <input type="text" id="citta" name="citta" required>
-        </div>
-        <div>
-            <label for="numeroTelefonico">Numero Telefonico:</label>
-            <input type="text" id="numeroTelefonico" name="numeroTelefonico" pattern="[0-9]*" inputmode="tel" required>
-        </div>
-        <div>
-            <label for="codiceSanitarioDirettore">Codice Sanitario Direttore:</label>
-            <input type="text" id="codiceSanitarioDirettore" name="codiceSanitarioDirettore" required>
-        </div>
-        <input type="submit" value="Inserisci Ospedale">
-    </form>
+    <div class="forms-container">
+        <form action="inserisci_ospedale.php" method="POST">
+            <div>
+                <label for="nomeOspedale">Nome Ospedale:</label>
+                <input type="text" id="nomeOspedale" name="nomeOspedale" required>
+            </div>
+            <div>
+                <label for="indirizzo">Indirizzo:</label>
+                <input type="text" id="indirizzo" name="indirizzo" required>
+            </div>
+            <div>
+                <label for="numeroCivico">Numero Civico:</label>
+                <input type="text" id="numeroCivico" name="numeroCivico" pattern="[0-9]*" inputmode="numeric" required>
+            </div>
+            <div>
+                <label for="citta">Città:</label>
+                <input type="text" id="citta" name="citta" required>
+            </div>
+            <div>
+                <label for="numeroTelefonico">Numero Telefonico:</label>
+                <input type="text" id="numeroTelefonico" name="numeroTelefonico" pattern="[0-9]*" inputmode="tel" required>
+            </div>
+            <div>
+                <label for="codiceSanitarioDirettore">Codice Sanitario Direttore:</label>
+                <input type="text" id="codiceSanitarioDirettore" name="codiceSanitarioDirettore" required>
+            </div>
+            <input type="submit" value="Inserisci Ospedale">
+        </form>
+    </div>
     
     <?php
     include 'connect.php';
+
+    function isCSDtaken($conn, $codice){
+        $sql = "SELECT COUNT(*) FROM Ospedali WHERE CodiceSanitarioDirettore = :codiceDirettore";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':codiceDirettore', $codice);
+        $stmt->execute();
+        $count = $stmt->fetchColumn();
+
+        if ($count > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
     if (!$error) {
         try {
