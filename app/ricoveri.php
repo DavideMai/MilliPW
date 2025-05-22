@@ -12,30 +12,30 @@
 ?>
     <h2>Elenco Ricoveri</h2>
     <div class="forms-container">
-    <form method="GET" action="">
-        <label for="CSSNCittadino">CSSN Cittadino:</label>
-        <input type="text" name="CSSNCittadino" id="CSSNCittadino">
+        <form method="GET" action="">
+            <label for="CSSNCittadino">CSSN Cittadino:</label>
+            <input type="text" name="CSSNCittadino" id="CSSNCittadino">
 
-        <label for="NomeOspedale">Nome Ospedale:</label>
-        <input type="text" name="NomeOspedale" id="NomeOspedale">
+            <label for="NomeOspedale">Nome Ospedale:</label>
+            <input type="text" name="NomeOspedale" id="NomeOspedale">
 
-        <label for="NomePatologia">Nome Patologia:</label>
-        <input type="text" name="NomePatologia" id="NomePatologia">
+            <label for="NomePatologia">Nome Patologia:</label>
+            <input type="text" name="NomePatologia" id="NomePatologia">
 
-        <label for="DataRicovero">Data Ricovero:</label>
-        <input type="date" name="DataRicovero" id="DataRicovero">
+            <label for="DataRicovero">Data Ricovero:</label>
+            <input type="date" name="DataRicovero" id="DataRicovero">
 
-        <label for="DurataRicovero">Durata Ricovero:</label>
-        <input type="number" name="DurataRicovero" id="DurataRicovero">
+            <label for="DurataRicovero">Durata Ricovero:</label>
+            <input type="number" name="DurataRicovero" id="DurataRicovero">
 
-        <label for="CostoRicovero">Costo Ricovero:</label>
-        <input type="number" name="CostoRicovero" id="CostoRicovero">
+            <label for="CostoRicovero">Costo Ricovero:</label>
+            <input type="number" name="CostoRicovero" id="CostoRicovero">
 
-        <label for="MotivoRicovero">Motivo Ricovero:</label>
-        <input type="text" name="MotivoRicovero" id="MotivoRicovero">
+            <label for="MotivoRicovero">Motivo Ricovero:</label>
+            <input type="text" name="MotivoRicovero" id="MotivoRicovero">
 
-        <input type="submit" value="Cerca Ricoveri">
-    </form>
+            <input type="submit" value="Cerca Ricoveri">
+        </form>
     </div>
 
     <?php
