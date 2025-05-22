@@ -27,7 +27,7 @@ tr:nth-child(even) {
     gap: 20px;
     padding: 20px;
     width: 100%; /* <-- CAMBIATO DA 'max-width: 1200px' a 'width: 100%' */
-    margin: 20px auto;
+    margin: 20px;
     box-sizing: border-box; /* <-- AGGIUNTO per includere il padding nella larghezza */
 }
 
