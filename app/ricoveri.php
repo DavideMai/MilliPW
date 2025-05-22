@@ -5,38 +5,45 @@
     <title>Elenco Ricoveri</title>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
-<body>
-<?php
+<>
+<div?php
     include 'header.html';
     include 'nav.html';
 ?>
     <h2>Elenco Ricoveri</h2>
     <div class="forms-container">
         <form method="GET" action="">
-            <label for="CSSNCittadino">CSSN Cittadino:</label>
+        <div class="form-group"><label for="CSSNCittadino">CSSN Cittadino:</label>
             <input type="text" name="CSSNCittadino" id="CSSNCittadino">
+        </div>
 
-            <label for="NomeOspedale">Nome Ospedale:</label>
+        <div class="form-group"><label for="NomeOspedale">Nome Ospedale:</label>
             <input type="text" name="NomeOspedale" id="NomeOspedale">
+        </div>
 
-            <label for="NomePatologia">Nome Patologia:</label>
+        <div class="form-group"><label for="NomePatologia">Nome Patologia:</label>
             <input type="text" name="NomePatologia" id="NomePatologia">
+        </div> 
 
-            <label for="DataRicovero">Data Ricovero:</label>
+        <div class="form-group"><label for="DataRicovero">Data Ricovero:</label>
             <input type="date" name="DataRicovero" id="DataRicovero">
+        </div>
 
-            <label for="DurataRicovero">Durata Ricovero:</label>
+        <div class="form-group"><label for="DurataRicovero">Durata Ricovero:</label>
             <input type="number" name="DurataRicovero" id="DurataRicovero">
+        </div>
 
-            <label for="CostoRicovero">Costo Ricovero:</label>
+        <div class="form-group"><label for="CostoRicovero">Costo Ricovero:</label>
             <input type="number" name="CostoRicovero" id="CostoRicovero">
+        </div>
 
-            <label for="MotivoRicovero">Motivo Ricovero:</label>
+        <div class="form-group"><label for="MotivoRicovero">Motivo Ricovero:</label>
             <input type="text" name="MotivoRicovero" id="MotivoRicovero">
+        </div>
 
             <input type="submit" value="Cerca Ricoveri">
         </form>
-    </div>
+    </di>
 
     <?php
     include 'connect.php';

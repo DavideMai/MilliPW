@@ -13,27 +13,34 @@
     <h2>Elenco Cittadini</h2>
     <div class="forms-container">
     <form method="GET" action="">
-        <label for="CSSN">CSSN:</label>
+    <div class="form-group"><label for="CSSN">CSSN:</label>
         <input type="text" name="CSSN" id="CSSN">
+    </div>
 
-        <label for="Nome">Nome:</label>
+    <div class="form-group"><label for="Nome">Nome:</label>
         <input type="text" name="Nome" id="Nome">
+    </div>
 
-        <label for="Cognome">Cognome:</label>
+    <div class="form-group"> <label for="Cognome">Cognome:</label>
         <input type="text" name="Cognome" id="Cognome">
+    </div>
 
-        <label for="Indirizzo">Indirizzo:</label>
+    <div class="form-group"><label for="Indirizzo">Indirizzo:</label>
         <input type="text" name="Indirizzo" id="Indirizzo">
+    </div>
 
-        <label for="NumeroCivico">Numero civico:</label>
+    <div class="form-group"><label for="NumeroCivico">Numero civico:</label>
         <input type="int" name="NumeroCivico" id="NumeroCivico">
+    </div>
 
-        <label for="LuogoNascita">Luogo di nascita:</label>
+    <div class="form-group"><label for="LuogoNascita">Luogo di nascita:</label>
         <input type="text" name="LuogoNascita" id="LuogoNascita">
+    </div>
 
-        <label for="DataNascita">Data di nascita:</label>
+    <div class="form-group"><label for="DataNascita">Data di nascita:</label>
         <input type="date" name="DataNascita" id="DataNascita">
-
+    </div>
+    
         <input type="submit" value="Cerca Cittadini">
     </form>
     </div>

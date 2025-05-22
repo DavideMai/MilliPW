@@ -13,39 +13,40 @@
     <h2>Elenco Ospedali</h2>
     <div class="forms-container">
         <form method="GET" action="">
-            <label for="NomeOspedale">Nome:</label>
+        <div class="form-group"><label for="NomeOspedale">Nome:</label>
             <input type="text" name="NomeOspedale" id="NomeOspedale">
-
-            <label for="Citta">Città:</label>
+        </div>
+        <div class="form-group"><label for="Citta">Città:</label>
             <input type="text" name="Citta" id="Citta">
-
-            <label for="Indirizzo">Indirizzo:</label>
+        </div>
+        <div class="form-group">    <label for="Indirizzo">Indirizzo:</label>
             <input type="text" name="Indirizzo" id="Indirizzo">
-
+        </div>
             <input type="submit" value="Cerca Ospedali">
         </form>
     </div>
     <h1>Aggiungi un nuovo ospedale</h1>
     <div class="forms-container">
         <form method="POST">
-                <label for="nomeOspedale">Nome Ospedale:</label>
+        <div class="form-group"><label for="nomeOspedale">Nome Ospedale:</label>
                 <input type="text" id="nomeOspedale" name="nomeOspedale" required>
-
-                <label for="indirizzo">Indirizzo:</label>
+        </div>
+        <div class="form-group">       <label for="indirizzo">Indirizzo:</label>
                 <input type="text" id="indirizzo" name="indirizzo" required>
-
-                <label for="numeroCivico">Numero Civico:</label>
+        </div>
+        <div class="form-group">        <label for="numeroCivico">Numero Civico:</label>
                 <input type="text" id="numeroCivico" name="numeroCivico" pattern="[0-9]*" inputmode="numeric" required>
-
-                <label for="citta">Città:</label>
+        </div>
+        <div class="form-group">      <label for="citta">Città:</label>
                 <input type="text" id="citta" name="citta" required>
-
-                <label for="numeroTelefonico">Numero Telefonico:</label>
+        </div>
+        <div class="form-group">     <label for="numeroTelefonico">Numero Telefonico:</label>
                 <input type="text" id="numeroTelefonico" name="numeroTelefonico" pattern="[0-9]*" inputmode="tel" required>
-
-                <label for="codiceSanitarioDirettore">Codice Sanitario Direttore:</label>
+        </div>
+        <div class="form-group">        <label for="codiceSanitarioDirettore">Codice Sanitario Direttore:</label>
                 <input type="text" id="codiceSanitarioDirettore" name="codiceSanitarioDirettore" required>
-            <input type="submit" value="Inserisci Ospedale">
+        </div>
+                <input type="submit" value="Inserisci Ospedale">
         </form>
     </div>
     
