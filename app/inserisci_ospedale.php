@@ -5,6 +5,15 @@ try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+    $stmt = $conn->prepare("SELECT COUNT(*) FROM Ospedali WHERE CodiceSanitarioDirettore = :codiceDirettore");
+    $stmt->bindParam(':codiceDirettore', $_POST['codiceSanitarioDirettore']);
+    $stmt->execute();
+    $count = $stmt->fetchColumn();
+
+    if ($count > 0){
+        die("Errore: Il codice sanitario del direttore '" . htmlspecialchars($codiceDirettoreDaControllare) . "' è già utilizzato da un altro ospedale.");
+    }
+
     $stmt = $conn->prepare("SELECT MAX(IDOspedale) AS IDOspedaleMassimo FROM Ospedali");
     $stmt->execute();
 
