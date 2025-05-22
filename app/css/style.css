@@ -1,4 +1,4 @@
-/* General styles for tables and forms (existing content) */
+/* Existing styles for tables and forms */
 table {
   width: 80%;
   margin: 20px auto;
@@ -17,53 +17,85 @@ th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
-form {
-  width: 80%;
-  margin: 20px auto;
-  padding: 10px;
-  border: 1px solid #ccc;
+
+/* Nuovo contenitore per i form (già presente, solo per contesto) */
+.forms-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    max-width: auto;
+    margin: 20px auto;
 }
+
+
+/* Modifiche ai form esistenti per disporre i campi in orizzontale */
+form {
+  /* Manteniamo le proprietà del contenitore form */
+  width: 45%; /* Larghezza per ogni form, regola come necessario */
+  padding: 15px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  box-sizing: border-box;
+
+  /* NUOVE PROPRIETÀ PER DISPORRE I CAMPI IN LINEA */
+  display: flex; /* Abilita Flexbox per i figli del form */
+  flex-wrap: wrap; /* Permette agli elementi del form di andare a capo se lo spazio non è sufficiente */
+  align-items: center; /* Allinea verticalmente gli elementi al centro */
+  gap: 15px; /* Spazio tra gli elementi del form (label, input, submit) */
+}
+
 form label {
-  display: inline-block;
-  width: 150px;
-  margin-bottom: 5px;
+  /* Non è più necessario display: inline-block o una larghezza fissa se flex gestisce lo spazio */
+  /* width: 150px; -- Rimosso o commentato */
+  margin-bottom: 0; /* Rimuove il margine inferiore */
+  white-space: nowrap; /* Impedisce al testo dell'etichetta di andare a capo */
 }
 form input[type="text"],
 form input[type="number"],
 form input[type="date"] {
-  width: 200px;
-  padding: 5px;
-  margin-bottom: 10px;
+  /* width: calc(100% - 160px); -- Rimosso o commentato, flex gestirà la larghezza */
+  flex-grow: 1; /* Permette all'input di occupare lo spazio disponibile */
+  max-width: 250px; /* Limite massimo per la larghezza degli input */
+  padding: 8px;
+  margin-bottom: 0; /* Rimuove il margine inferiore */
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
 form input[type="submit"] {
-  padding: 8px 15px;
+  padding: 10px 20px;
   background-color: #800000;
   color: white;
   border: none;
   cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  margin-top: 0; /* Assicurati che non ci sia margine superiore che sbilanci */
 }
 form input[type="submit"]:hover {
-  background-color: #800000;
+  background-color: #a00000;
 }
 
-/* Navbar Container */
+/* Navbar (existing content) */
 .navbar {
-  background-color: #5c0120; /* Darker background for modern look */
+  background-color: #5c0120;
   padding: 10px 20px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Subtle shadow */
-  color: #ecf0f1; /* Light text color */
-  border-radius: 8px; /* Bordi smussati per l'intera navbar */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  color: #ecf0f1;
+  border-radius: 8px;
 }
 
 .navbar-container {
   max-width: 1200px;
   margin: 0 auto;
-  display: flex; /* Use flexbox for horizontal layout */
-  justify-content: space-between; /* Space out brand and menu */
-  align-items: center; /* Vertically align items */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* Navbar Brand */
 .navbar-brand {
   color: #ecf0f1;
   text-decoration: none;
@@ -73,36 +105,33 @@ form input[type="submit"]:hover {
   letter-spacing: 1px;
 }
 
-/* Navbar Menu */
 .navbar-menu {
-  list-style: none; /* Remove bullet points */
+  list-style: none;
   margin: 0;
   padding: 0;
-  display: flex; /* Make menu items horizontal */
-  flex-wrap: wrap; /* Permette agli elementi di andare a capo se non c'è spazio */
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .navbar-item {
-  margin-left: 25px; /* Space between menu items */
+  margin-left: 25px;
 }
 
-/* Navbar Links */
 .navbar-link {
   color: #ecf0f1;
   text-decoration: none;
   padding: 8px 0;
-  display: block; /* Make the whole area clickable */
-  transition: color 0.3s ease, transform 0.2s ease; /* Smooth transition for hover effects */
-  position: relative; /* For the underline effect */
+  display: block;
+  transition: color 0.3s ease, transform 0.2s ease;
+  position: relative;
   font-weight: 500;
 }
 
 .navbar-link:hover {
-  color: #dbb8b8; /* Highlight on hover */
-  transform: translateY(-2px); /* Slight lift effect */
+  color: #dbb8b8;
+  transform: translateY(-2px);
 }
 
-/* Underline effect on hover/active */
 .navbar-link::after {
   content: '';
   position: absolute;
@@ -123,27 +152,19 @@ form input[type="submit"]:hover {
 }
 
 .navbar-link.active {
-  color: #ecf0f1; /* Il tasto Home ora ha lo stesso colore degli altri link */
+  color: #ecf0f1;
   font-weight: bold;
 }
 
-/* Navbar Toggle (typically for responsive design - now hidden by default) */
 .navbar-toggle {
-  display: none; /* Always hidden as per request to keep all options visible */
+  display: none;
   color: #ecf0f1;
   font-size: 2em;
   cursor: pointer;
 }
 
-/* Responsive Adjustments: Removed rules that hide the menu */
 @media (max-width: 768px) {
-    /* Manteniamo le voci del menu visibili e permettiamo il wrapping */
     .navbar-menu {
-        /* Non nascondiamo più il display, ma gestiamo lo spazio */
-        /* Potresti voler ridurre il margin-left o aggiungere padding qui */
-        margin-left: 10px; /* Esempio: riduci spazio tra elementi su schermi piccoli */
+        margin-left: 10px;
     }
-
-    /* Rimuovi completamente le regole di display:none e flex-direction:column per .navbar-menu se vuoi che sia sempre orizzontale/wraps */
-    /* Ho già rimosso la display:none; nella versione sopra, e la flex-direction: column è stata rimossa per mantenere la flessibilità. */
 }

@@ -11,31 +11,32 @@
 	include 'nav.html';
 ?>
     <h2>Elenco Cittadini</h2>
-
+    <div class="forms-container">
     <form method="GET" action="">
         <label for="CSSN">CSSN:</label>
-        <input type="text" name="CSSN" id="CSSN"><br>
+        <input type="text" name="CSSN" id="CSSN">
 
         <label for="Nome">Nome:</label>
-        <input type="text" name="Nome" id="Nome"><br>
+        <input type="text" name="Nome" id="Nome">
 
         <label for="Cognome">Cognome:</label>
-        <input type="text" name="Cognome" id="Cognome"><br>
+        <input type="text" name="Cognome" id="Cognome">
 
         <label for="Indirizzo">Indirizzo:</label>
-        <input type="text" name="Indirizzo" id="Indirizzo"><br>
+        <input type="text" name="Indirizzo" id="Indirizzo">
 
         <label for="NumeroCivico">Numero civico:</label>
-        <input type="int" name="NumeroCivico" id="NumeroCivico"><br>
+        <input type="int" name="NumeroCivico" id="NumeroCivico">
 
         <label for="LuogoNascita">Luogo di nascita:</label>
-        <input type="text" name="LuogoNascita" id="LuogoNascita"><br>
+        <input type="text" name="LuogoNascita" id="LuogoNascita">
 
         <label for="DataNascita">Data di nascita:</label>
-        <input type="date" name="DataNascita" id="DataNascita"><br>
+        <input type="date" name="DataNascita" id="DataNascita">
 
         <input type="submit" value="Cerca Cittadini">
     </form>
+    </div>
 
     <?php
     include 'connect.php';
