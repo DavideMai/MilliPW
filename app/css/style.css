@@ -1,179 +1,199 @@
-/* Existing styles for tables and forms */
+/* RESET GLOBALE FONDAMENTALE */
+html {
+  box-sizing: border-box;
+  /* overflow-x: hidden; <-- Rimosso per vedere se l'overflow è ancora un problema dopo le modifiche al form */
+}
+*, *::before, *::after {
+  box-sizing: inherit; /* Tutti gli elementi ereditano il box-sizing */
+  margin: 0; /* Rimuovi i margini predefiniti del browser per evitare scroll indesiderati */
+  padding: 0; /* Rimuovi i padding predefiniti del browser */
+}
+body {
+  /* overflow-x: hidden; <-- Rimosso per vedere se l'overflow è ancora un problema */
+}
+
+
+/* Existing styles for tables and forms (retained, but with global reset effects) */
 table {
-  width: 80%;
-  margin: 20px auto;
-  border-collapse: collapse;
+width: 80%;
+margin: 20px auto;
+border-collapse: collapse;
 }
 table,
 th,
 td {
-  border: 1px solid black;
-  padding: 8px;
-  text-align: left;
+border: 1px solid black;
+padding: 8px;
+text-align: left;
 }
 th {
-  background-color: #f2f2f2;
+background-color: #f2f2f2;
 }
 tr:nth-child(even) {
-  background-color: #dddddd;
+background-color: #dddddd;
 }
 
 /* Contenitore per i form */
 .forms-container {
-    display: flex;
-    flex-wrap: wrap; /* Manteniamo wrap qui per il contenitore dei form multipli, se ci fossero */
-    justify-content: center; /* <-- CAMBIATO: Centra il form (o i form) all'interno del container al 100% */
-    align-items: flex-start;
-    gap: 20px;
-    padding: 20px; /* Padding per non far toccare i bordi */
-    width: 90%; /* Larghezza come la pagina */
-    margin: 20px auto; /* Centra il container */
-    box-sizing: border-box; /* Include il padding nella larghezza totale */
+  display: flex;
+  flex-wrap: wrap; /* Manteniamo wrap qui per il contenitore dei form multipli, se ci fossero */
+  justify-content: center; /* Centra il form (o i form) all'interno del container al 100% */
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px; /* Padding per non far toccare i bordi */
+  width: 100%; /* Larghezza come la pagina */
+  /* margin: 20px auto; <-- Rimosso, il flex-container o il body gestiranno i margini esterni */
+  /* box-sizing: border-box; <-- Rimosso qui, ora è globale */
 }
 
 
-/* Modifiche al form stesso per disporre i campi in linea SENZA SCROLLBAR */
+/* Modifiche al form stesso: i campi vanno a capo quando non c'è spazio */
 form {
-  /* Rimuoviamo la larghezza fissa per permettere al form di adattarsi ai campi */
-  /* width: 95%; <-- RIMOSSO */
-  /* max-width: 900px; <-- RIMOSSO */
+max-width: 900px; /* Mantiene il form non eccessivamente largo su schermi giganti */
+width: 100%; /* Il form occupa il 100% dello spazio disponibile nel forms-container */
+padding: 15px;
+border: 1px solid #ccc;
+box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+border-radius: 8px;
+/* box-sizing: border-box; <-- Rimosso qui, ora è globale */
 
-  /* Invece di una larghezza fissa, usiamo una max-width per contenere la crescita su schermi molto larghi */
-  max-width: 90%; /* <-- NUOVO: Il form può crescere fino al 90% del .forms-container */
-  min-width: fit-content; /* <-- NUOVO E FONDAMENTALE: Il form avrà SEMPRE la larghezza minima necessaria per contenere i suoi elementi figli su una riga */
-
-  padding: 15px;
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  border-radius: 8px;
-  box-sizing: border-box;
-
-  /* PROPRIETÀ PER MANTENERE TUTTI I CAMPI IN LINEA */
-  display: flex;
-  flex-wrap: nowrap; /* IMPEDISCE AI CAMPI INTERNI DI ANDARE A CAPO */
-  align-items: center; /* Allinea verticalmente gli elementi al centro */
-  gap: 15px; /* Spazio tra gli elementi del form */
-
-  /* IMPORTANTISSIMO: NON USARE overflow-x: auto; o scroll; qui! */
-  /* Se, nonostante tutto, dovessero sforare (es. schermo minuscolo), si verificherà un overflow implicito gestito dal body o dall'HTML */
+/* PROPRIETÀ FLEXBOX PER DISPORRE I CAMPI */
+display: flex;
+flex-wrap: wrap; /* <-- FONDAMENTALE: Permette ai campi di andare a capo! */
+align-items: center; /* Allinea verticalmente gli elementi al centro */
+gap: 15px; /* Spazio tra gli elementi del form */
+justify-content: flex-start; /* Allinea i campi a sinistra per default */
 }
 
 form label {
-  margin-bottom: 0;
-  white-space: nowrap; /* Impedisce al testo dell'etichetta di andare a capo */
-  flex-shrink: 0; /* Impedisce all'etichetta di ridursi */
+margin-bottom: 0;
+white-space: nowrap; /* Impedisce al testo dell'etichetta di andare a capo */
+flex-shrink: 0; /* Impedisce all'etichetta di ridursi */
 }
 form input[type="text"],
 form input[type="number"],
 form input[type="date"] {
-  flex-grow: 1; /* Permette all'input di occupare lo spazio disponibile */
-  padding: 8px;
-  margin-bottom: 0;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  min-width: 80px; /* <-- Manteniamo un min-width leggibile, ma il flex-grow farà il resto */
+flex-grow: 1; /* Permette all'input di occupare lo spazio disponibile */
+padding: 8px;
+margin-bottom: 0;
+border: 1px solid #ddd;
+border-radius: 4px;
+min-width: 80px; /* Permette all'input di ridursi fino a questo punto */
 }
 form input[type="submit"] {
-  padding: 10px 20px;
-  background-color: #800000;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-  margin-top: 0;
-  flex-shrink: 0; /* Impedisce al bottone di ridursi */
+padding: 10px 20px;
+background-color: #800000;
+color: white;
+border: none;
+cursor: pointer;
+border-radius: 5px;
+transition: background-color 0.3s ease;
+margin-top: 0;
+flex-shrink: 0; /* Impedisce al bottone di ridursi */
 }
 form input[type="submit"]:hover {
-  background-color: #a00000;
+background-color: #a00000;
 }
 
 /* Navbar (existing content) */
 .navbar {
-  background-color: #5c0120;
-  padding: 10px 20px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  color: #ecf0f1;
-  border-radius: 8px;
+background-color: #5c0120;
+padding: 10px 20px;
+box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+color: #ecf0f1;
+border-radius: 8px;
 }
 
 .navbar-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+max-width: 1200px;
+margin: 0 auto;
+display: flex;
+justify-content: space-between;
+align-items: center;
 }
 
 .navbar-brand {
-  color: #ecf0f1;
-  text-decoration: none;
-  font-size: 1.8em;
-  font-weight: bold;
-  padding: 5px 0;
-  letter-spacing: 1px;
+color: #ecf0f1;
+text-decoration: none;
+font-size: 1.8em;
+font-weight: bold;
+padding: 5px 0;
+letter-spacing: 1px;
 }
 
 .navbar-menu {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
+list-style: none;
+margin: 0;
+padding: 0;
+display: flex;
+flex-wrap: wrap;
 }
 
 .navbar-item {
-  margin-left: 25px;
+margin-left: 25px;
 }
 
 .navbar-link {
-  color: #ecf0f1;
-  text-decoration: none;
-  padding: 8px 0;
-  display: block;
-  transition: color 0.3s ease, transform 0.2s ease;
-  position: relative;
-  font-weight: 500;
+color: #ecf0f1;
+text-decoration: none;
+padding: 8px 0;
+display: block;
+transition: color 0.3s ease, transform 0.2s ease;
+position: relative;
+font-weight: 500;
 }
 
 .navbar-link:hover {
-  color: #dbb8b8;
-  transform: translateY(-2px);
+color: #dbb8b8;
+transform: translateY(-2px);
 }
 
 .navbar-link::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  display: block;
-  margin-top: 5px;
-  right: 0;
-  background: #800000;
-  transition: width 0.3s ease;
+content: '';
+position: absolute;
+width: 0;
+height: 2px;
+display: block;
+margin-top: 5px;
+right: 0;
+background: #800000;
+transition: width 0.3s ease;
 }
 
 .navbar-link:hover::after,
 .navbar-link.active::after {
-  width: 100%;
-  left: 0;
-  background: #800000;
+width: 100%;
+left: 0;
+background: #800000;
 }
 
 .navbar-link.active {
-  color: #ecf0f1;
-  font-weight: bold;
+color: #ecf0f1;
+font-weight: bold;
 }
 
 .navbar-toggle {
-  display: none;
-  color: #ecf0f1;
-  font-size: 2em;
-  cursor: pointer;
+display: none;
+color: #ecf0f1;
+font-size: 2em;
+cursor: pointer;
 }
 
 @media (max-width: 768px) {
-    .navbar-menu {
-        margin-left: 10px;
-    }
+  /* La media query ora si concentra sull'allineamento e il dimensionamento dei campi */
+  form {
+      /* flex-wrap: wrap; è già il default, ma possiamo riaffermarlo per chiarezza */
+      justify-content: center; /* Centra i campi quando vanno a capo */
+      /* Rimuovi max-width se vuoi che si estenda il più possibile */
+      max-width: 100%;
+      width: 100%;
+  }
+  form label,
+  form input[type="text"],
+  form input[type="number"],
+  form input[type="date"],
+  form input[type="submit"] {
+      width: 100%; /* I campi occupano tutta la larghezza disponibile */
+      margin-bottom: 10px; /* Aggiunge spazio sotto ogni campo */
+  }
 }
