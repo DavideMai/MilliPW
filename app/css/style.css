@@ -36,33 +36,40 @@ background-color: #dddddd;
 /* Contenitore per i form */
 .forms-container {
   display: flex;
-  flex-wrap: wrap; /* Manteniamo wrap qui per il contenitore dei form multipli, se ci fossero */
-  justify-content: center; /* Centra il form (o i form) all'interno del container al 100% */
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: flex-start;
   gap: 20px;
-  padding: 20px; /* Padding per non far toccare i bordi */
-  width: 100%; /* Larghezza come la pagina */
-  /* margin: 20px auto; <-- Rimosso, il flex-container o il body gestiranno i margini esterni */
-  /* box-sizing: border-box; <-- Rimosso qui, ora è globale */
+  padding: 20px;
+  width: 100%;
 }
 
 
 /* Modifiche al form stesso: i campi vanno a capo quando non c'è spazio */
 form {
-max-width: 900px; /* Mantiene il form non eccessivamente largo su schermi giganti */
-width: 100%; /* Il form occupa il 100% dello spazio disponibile nel forms-container */
+max-width: 900px;
+width: 100%;
 padding: 15px;
 border: 1px solid #ccc;
 box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 border-radius: 8px;
-/* box-sizing: border-box; <-- Rimosso qui, ora è globale */
 
-/* PROPRIETÀ FLEXBOX PER DISPORRE I CAMPI */
+/* PROPRIETÀ FLEXBOX PER DISPORRE I GRUPPI DI CAMPI */
 display: flex;
-flex-wrap: wrap; /* <-- FONDAMENTALE: Permette ai campi di andare a capo! */
-align-items: center; /* Allinea verticalmente gli elementi al centro */
-gap: 15px; /* Spazio tra gli elementi del form */
-justify-content: flex-start; /* Allinea i campi a sinistra per default */
+flex-wrap: wrap; /* Permette ai gruppi di campi di andare a capo */
+align-items: center; /* Allinea verticalmente i gruppi di campi */
+gap: 15px; /* Spazio tra i gruppi di campi e il bottone */
+justify-content: flex-start; /* Allinea i gruppi di campi a sinistra */
+}
+
+/* NUOVO: Stile per il raggruppamento label-input */
+.form-group {
+  display: flex; /* Rende il form-group un container flex */
+  flex-wrap: nowrap; /* Mantiene label e input sulla stessa riga all'interno del gruppo */
+  align-items: center; /* Allinea verticalmente label e input all'interno del gruppo */
+  gap: 5px; /* Spazio ridotto tra label e input */
+  flex-grow: 1; /* Permette al form-group di espandersi */
+  min-width: 250px; /* Min-width per l'intero gruppo label-input */
 }
 
 form label {
@@ -73,12 +80,12 @@ flex-shrink: 0; /* Impedisce all'etichetta di ridursi */
 form input[type="text"],
 form input[type="number"],
 form input[type="date"] {
-flex-grow: 1; /* Permette all'input di occupare lo spazio disponibile */
+flex-grow: 1; /* Permette all'input di occupare lo spazio disponibile nel form-group */
 padding: 8px;
 margin-bottom: 0;
 border: 1px solid #ddd;
 border-radius: 4px;
-min-width: 80px; /* Permette all'input di ridursi fino a questo punto */
+min-width: 0; /* Permette all'input di ridursi fino a 0 */
 }
 form input[type="submit"] {
 padding: 10px 20px;
@@ -89,7 +96,7 @@ cursor: pointer;
 border-radius: 5px;
 transition: background-color 0.3s ease;
 margin-top: 0;
-flex-shrink: 0; /* Impedisce al bottone di ridursi */
+flex-shrink: 0;
 }
 form input[type="submit"]:hover {
 background-color: #a00000;
@@ -180,20 +187,17 @@ cursor: pointer;
 }
 
 @media (max-width: 768px) {
-  /* La media query ora si concentra sull'allineamento e il dimensionamento dei campi */
+  /* Il form-group gestirà il wrapping in modo più prevedibile */
   form {
-      /* flex-wrap: wrap; è già il default, ma possiamo riaffermarlo per chiarezza */
-      justify-content: center; /* Centra i campi quando vanno a capo */
-      /* Rimuovi max-width se vuoi che si estenda il più possibile */
-      max-width: 100%;
-      width: 100%;
+      justify-content: center; /* Centra i gruppi di campi */
   }
-  form label,
-  form input[type="text"],
-  form input[type="number"],
-  form input[type="date"],
+  .form-group {
+      flex-basis: 100%; /* Ogni gruppo label-input prende il 100% della larghezza */
+      margin-bottom: 10px; /* Spazio tra i gruppi */
+      justify-content: center; /* Centra label e input all'interno del gruppo su mobile */
+  }
   form input[type="submit"] {
-      width: 100%; /* I campi occupano tutta la larghezza disponibile */
-      margin-bottom: 10px; /* Aggiunge spazio sotto ogni campo */
+      width: 100%; /* Il bottone occupa tutta la larghezza */
+      margin-bottom: 10px;
   }
 }

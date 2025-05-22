@@ -7,17 +7,21 @@
 </head>
 <body>
 <?php
-    include 'header.html';  
+    include 'header.html';
     include 'nav.html';
 ?>
     <h2>Elenco Patologie</h2>
+
     <div class="forms-container">
         <form method="GET" action="">
-            <label for="NomePatologia">Nome Patologia:</label>
-            <input type="text" name="NomePatologia" id="NomePatologia">
+            <div class="form-group"> <label for="NomePatologia">Nome Patologia:</label>
+                <input type="text" name="NomePatologia" id="NomePatologia">
+            </div>
 
-            <label for="Tipologia">Tipologia:</label>
-            <input type="text" name="Tipologia" id="Tipologia">
+            <div class="form-group"> <label for="Tipologia">Tipologia:</label>
+                <input type="text" name="Tipologia" id="Tipologia">
+            </div>
+
             <input type="submit" value="Cerca Patologie">
         </form>
     </div>
@@ -39,7 +43,7 @@
                 $sql .= " AND Tipologia LIKE :Tipologia";
                 $params[':Tipologia'] = '%' . $_GET['Tipologia'] . '%';
             }
-            
+
 
             $stmt = $conn->prepare($sql);
             $stmt->execute($params);
@@ -64,7 +68,7 @@
                             echo "<td>" . htmlspecialchars($valore) . "</td>";
                         }
                     }
-                    echo "</tr>"; //commento per commit ehhehe
+                    echo "</tr>";
                 }
 
                 echo "</tbody></table>";
