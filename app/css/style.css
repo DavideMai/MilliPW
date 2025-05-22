@@ -18,37 +18,38 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 
-/* Modifiche al contenitore per i form */
+/* Contenitore per i form */
 .forms-container {
     display: flex;
-    flex-wrap: wrap; /* Manteniamo wrap qui per il contenitore dei form multipli */
+    flex-wrap: wrap;
     justify-content: space-around;
     align-items: flex-start;
     gap: 20px;
     padding: 20px;
-    width: 100%; /* <-- CAMBIATO DA 'max-width: 1200px' a 'width: 100%' */
-    margin: 20px;
-    box-sizing: border-box; /* <-- AGGIUNTO per includere il padding nella larghezza */
+    width: 100%;
+    margin: 20px auto;
+    box-sizing: border-box;
 }
 
 
 /* Modifiche ai form per disporre i campi in linea e impedire il wrapping */
 form {
   /* Manteniamo le proprietà del contenitore form */
-  width: 45%; /* Larghezza per ogni form, regola come necessario */
+  /* Aumentiamo la larghezza del form per dare più spazio ai campi */
+  width: 70%; /* <--- AUMENTATO LA LARGHEZZA QUI (o anche 80%, 90% a seconda delle esigenze) */
   padding: 15px;
   border: 1px solid #ccc;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   border-radius: 8px;
   box-sizing: border-box;
 
-  /* PROPRIETÀ PER IMPEDIRE IL WRAPPING INTERNO AL FORM */
+  /* PROPRIETÀ PER MANTENERE TUTTI I CAMPI IN LINEA */
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: nowrap; /* Mantiene tutti gli elementi su una singola riga */
   align-items: center;
   gap: 15px;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  /* overflow-x: auto; <--- RIMOSSO questa riga per eliminare la scrollbar */
+  /* -webkit-overflow-scrolling: touch; <--- Rimosso anche questa se hai rimosso overflow-x */
 }
 
 form label {
@@ -64,7 +65,7 @@ form input[type="date"] {
   margin-bottom: 0;
   border: 1px solid #ddd;
   border-radius: 4px;
-  min-width: 80px;
+  min-width: 80px; /* Assicurati che non diventino troppo piccoli */
 }
 form input[type="submit"] {
   padding: 10px 20px;
