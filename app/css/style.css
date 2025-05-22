@@ -18,52 +18,60 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 
-/* Nuovo contenitore per i form (già presente, solo per contesto) */
+/* Contenitore per i form */
 .forms-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    flex-wrap: wrap; /* Manteniamo wrap qui per il contenitore dei form multipli, se ci fossero */
+    justify-content: center; /* <-- CAMBIATO: Centra il form (o i form) all'interno del container al 100% */
     align-items: flex-start;
     gap: 20px;
-    padding: 20px;
-    max-width: auto;
-    margin: 20px auto;
+    padding: 20px; /* Padding per non far toccare i bordi */
+    width: 90%; /* Larghezza come la pagina */
+    margin: 20px auto; /* Centra il container */
+    box-sizing: border-box; /* Include il padding nella larghezza totale */
 }
 
 
-/* Modifiche ai form esistenti per disporre i campi in orizzontale */
+/* Modifiche al form stesso per disporre i campi in linea SENZA SCROLLBAR */
 form {
-  /* Manteniamo le proprietà del contenitore form */
-  width: 45%; /* Larghezza per ogni form, regola come necessario */
+  /* Rimuoviamo la larghezza fissa per permettere al form di adattarsi ai campi */
+  /* width: 95%; <-- RIMOSSO */
+  /* max-width: 900px; <-- RIMOSSO */
+
+  /* Invece di una larghezza fissa, usiamo una max-width per contenere la crescita su schermi molto larghi */
+  max-width: 90%; /* <-- NUOVO: Il form può crescere fino al 90% del .forms-container */
+  min-width: fit-content; /* <-- NUOVO E FONDAMENTALE: Il form avrà SEMPRE la larghezza minima necessaria per contenere i suoi elementi figli su una riga */
+
   padding: 15px;
   border: 1px solid #ccc;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   border-radius: 8px;
   box-sizing: border-box;
 
-  /* NUOVE PROPRIETÀ PER DISPORRE I CAMPI IN LINEA */
-  display: flex; /* Abilita Flexbox per i figli del form */
-  flex-wrap: wrap; /* Permette agli elementi del form di andare a capo se lo spazio non è sufficiente */
+  /* PROPRIETÀ PER MANTENERE TUTTI I CAMPI IN LINEA */
+  display: flex;
+  flex-wrap: nowrap; /* IMPEDISCE AI CAMPI INTERNI DI ANDARE A CAPO */
   align-items: center; /* Allinea verticalmente gli elementi al centro */
-  gap: 15px; /* Spazio tra gli elementi del form (label, input, submit) */
+  gap: 15px; /* Spazio tra gli elementi del form */
+
+  /* IMPORTANTISSIMO: NON USARE overflow-x: auto; o scroll; qui! */
+  /* Se, nonostante tutto, dovessero sforare (es. schermo minuscolo), si verificherà un overflow implicito gestito dal body o dall'HTML */
 }
 
 form label {
-  /* Non è più necessario display: inline-block o una larghezza fissa se flex gestisce lo spazio */
-  /* width: 150px; -- Rimosso o commentato */
-  margin-bottom: 0; /* Rimuove il margine inferiore */
+  margin-bottom: 0;
   white-space: nowrap; /* Impedisce al testo dell'etichetta di andare a capo */
+  flex-shrink: 0; /* Impedisce all'etichetta di ridursi */
 }
 form input[type="text"],
 form input[type="number"],
 form input[type="date"] {
-  /* width: calc(100% - 160px); -- Rimosso o commentato, flex gestirà la larghezza */
   flex-grow: 1; /* Permette all'input di occupare lo spazio disponibile */
-  max-width: 250px; /* Limite massimo per la larghezza degli input */
   padding: 8px;
-  margin-bottom: 0; /* Rimuove il margine inferiore */
+  margin-bottom: 0;
   border: 1px solid #ddd;
   border-radius: 4px;
+  min-width: 80px; /* <-- Manteniamo un min-width leggibile, ma il flex-grow farà il resto */
 }
 form input[type="submit"] {
   padding: 10px 20px;
@@ -73,7 +81,8 @@ form input[type="submit"] {
   cursor: pointer;
   border-radius: 5px;
   transition: background-color 0.3s ease;
-  margin-top: 0; /* Assicurati che non ci sia margine superiore che sbilanci */
+  margin-top: 0;
+  flex-shrink: 0; /* Impedisce al bottone di ridursi */
 }
 form input[type="submit"]:hover {
   background-color: #a00000;
