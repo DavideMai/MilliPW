@@ -26,7 +26,7 @@ tr:nth-child(even) {
     align-items: flex-start;
     gap: 20px;
     padding: 20px; /* Padding per non far toccare i bordi */
-    width: 100%; /* Larghezza come la pagina */
+    width: auto; /* Larghezza come la pagina */
     margin: 20px auto; /* Centra il container */
     box-sizing: border-box; /* Include il padding nella larghezza totale */
 }
@@ -39,7 +39,7 @@ form {
   /* max-width: 900px; <-- RIMOSSO */
 
   /* Invece di una larghezza fissa, usiamo una max-width per contenere la crescita su schermi molto larghi */
-  max-width: 90%; /* <-- NUOVO: Il form può crescere fino al 90% del .forms-container */
+  max-width: auto; /* <-- NUOVO: Il form può crescere fino al 90% del .forms-container */
   min-width: fit-content; /* <-- NUOVO E FONDAMENTALE: Il form avrà SEMPRE la larghezza minima necessaria per contenere i suoi elementi figli su una riga */
 
   padding: 15px;
