@@ -95,7 +95,7 @@ form input[type="submit"]:hover {
 }
 
 .navbar-link:hover {
-  color: #3498db; /* Highlight on hover */
+  color: #dbb8b8; /* Highlight on hover */
   transform: translateY(-2px); /* Slight lift effect */
 }
 
@@ -130,47 +130,4 @@ form input[type="submit"]:hover {
   color: #ecf0f1;
   font-size: 2em;
   cursor: pointer;
-}
-
-/* Basic Responsive Adjustments (e.g., for mobile) */
-@media (max-width: 768px) {
-  .navbar-menu {
-      display: none; /* Hide menu by default on small screens */
-      flex-direction: column; /* Stack items vertically */
-      width: 100%;
-      background-color: #800000; /* Slightly different background for mobile menu */
-      position: absolute;
-      top: 60px; /* Adjust based on navbar height */
-      left: 0;
-      z-index: 10;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  }
-
-  .navbar-menu.active {
-      display: flex; /* Show menu when active (e.g., toggled by JS) */
-  }
-
-  .navbar-item {
-      margin: 0;
-      width: 100%;
-      border-bottom: 1px solid rgba(255,255,255,0.1); /* Separator */
-  }
-
-  .navbar-item:last-child {
-      border-bottom: none;
-  }
-
-  .navbar-link {
-      padding: 15px 20px;
-      text-align: center;
-  }
-
-  .navbar-toggle {
-      display: block; /* Show toggle icon on small screens */
-  }
-
-  /* Hide the brand on small screens or adjust its size */
-  .navbar-brand {
-      font-size: 1.5em;
-  }
 }
