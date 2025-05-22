@@ -51,7 +51,7 @@
             <label for="codiceSanitarioDirettore">Codice Sanitario Direttore:</label>
             <input type="text" id="codiceSanitarioDirettore" name="codiceSanitarioDirettore" required>
         </div>
-        <button type="submit">Salva Ospedale</button>
+        <input type="submit" value="Inserisci Ospedale">
     </form>
     
     <?php
