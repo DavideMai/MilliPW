@@ -126,8 +126,8 @@
                 $oldIndirizzo = $ospedaleToEdit['Indirizzo'];
                 $oldNumeroCivico = $ospedaleToEdit['NumeroCivico'];
                 $oldCitta = $ospedaleToEdit['Citta'];
-                $oldNumeroTelefonico = $ospedaleToEdit['NumeroTelefonico'];
-                $oldCodiceDirettoreSanitario = $ospedaleToEdit['CodiceDirettoreSanitario'];
+                $oldNumeroTelefonico = $ospedaleToEdit['NumeroTelefono'];
+                $oldCodiceDirettoreSanitario = $ospedaleToEdit['CodiceSanitarioDirettore'];
 
                 echo "<h1>Modifica i dati dell'ospedale</h1>";
             } else {
