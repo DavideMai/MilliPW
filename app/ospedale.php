@@ -113,9 +113,6 @@
 
                 $message = "Nuovo ospedale aggiunto con successo! ID: " . $lastId;
                 $messageType = 'success';
-
-                // Optional: Resetta i campi del form dopo un successo
-                // $_POST = array(); // Questo cancellerebbe tutti i valori postati
             }
 
         } catch(PDOException $e) {
@@ -135,6 +132,8 @@
 <?php
     if (!$error) {
         try {
+            
+            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
             $sql = "SELECT * FROM Ospedali WHERE 1=1";
             $params = []; //Commento per commit hehehehehehe
 
