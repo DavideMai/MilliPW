@@ -8,7 +8,12 @@
 <body>
 <?php	
 	include 'nav.html';
-	include 'footer.html';
+?>
+<div class="container">
+    Progetto Web 1
+</div>
+<?php	
+    include 'footer.html';
 ?>
 </body>
 </html>

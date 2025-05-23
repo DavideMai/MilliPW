@@ -10,6 +10,7 @@ html {
 }
 body {
   /* overflow-x: hidden; <-- Rimosso per vedere se l'overflow è ancora un problema */
+  height: 100%;
 }
 
 
@@ -200,4 +201,38 @@ cursor: pointer;
       width: 100%; /* Il bottone occupa tutta la larghezza */
       margin-bottom: 10px;
   }
+}
+
+/* --- General Footer Styling --- */
+.footer {
+    background-color: #333; /* Dark background */
+    color: #f8f8f8;         /* Light text color */
+    padding: 20px 0;         /* Vertical padding */
+    font-family: Arial, sans-serif; /* Or your site's default font */
+    font-size: 14px;          /* Base font size for footer */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer .container {
+    width: 90%; /* Or your preferred width */
+    max-width: 1140px; /* Common max-width, adjust as needed */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px; /* Gutters */
+    padding-right: 15px; /* Gutters */
+}
+
+/* --- Styling for the copyright text specifically --- */
+.footer .copy p {
+    margin-bottom: 0; /* Remove default bottom margin from paragraph */
+    text-align: center;
+
+}
+
+/* --- (Optional) If you want the copyright text slightly smaller or different style --- */
+.footer .copy p {
+    font-size: 0.9em; /* Slightly smaller than the base footer font size */
+    color: #ccc;       /* Slightly dimmer than the main footer text color */
 }
