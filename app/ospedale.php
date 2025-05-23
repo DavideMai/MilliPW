@@ -116,8 +116,6 @@
         } catch(PDOException $e) {
             $message = "Errore nell'inserimento: " . $e->getMessage();
             $messageType = 'error';
-        } finally {
-            $conn = null; // Chiudi la connessione
         }
     }
 
