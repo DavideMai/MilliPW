@@ -203,18 +203,21 @@
 
                 foreach    ( $ospedali as $ospedale) {
                     echo "<tr>";
+                    $thisId = 0;
                     foreach ($ospedale as $colonna => $valore) {
                         if ($colonna != "IDOspedale") { // Escludi la colonna IDOspedale
                             echo "<td>" . htmlspecialchars($valore) . "</td>";
+                        }else{
+                            $thisId = $valore;
                         }
                     }
 
                     echo "<td>";
-                    echo "<a href='?action=edit&id=" . htmlspecialchars($row["IDOspedale"]) . "'>Modifica</a>";
+                    echo "<a href='?action=edit&id=" . htmlspecialchars($thisId) . "'>Modifica</a>";
                     echo "</td>";
 
                     echo "<td>";
-                    echo "<a href='?action=delete&id=" . htmlspecialchars($row["IDOspedale"]) . "'>Elimina</a>";
+                    echo "<a href='?action=delete&id=" . htmlspecialchars($thisId) . "'>Elimina</a>";
                     echo "</td>";
 
                     echo "</tr>";                    
