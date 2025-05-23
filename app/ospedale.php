@@ -101,6 +101,14 @@
     }
 
     if (isset($_GET['action'])) {
+
+        $oldNomeOspedale = "";
+        $oldIndirizzo = "";
+        $oldNumeroCivico = "";
+        $oldCitta = "";
+        $oldNumeroTelefonico = "";
+        $oldCodiceDirettoreSanitario = "";
+        
         if ($_GET['action'] == 'edit' && isset($_GET['id'])) {
             $isEditMode = true;
             $formAction = 'update';
@@ -113,9 +121,17 @@
 
             if ($ospedale) {
                 $ospedaleToEdit = $ospedale;
+
+                $oldNomeOspedale = $ospedaleToEdit['NomeOspedale'];
+                $oldIndirizzo = $ospedaleToEdit['Indirizzo'];
+                $oldNumeroCivico = $ospedaleToEdit['NumeroCivico'];
+                $oldCitta = $ospedaleToEdit['Citta'];
+                $oldNumeroTelefonico = $ospedaleToEdit['NumeroTelefonico'];
+                $oldCodiceDirettoreSanitario = $ospedaleToEdit['CodiceDirettoreSanitario'];
+
                 echo "<h1>Modifica i dati dell'ospedale</h1>";
             } else {
-                //se finisce qui c'è qualcosa di molto strano con gli id
+                //non deve mai finire qui, se succede allora c'è un id inesistente nel link
             }           
         } else{
             if ($_GET['action'] == 'delete' && isset($_GET['id'])) {
@@ -129,6 +145,8 @@
             echo "<h1>Aggiungi un nuovo ospedale</h1>";
         }
     }
+
+    
     
 ?>
 
@@ -136,7 +154,8 @@
     <div class="forms-container">
         <form method="POST">
         <div class="form-group"><label for="nomeOspedale">Nome Ospedale:</label>
-                <input type="text" id="nomeOspedale" name="nomeOspedale" required>
+                <input type="text" id="nomeOspedale" name="nomeOspedale" 
+                required value="<?php echo htmlspecialchars($oldNomeOspedale); ?>">
         </div>
         <div class="form-group">       <label for="indirizzo">Indirizzo:</label>
                 <input type="text" id="indirizzo" name="indirizzo" required>
