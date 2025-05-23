@@ -76,6 +76,7 @@
                 } else {
                     $stmt = $conn->prepare("UPDATE Ospedali SET NomeOspedale = :nomeOspedale, Indirizzo = :indirizzo, NumeroCivico = :numeroCivico, Citta = :citta, NumeroTelefono = :numeroTelefono, CodiceSanitarioDirettore = :codiceSanitarioDirettore WHERE IDOspedale = :idOspedale");
 
+                    $stmt->bindParam(':idOspedale', $_GET['id']);
                     $stmt->bindParam(':nomeOspedale', $_POST['nomeOspedale']);
                     $stmt->bindParam(':indirizzo', $_POST['indirizzo']);
                     $stmt->bindParam(':numeroCivico', $_POST['numeroCivico']);
