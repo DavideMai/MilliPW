@@ -24,30 +24,8 @@
             <input type="submit" value="Cerca Ospedali">
         </form>
     </div>
-    <h1>Aggiungi un nuovo ospedale</h1>
-    <div class="forms-container">
-        <form method="POST">
-        <div class="form-group"><label for="nomeOspedale">Nome Ospedale:</label>
-                <input type="text" id="nomeOspedale" name="nomeOspedale" required>
-        </div>
-        <div class="form-group">       <label for="indirizzo">Indirizzo:</label>
-                <input type="text" id="indirizzo" name="indirizzo" required>
-        </div>
-        <div class="form-group">        <label for="numeroCivico">Numero Civico:</label>
-                <input type="text" id="numeroCivico" name="numeroCivico" pattern="[0-9]*" inputmode="numeric" required>
-        </div>
-        <div class="form-group">      <label for="citta">Città:</label>
-                <input type="text" id="citta" name="citta" required>
-        </div>
-        <div class="form-group">     <label for="numeroTelefonico">Numero Telefonico:</label>
-                <input type="text" id="numeroTelefonico" name="numeroTelefonico" pattern="[0-9]*" inputmode="tel" required>
-        </div>
-        <div class="form-group">        <label for="codiceSanitarioDirettore">Codice Sanitario Direttore:</label>
-                <input type="text" id="codiceSanitarioDirettore" name="codiceSanitarioDirettore" required>
-        </div>
-                <input type="submit" value="Inserisci Ospedale">
-        </form>
-    </div>
+
+    
     
     <?php
     include 'connect.php';
@@ -121,7 +99,67 @@
             $conn = null; // Chiudi la connessione
         }
     }
+
+    if (isset($_GET['action'])) {
+        if ($_GET['action'] == 'edit' && isset($_GET['id'])) {
+            $isEditMode = true;
+            $formAction = 'update';
+            $idToEdit = $_GET['id'];
+
+            $stmt = $conn->prepare("SELECT * FROM ospedali WHERE IDOspedale = :id");
+            $stmt->bindParam(':id', $idToEdit);
+            $stmt->execute();
+            $ospedale = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($ospedale) {
+                $ospedaleToEdit = $ospedale;
+                echo "<h1>Modifica i dati dell'ospedale</h1>";
+            } else {
+                header("Location: " . htmlspecialchars($_SERVER['PHP_SELF']) . "?message_type=error&message_text=" . urlencode("Errore: Ospedale non trovato per la modifica."));
+                exit();
+            }           
+        } else{
+            if ($_GET['action'] == 'delete' && isset($_GET['id'])) {
+                $idToDelete = $_GET['id'];
+                $stmt = $conn->prepare("DELETE FROM ospedali WHERE IDOspedale = :id");
+                $stmt->bindParam(':id', $idToDelete);
+                $stmt->execute();
+                $redirectMessage = "Ospedale eliminato con successo!";
+                // Reindirizza dopo l'eliminazione
+                header("Location: " . htmlspecialchars($_SERVER['PHP_SELF']) . "?message_type=success&message_text=" . urlencode($redirectMessage));
+                exit();
+            }
+
+            echo "<h1>Aggiungi un nuovo ospedale</h1>";
+        }
+    }
+    
 ?>
+
+    
+    <div class="forms-container">
+        <form method="POST">
+        <div class="form-group"><label for="nomeOspedale">Nome Ospedale:</label>
+                <input type="text" id="nomeOspedale" name="nomeOspedale" required>
+        </div>
+        <div class="form-group">       <label for="indirizzo">Indirizzo:</label>
+                <input type="text" id="indirizzo" name="indirizzo" required>
+        </div>
+        <div class="form-group">        <label for="numeroCivico">Numero Civico:</label>
+                <input type="text" id="numeroCivico" name="numeroCivico" pattern="[0-9]*" inputmode="numeric" required>
+        </div>
+        <div class="form-group">      <label for="citta">Città:</label>
+                <input type="text" id="citta" name="citta" required>
+        </div>
+        <div class="form-group">     <label for="numeroTelefonico">Numero Telefonico:</label>
+                <input type="text" id="numeroTelefonico" name="numeroTelefonico" pattern="[0-9]*" inputmode="tel" required>
+        </div>
+        <div class="form-group">        <label for="codiceSanitarioDirettore">Codice Sanitario Direttore:</label>
+                <input type="text" id="codiceSanitarioDirettore" name="codiceSanitarioDirettore" required>
+        </div>
+                <input type="submit" value="Inserisci Ospedale">
+        </form>
+    </div>
     <?php if ($message): // Mostra il messaggio se esiste ?>
         <div class="message <?php echo $messageType; ?>">
             <?php echo $message; ?>
@@ -174,10 +212,15 @@
                             echo "<td>" . htmlspecialchars($valore) . "</td>";
                         }
                     }
+
                     echo "<td>";
                     echo "<a href='?action=edit&id=" . htmlspecialchars($row["IDOspedale"]) . "'>Modifica</a>";
+                    echo "</td>";
+
+                    echo "<td>";
                     echo "<a href='?action=delete&id=" . htmlspecialchars($row["IDOspedale"]) . "'>Elimina</a>";
-                    echo "</td>";                 
+                    echo "</td>";
+
                     echo "</tr>";                    
                 }
 
