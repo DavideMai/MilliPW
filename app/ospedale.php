@@ -106,7 +106,7 @@
             $formAction = 'update';
             $idToEdit = $_GET['id'];
 
-            $stmt = $conn->prepare("SELECT * FROM ospedali WHERE IDOspedale = :id");
+            $stmt = $conn->prepare("SELECT * FROM Ospedali WHERE IDOspedale = :id");
             $stmt->bindParam(':id', $idToEdit);
             $stmt->execute();
             $ospedale = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -115,18 +115,15 @@
                 $ospedaleToEdit = $ospedale;
                 echo "<h1>Modifica i dati dell'ospedale</h1>";
             } else {
-                header("Location: " . htmlspecialchars($_SERVER['PHP_SELF']) . "?message_type=error&message_text=" . urlencode("Errore: Ospedale non trovato per la modifica."));
                 exit();
             }           
         } else{
             if ($_GET['action'] == 'delete' && isset($_GET['id'])) {
                 $idToDelete = $_GET['id'];
-                $stmt = $conn->prepare("DELETE FROM ospedali WHERE IDOspedale = :id");
+                $stmt = $conn->prepare("DELETE FROM Ospedali WHERE IDOspedale = :id");
                 $stmt->bindParam(':id', $idToDelete);
                 $stmt->execute();
-                $redirectMessage = "Ospedale eliminato con successo!";
-                // Reindirizza dopo l'eliminazione
-                header("Location: " . htmlspecialchars($_SERVER['PHP_SELF']) . "?message_type=success&message_text=" . urlencode($redirectMessage));
+                $message = "Ospedale eliminato con successo!";
                 exit();
             }
 
