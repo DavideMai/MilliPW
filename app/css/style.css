@@ -233,5 +233,4 @@ cursor: pointer;
 /* --- (Optional) If you want the copyright text slightly smaller or different style --- */
 .footer .copy p {
     font-size: 0.9em; /* Slightly smaller than the base footer font size */
-    color: #ccc;       /* Slightly dimmer than the main footer text color */
 }
