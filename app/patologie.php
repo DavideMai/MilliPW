@@ -7,7 +7,6 @@
 </head>
 <body>
 <?php
-    include 'header.html';
     include 'nav.html';
 ?>
     <h2>Elenco Patologie</h2>

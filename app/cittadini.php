@@ -6,8 +6,7 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 <body>
-<?php
-    include 'header.html';	
+<?php	
 	include 'nav.html';
 ?>
     <h2>Elenco Cittadini</h2>

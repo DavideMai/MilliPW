@@ -6,8 +6,7 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-<?php
-    include 'header.html';	
+<?php	
 	include 'nav.html';
 	include 'footer.html';
 ?>
