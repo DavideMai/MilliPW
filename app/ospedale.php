@@ -154,23 +154,28 @@
     <div class="forms-container">
         <form method="POST">
         <div class="form-group"><label for="nomeOspedale">Nome Ospedale:</label>
-                <input type="text" id="nomeOspedale" name="nomeOspedale" 
-                required value="<?php echo htmlspecialchars($oldNomeOspedale); ?>">
+                <input type="text" id="nomeOspedale" name="nomeOspedale" required 
+                value="<?php echo htmlspecialchars($oldNomeOspedale); ?>">
         </div>
         <div class="form-group">       <label for="indirizzo">Indirizzo:</label>
-                <input type="text" id="indirizzo" name="indirizzo" required>
+                <input type="text" id="indirizzo" name="indirizzo" required 
+                value="<?php echo htmlspecialchars($oldIndirizzo); ?>">
         </div>
         <div class="form-group">        <label for="numeroCivico">Numero Civico:</label>
-                <input type="text" id="numeroCivico" name="numeroCivico" pattern="[0-9]*" inputmode="numeric" required>
+                <input type="text" id="numeroCivico" name="numeroCivico" pattern="[0-9]*" inputmode="numeric" required 
+                value="<?php echo htmlspecialchars($oldNumeroCivico); ?>">
         </div>
         <div class="form-group">      <label for="citta">Città:</label>
-                <input type="text" id="citta" name="citta" required>
+                <input type="text" id="citta" name="citta" required 
+                value="<?php echo htmlspecialchars($oldCitta); ?>">
         </div>
         <div class="form-group">     <label for="numeroTelefonico">Numero Telefonico:</label>
-                <input type="text" id="numeroTelefonico" name="numeroTelefonico" pattern="[0-9]*" inputmode="tel" required>
+                <input type="text" id="numeroTelefonico" name="numeroTelefonico" pattern="[0-9]*" inputmode="tel" required 
+                value="<?php echo htmlspecialchars($oldNumeroTelefonico); ?>">
         </div>
         <div class="form-group">        <label for="codiceSanitarioDirettore">Codice Sanitario Direttore:</label>
-                <input type="text" id="codiceSanitarioDirettore" name="codiceSanitarioDirettore" required>
+                <input type="text" id="codiceSanitarioDirettore" name="codiceSanitarioDirettore" required 
+                value="<?php echo htmlspecialchars($oldCodiceDirettoreSanitario); ?>">
         </div>
                 <input type="submit" value="Inserisci Ospedale">
         </form>
