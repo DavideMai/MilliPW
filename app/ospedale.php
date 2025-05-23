@@ -115,7 +115,7 @@
                 $ospedaleToEdit = $ospedale;
                 echo "<h1>Modifica i dati dell'ospedale</h1>";
             } else {
-                exit();
+                //se finisce qui c'è qualcosa di molto strano con gli id
             }           
         } else{
             if ($_GET['action'] == 'delete' && isset($_GET['id'])) {
@@ -124,7 +124,6 @@
                 $stmt->bindParam(':id', $idToDelete);
                 $stmt->execute();
                 $message = "Ospedale eliminato con successo!";
-                exit();
             }
 
             echo "<h1>Aggiungi un nuovo ospedale</h1>";
