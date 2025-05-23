@@ -70,6 +70,7 @@
             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             if (isset($_GET['action']) && $_GET['action'] == 'edit'){
+                $codiceDirettoreInserito = $_POST['codiceSanitarioDirettore'];
                 if (isCSDtaken($conn, $codiceDirettoreInserito)) {
                     $message = "Errore: Il codice sanitario del direttore fornito è già in uso da un altro ospedale.";
                     $messageType = 'error';
@@ -187,8 +188,8 @@
                 <input type="text" id="citta" name="citta" required 
                 value="<?php echo htmlspecialchars($oldCitta); ?>">
         </div>
-        <div class="form-group">     <label for="numeroTelefonico">Numero Telefonico:</label>
-                <input type="text" id="numeroTelefonico" name="numeroTelefonico" pattern="[0-9]*" inputmode="tel" required 
+        <div class="form-group">     <label for="numeroTelefono">Numero Telefonico:</label>
+                <input type="text" id="numeroTelefono" name="numeroTelefono" pattern="[0-9]*" inputmode="tel" required 
                 value="<?php echo htmlspecialchars($oldNumeroTelefonico); ?>">
         </div>
         <div class="form-group">        <label for="codiceSanitarioDirettore">Codice Sanitario Direttore:</label>
