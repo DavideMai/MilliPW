@@ -204,7 +204,7 @@ cursor: pointer;
 
 /* --- General Footer Styling --- */
 .footer {
-    background-color: #333; /* Dark background */
+    background-color: #800000; /* Dark background */
     color: #f8f8f8;         /* Light text color */
     padding: 20px 0;         /* Vertical padding */
     font-family: Arial, sans-serif; /* Or your site's default font */
