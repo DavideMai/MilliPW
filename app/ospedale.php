@@ -174,9 +174,9 @@
                             echo "<td>" . htmlspecialchars($valore) . "</td>";
                         }
                     }
-                    echo "</tr>";
                     echo "<a href='?action=edit&id=" . htmlspecialchars($row["IDOspedale"]) . "'>Modifica</a>";
                     echo "<a href='?action=delete&id=" . htmlspecialchars($row["IDOspedale"]) . "'>Elimina</a>";
+                    echo "</tr>";                    
                 }
 
                 echo "</tbody></table>";
