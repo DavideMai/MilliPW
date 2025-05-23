@@ -24,30 +24,8 @@
             <input type="submit" value="Cerca Ospedali">
         </form>
     </div>
-    <h1>Aggiungi un nuovo ospedale</h1>
-    <div class="forms-container">
-        <form method="POST">
-        <div class="form-group"><label for="nomeOspedale">Nome Ospedale:</label>
-                <input type="text" id="nomeOspedale" name="nomeOspedale" required>
-        </div>
-        <div class="form-group">       <label for="indirizzo">Indirizzo:</label>
-                <input type="text" id="indirizzo" name="indirizzo" required>
-        </div>
-        <div class="form-group">        <label for="numeroCivico">Numero Civico:</label>
-                <input type="text" id="numeroCivico" name="numeroCivico" pattern="[0-9]*" inputmode="numeric" required>
-        </div>
-        <div class="form-group">      <label for="citta">Città:</label>
-                <input type="text" id="citta" name="citta" required>
-        </div>
-        <div class="form-group">     <label for="numeroTelefonico">Numero Telefonico:</label>
-                <input type="text" id="numeroTelefonico" name="numeroTelefonico" pattern="[0-9]*" inputmode="tel" required>
-        </div>
-        <div class="form-group">        <label for="codiceSanitarioDirettore">Codice Sanitario Direttore:</label>
-                <input type="text" id="codiceSanitarioDirettore" name="codiceSanitarioDirettore" required>
-        </div>
-                <input type="submit" value="Inserisci Ospedale">
-        </form>
-    </div>
+
+    
     
     <?php
     include 'connect.php';
@@ -55,10 +33,11 @@
     $message = '';
     $messageType = ''; // 'success' o 'error'
 
-    function isCSDtaken($conn, $codice){
-        $sql = "SELECT COUNT(*) FROM Ospedali WHERE CodiceSanitarioDirettore = :codiceDirettore";
+    function isCSDtaken($conn, $codice, $thisId){
+        $sql = "SELECT COUNT(*) FROM Ospedali WHERE CodiceSanitarioDirettore = :codiceDirettore AND IDOspedale != :idOspedale";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':codiceDirettore', $codice);
+        $stmt->bindParam(':idOspedale', $thisId);
         $stmt->execute();
         $count = $stmt->fetchColumn();
 
@@ -91,37 +70,136 @@
         try {
             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            if (isset($_GET['action']) && $_GET['action'] == 'edit'){
+                $codiceDirettoreInserito = $_POST['codiceSanitarioDirettore'];
+                if (isCSDtaken($conn, $codiceDirettoreInserito, $_GET['id'])) {
+                    $message = "Errore: Il codice sanitario del direttore fornito è già in uso da un altro ospedale.";
+                    $messageType = 'error';
+                } else {
+                    $stmt = $conn->prepare("UPDATE Ospedali SET NomeOspedale = :nomeOspedale, Indirizzo = :indirizzo, NumeroCivico = :numeroCivico, Citta = :citta, NumeroTelefono = :numeroTelefono, CodiceSanitarioDirettore = :codiceSanitarioDirettore WHERE IDOspedale = :idOspedale");
 
-            $codiceDirettoreInserito = $_POST['codiceSanitarioDirettore'];
+                    $stmt->bindParam(':idOspedale', $_GET['id']);
+                    $stmt->bindParam(':nomeOspedale', $_POST['nomeOspedale']);
+                    $stmt->bindParam(':indirizzo', $_POST['indirizzo']);
+                    $stmt->bindParam(':numeroCivico', $_POST['numeroCivico']);
+                    $stmt->bindParam(':citta', $_POST['citta']);
+                    $stmt->bindParam(':numeroTelefono', $_POST['numeroTelefono']);
+                    $stmt->bindParam(':codiceSanitarioDirettore', $codiceDirettoreInserito);
 
-            if (isCSDtaken($conn, $codiceDirettoreInserito)) {
-                $message = "Errore: Il codice sanitario del direttore fornito è già in uso da un altro ospedale.";
-                $messageType = 'error';
-            } else {
-                $stmt = $conn->prepare("INSERT INTO Ospedali (IDOspedale, NomeOspedale, Indirizzo, NumeroCivico, Citta, NumeroTelefono, CodiceSanitarioDirettore) VALUES (:id, :nomeOspedale, :indirizzo, :numeroCivico, :citta, :numeroTelefonico, :codiceSanitarioDirettore)");
+                    $stmt->execute();
 
-                $stmt->bindParam(':id', getNewHospitalID($conn));
-                $stmt->bindParam(':nomeOspedale', $_POST['nomeOspedale']);
-                $stmt->bindParam(':indirizzo', $_POST['indirizzo']);
-                $stmt->bindParam(':numeroCivico', $_POST['numeroCivico']);
-                $stmt->bindParam(':citta', $_POST['citta']);
-                $stmt->bindParam(':numeroTelefonico', $_POST['numeroTelefonico']);
-                $stmt->bindParam(':codiceSanitarioDirettore', $codiceDirettoreInserito);
+                    $message = "Ospedale modificato con successo!";
+                    $messageType = 'success';
+                }
+            }else{
+                $codiceDirettoreInserito = $_POST['codiceSanitarioDirettore'];
 
-                $stmt->execute();
+                if (isCSDtaken($conn, $codiceDirettoreInserito, 0)) {
+                    $message = "Errore: Il codice sanitario del direttore fornito è già in uso da un altro ospedale.";
+                    $messageType = 'error';
+                } else {
+                    $stmt = $conn->prepare("INSERT INTO Ospedali (IDOspedale, NomeOspedale, Indirizzo, NumeroCivico, Citta, NumeroTelefono, CodiceSanitarioDirettore) VALUES (:id, :nomeOspedale, :indirizzo, :numeroCivico, :citta, :numeroTelefonico, :codiceSanitarioDirettore)");
 
-                $message = "Nuovo ospedale aggiunto con successo! ID: " . $lastId;
-                $messageType = 'success';
+                    $stmt->bindParam(':id', getNewHospitalID($conn));
+                    $stmt->bindParam(':nomeOspedale', $_POST['nomeOspedale']);
+                    $stmt->bindParam(':indirizzo', $_POST['indirizzo']);
+                    $stmt->bindParam(':numeroCivico', $_POST['numeroCivico']);
+                    $stmt->bindParam(':citta', $_POST['citta']);
+                    $stmt->bindParam(':numeroTelefonico', $_POST['numeroTelefonico']);
+                    $stmt->bindParam(':codiceSanitarioDirettore', $codiceDirettoreInserito);
+
+                    $stmt->execute();
+
+                    $message = "Nuovo ospedale aggiunto con successo! ID: " . $lastId;
+                    $messageType = 'success';
+                }
             }
+            
 
         } catch(PDOException $e) {
             $message = "Errore nell'inserimento: " . $e->getMessage();
             $messageType = 'error';
-        } finally {
-            $conn = null; // Chiudi la connessione
         }
     }
+
+    if (isset($_GET['action'])) {
+
+        $oldNomeOspedale = "";
+        $oldIndirizzo = "";
+        $oldNumeroCivico = "";
+        $oldCitta = "";
+        $oldNumeroTelefonico = "";
+        $oldCodiceDirettoreSanitario = "";
+        
+        if ($_GET['action'] == 'edit' && isset($_GET['id'])) {
+            $idToEdit = $_GET['id'];
+
+            $stmt = $conn->prepare("SELECT * FROM Ospedali WHERE IDOspedale = :id");
+            $stmt->bindParam(':id', $idToEdit);
+            $stmt->execute();
+            $ospedale = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($ospedale) {
+                $ospedaleToEdit = $ospedale;
+
+                $oldNomeOspedale = $ospedaleToEdit['NomeOspedale'];
+                $oldIndirizzo = $ospedaleToEdit['Indirizzo'];
+                $oldNumeroCivico = $ospedaleToEdit['NumeroCivico'];
+                $oldCitta = $ospedaleToEdit['Citta'];
+                $oldNumeroTelefonico = $ospedaleToEdit['NumeroTelefono'];
+                $oldCodiceDirettoreSanitario = $ospedaleToEdit['CodiceSanitarioDirettore'];
+
+                echo "<h1>Modifica i dati dell'ospedale</h1>";
+            } else {
+                //non deve mai finire qui, se succede allora c'è un id inesistente nel link
+            }           
+        } else{
+            if ($_GET['action'] == 'delete' && isset($_GET['id'])) {
+                $idToDelete = $_GET['id'];
+                $stmt = $conn->prepare("DELETE FROM Ospedali WHERE IDOspedale = :id");
+                $stmt->bindParam(':id', $idToDelete);
+                $stmt->execute();
+                $message = "Ospedale eliminato con successo!";
+            }
+
+            echo "<h1>Aggiungi un nuovo ospedale</h1>";
+        }
+    }
+
+    
+    
 ?>
+
+    
+    <div class="forms-container">
+        <form method="POST">
+        <div class="form-group"><label for="nomeOspedale">Nome Ospedale:</label>
+                <input type="text" id="nomeOspedale" name="nomeOspedale" required 
+                value="<?php echo htmlspecialchars($oldNomeOspedale); ?>">
+        </div>
+        <div class="form-group">       <label for="indirizzo">Indirizzo:</label>
+                <input type="text" id="indirizzo" name="indirizzo" required 
+                value="<?php echo htmlspecialchars($oldIndirizzo); ?>">
+        </div>
+        <div class="form-group">        <label for="numeroCivico">Numero Civico:</label>
+                <input type="text" id="numeroCivico" name="numeroCivico" pattern="[0-9]*" inputmode="numeric" required 
+                value="<?php echo htmlspecialchars($oldNumeroCivico); ?>">
+        </div>
+        <div class="form-group">      <label for="citta">Città:</label>
+                <input type="text" id="citta" name="citta" required 
+                value="<?php echo htmlspecialchars($oldCitta); ?>">
+        </div>
+        <div class="form-group">     <label for="numeroTelefono">Numero Telefonico:</label>
+                <input type="text" id="numeroTelefono" name="numeroTelefono" pattern="[0-9]*" inputmode="tel" required 
+                value="<?php echo htmlspecialchars($oldNumeroTelefonico); ?>">
+        </div>
+        <div class="form-group">        <label for="codiceSanitarioDirettore">Codice Sanitario Direttore:</label>
+                <input type="text" id="codiceSanitarioDirettore" name="codiceSanitarioDirettore" required 
+                value="<?php echo htmlspecialchars($oldCodiceDirettoreSanitario); ?>">
+        </div>
+                <input type="submit" value="Inserisci Ospedale">
+        </form>
+    </div>
     <?php if ($message): // Mostra il messaggio se esiste ?>
         <div class="message <?php echo $messageType; ?>">
             <?php echo $message; ?>
@@ -169,12 +247,24 @@
 
                 foreach    ( $ospedali as $ospedale) {
                     echo "<tr>";
+                    $thisId = 0;
                     foreach ($ospedale as $colonna => $valore) {
                         if ($colonna != "IDOspedale") { // Escludi la colonna IDOspedale
                             echo "<td>" . htmlspecialchars($valore) . "</td>";
+                        }else{
+                            $thisId = $valore;
                         }
                     }
-                    echo "</tr>";
+
+                    echo "<td>";
+                    echo "<a href='?action=edit&id=" . htmlspecialchars($thisId) . "'>Modifica</a>";
+                    echo "</td>";
+
+                    echo "<td>";
+                    echo "<a href='?action=delete&id=" . htmlspecialchars($thisId) . "'>Elimina</a>";
+                    echo "</td>";
+
+                    echo "</tr>";                    
                 }
 
                 echo "</tbody></table>";
