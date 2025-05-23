@@ -33,10 +33,11 @@
     $message = '';
     $messageType = ''; // 'success' o 'error'
 
-    function isCSDtaken($conn, $codice){
-        $sql = "SELECT COUNT(*) FROM Ospedali WHERE CodiceSanitarioDirettore = :codiceDirettore";
+    function isCSDtaken($conn, $codice, $thisId){
+        $sql = "SELECT COUNT(*) FROM Ospedali WHERE CodiceSanitarioDirettore = :codiceDirettore AND IDOspedale != :idOspedale";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':codiceDirettore', $codice);
+        $stmt->bindParam(':idOspedale', $thisId);
         $stmt->execute();
         $count = $stmt->fetchColumn();
 
@@ -71,7 +72,7 @@
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             if (isset($_GET['action']) && $_GET['action'] == 'edit'){
                 $codiceDirettoreInserito = $_POST['codiceSanitarioDirettore'];
-                if (isCSDtaken($conn, $codiceDirettoreInserito)) {
+                if (isCSDtaken($conn, $codiceDirettoreInserito, $_GET['id'])) {
                     $message = "Errore: Il codice sanitario del direttore fornito è già in uso da un altro ospedale.";
                     $messageType = 'error';
                 } else {
@@ -93,7 +94,7 @@
             }else{
                 $codiceDirettoreInserito = $_POST['codiceSanitarioDirettore'];
 
-                if (isCSDtaken($conn, $codiceDirettoreInserito)) {
+                if (isCSDtaken($conn, $codiceDirettoreInserito, 0)) {
                     $message = "Errore: Il codice sanitario del direttore fornito è già in uso da un altro ospedale.";
                     $messageType = 'error';
                 } else {
