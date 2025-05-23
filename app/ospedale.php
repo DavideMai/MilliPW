@@ -69,28 +69,49 @@
         try {
             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            if (isset($_GET['action']) && $_GET['action'] == 'edit'){
+                if (isCSDtaken($conn, $codiceDirettoreInserito)) {
+                    $message = "Errore: Il codice sanitario del direttore fornito è già in uso da un altro ospedale.";
+                    $messageType = 'error';
+                } else {
+                    $stmt = $conn->prepare("UPDATE Ospedali SET NomeOspedale = :nomeOspedale, Indirizzo = :indirizzo, NumeroCivico = :numeroCivico, Citta = :citta, NumeroTelefono = :numeroTelefono, CodiceSanitarioDirettore = :codiceSanitarioDirettore WHERE IDOspedale = :idOspedale");
 
-            $codiceDirettoreInserito = $_POST['codiceSanitarioDirettore'];
+                    $stmt->bindParam(':nomeOspedale', $_POST['nomeOspedale']);
+                    $stmt->bindParam(':indirizzo', $_POST['indirizzo']);
+                    $stmt->bindParam(':numeroCivico', $_POST['numeroCivico']);
+                    $stmt->bindParam(':citta', $_POST['citta']);
+                    $stmt->bindParam(':numeroTelefono', $_POST['numeroTelefono']);
+                    $stmt->bindParam(':codiceSanitarioDirettore', $codiceDirettoreInserito);
 
-            if (isCSDtaken($conn, $codiceDirettoreInserito)) {
-                $message = "Errore: Il codice sanitario del direttore fornito è già in uso da un altro ospedale.";
-                $messageType = 'error';
-            } else {
-                $stmt = $conn->prepare("INSERT INTO Ospedali (IDOspedale, NomeOspedale, Indirizzo, NumeroCivico, Citta, NumeroTelefono, CodiceSanitarioDirettore) VALUES (:id, :nomeOspedale, :indirizzo, :numeroCivico, :citta, :numeroTelefonico, :codiceSanitarioDirettore)");
+                    $stmt->execute();
 
-                $stmt->bindParam(':id', getNewHospitalID($conn));
-                $stmt->bindParam(':nomeOspedale', $_POST['nomeOspedale']);
-                $stmt->bindParam(':indirizzo', $_POST['indirizzo']);
-                $stmt->bindParam(':numeroCivico', $_POST['numeroCivico']);
-                $stmt->bindParam(':citta', $_POST['citta']);
-                $stmt->bindParam(':numeroTelefonico', $_POST['numeroTelefonico']);
-                $stmt->bindParam(':codiceSanitarioDirettore', $codiceDirettoreInserito);
+                    $message = "Ospedale modificato con successo!";
+                    $messageType = 'success';
+                }
+            }else{
+                $codiceDirettoreInserito = $_POST['codiceSanitarioDirettore'];
 
-                $stmt->execute();
+                if (isCSDtaken($conn, $codiceDirettoreInserito)) {
+                    $message = "Errore: Il codice sanitario del direttore fornito è già in uso da un altro ospedale.";
+                    $messageType = 'error';
+                } else {
+                    $stmt = $conn->prepare("INSERT INTO Ospedali (IDOspedale, NomeOspedale, Indirizzo, NumeroCivico, Citta, NumeroTelefono, CodiceSanitarioDirettore) VALUES (:id, :nomeOspedale, :indirizzo, :numeroCivico, :citta, :numeroTelefonico, :codiceSanitarioDirettore)");
 
-                $message = "Nuovo ospedale aggiunto con successo! ID: " . $lastId;
-                $messageType = 'success';
+                    $stmt->bindParam(':id', getNewHospitalID($conn));
+                    $stmt->bindParam(':nomeOspedale', $_POST['nomeOspedale']);
+                    $stmt->bindParam(':indirizzo', $_POST['indirizzo']);
+                    $stmt->bindParam(':numeroCivico', $_POST['numeroCivico']);
+                    $stmt->bindParam(':citta', $_POST['citta']);
+                    $stmt->bindParam(':numeroTelefonico', $_POST['numeroTelefonico']);
+                    $stmt->bindParam(':codiceSanitarioDirettore', $codiceDirettoreInserito);
+
+                    $stmt->execute();
+
+                    $message = "Nuovo ospedale aggiunto con successo! ID: " . $lastId;
+                    $messageType = 'success';
+                }
             }
+            
 
         } catch(PDOException $e) {
             $message = "Errore nell'inserimento: " . $e->getMessage();
@@ -110,8 +131,6 @@
         $oldCodiceDirettoreSanitario = "";
         
         if ($_GET['action'] == 'edit' && isset($_GET['id'])) {
-            $isEditMode = true;
-            $formAction = 'update';
             $idToEdit = $_GET['id'];
 
             $stmt = $conn->prepare("SELECT * FROM Ospedali WHERE IDOspedale = :id");
