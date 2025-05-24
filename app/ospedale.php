@@ -122,6 +122,7 @@
         }
     }
 
+    $actionMessage = "<h1>Aggiungi un nuovo ospedale</h1>";
     if (isset($_GET['action'])) {
 
         $oldNomeOspedale = "";
@@ -149,7 +150,7 @@
                 $oldNumeroTelefonico = $ospedaleToEdit['NumeroTelefono'];
                 $oldCodiceDirettoreSanitario = $ospedaleToEdit['CodiceSanitarioDirettore'];
 
-                echo "<h1>Modifica i dati dell'ospedale</h1>";
+                $actionMessage = "<h1>Modifica i dati dell'ospedale</h1>";
             } else {
                 //non deve mai finire qui, se succede allora c'è un id inesistente nel link
             }           
@@ -162,11 +163,11 @@
                 $message = "Ospedale eliminato con successo!";
             }
 
-            echo "<h1>Aggiungi un nuovo ospedale</h1>";
+            $actionMessage = "<h1>Aggiungi un nuovo ospedale</h1>";
         }
     }
 
-    
+    echo $actionMessage;    
     
 ?>
 
