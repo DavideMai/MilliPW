@@ -199,13 +199,13 @@
                 value="<?php echo htmlspecialchars($oldCodiceDirettoreSanitario); ?>">
         </div>
                 <input type="submit" value="Inserisci Ospedale">
-        </form>
-        <?php
+                <?php
                     if (isset($_GET['action']) && $_GET['action'] == 'edit'){
                         //echo "<a href=''> Annulla </a>";
                         echo "<h1>test</h1>";
                     }
                 ?>
+        </form>
     </div>
     <?php if ($message): // Mostra il messaggio se esiste ?>
         <div class="message <?php echo $messageType; ?>">
