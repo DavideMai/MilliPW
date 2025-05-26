@@ -175,10 +175,10 @@
     <div class="forms-container">
         <form method="POST">
             <?php
-                    if (isset($_GET['action']) && $_GET['action'] == 'edit'){
-                        echo "<a href=''> Annulla </a>";
-                    }
-                ?>
+                if (isset($_GET['action']) && $_GET['action'] == 'edit'){
+                    echo "<a href=' '> Annulla </a>";
+                }
+            ?>
         <div class="form-group"><label for="nomeOspedale">Nome Ospedale:</label>
                 <input type="text" id="nomeOspedale" name="nomeOspedale" required 
                 value="<?php echo htmlspecialchars($oldNomeOspedale); ?>">
