@@ -176,7 +176,7 @@
         <form method="POST">
             <?php
                 if (isset($_GET['action']) && $_GET['action'] == 'edit'){
-                    echo "<a href=' '> Annulla </a>";
+                    echo "<a href='https://programmazionewebmaidavi.altervista.org/app/ospedale.php'> Annulla </a>";
                 }
             ?>
         <div class="form-group"><label for="nomeOspedale">Nome Ospedale:</label>
