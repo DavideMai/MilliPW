@@ -98,14 +98,14 @@
                     $message = "Errore: Il codice sanitario del direttore fornito è già in uso da un altro ospedale.";
                     $messageType = 'error';
                 } else {
-                    $stmt = $conn->prepare("INSERT INTO Ospedali (IDOspedale, NomeOspedale, Indirizzo, NumeroCivico, Citta, NumeroTelefono, CodiceSanitarioDirettore) VALUES (:id, :nomeOspedale, :indirizzo, :numeroCivico, :citta, :numeroTelefonico, :codiceSanitarioDirettore)");
+                    $stmt = $conn->prepare("INSERT INTO Ospedali (IDOspedale, NomeOspedale, Indirizzo, NumeroCivico, Citta, NumeroTelefono, CodiceSanitarioDirettore) VALUES (:id, :nomeOspedale, :indirizzo, :numeroCivico, :citta, :numeroTelefono, :codiceSanitarioDirettore)");
 
                     $stmt->bindParam(':id', getNewHospitalID($conn));
                     $stmt->bindParam(':nomeOspedale', $_POST['nomeOspedale']);
                     $stmt->bindParam(':indirizzo', $_POST['indirizzo']);
                     $stmt->bindParam(':numeroCivico', $_POST['numeroCivico']);
                     $stmt->bindParam(':citta', $_POST['citta']);
-                    $stmt->bindParam(':numeroTelefonico', $_POST['numeroTelefonico']);
+                    $stmt->bindParam(':numeroTelefono', $_POST['numeroTelefono']);
                     $stmt->bindParam(':codiceSanitarioDirettore', $codiceDirettoreInserito);
 
                     $stmt->execute();
@@ -165,6 +165,14 @@
 
             $actionMessage = "<h1>Aggiungi un nuovo ospedale</h1>";
         }
+
+        /*if ($_GET['action'] == 'delete'){
+            $idToDelete = $_GET['id'];
+
+            $stmt = $conn->prepare("DELETE FROM Ospedali WHERE IDOspedale = :id");
+            $stmt->bindParam(':id', $idToEdit);
+            $stmt->execute();
+        }*/
     }
 
     echo $actionMessage;    
@@ -174,11 +182,6 @@
     
     <div class="forms-container">
         <form method="POST">
-            <?php
-                if (isset($_GET['action']) && $_GET['action'] == 'edit'){
-                    echo "<a href='https://programmazionewebmaidavi.altervista.org/app/ospedale.php'> Annulla </a>";
-                }
-            ?>
         <div class="form-group"><label for="nomeOspedale">Nome Ospedale:</label>
                 <input type="text" id="nomeOspedale" name="nomeOspedale" required 
                 value="<?php echo htmlspecialchars($oldNomeOspedale); ?>">
@@ -204,13 +207,26 @@
                 value="<?php echo htmlspecialchars($oldCodiceDirettoreSanitario); ?>">
         </div>
                 <input type="submit" value="Inserisci Ospedale">
+                 <?php
+                    if (isset($_GET['action']) && $_GET['action'] == 'edit'){
+                        echo "<a href='https://programmazionewebmaidavi.altervista.org/app/ospedale.php'> Annulla </a>";
+                    }
+                ?>
         </form>
     </div>
+    
+    <?php if (isset($_GET['action']) && $_GET['action'] == 'delete') 
+        echo "<h1> Sei sicuro di voler rimuovere l'ospedale "  . htmlspecialchars($thisId) . "</h1>";
+    ?>
+
+
     <?php if ($message): // Mostra il messaggio se esiste ?>
         <div class="message <?php echo $messageType; ?>">
             <?php echo $message; ?>
         </div>
     <?php endif; ?>
+
+
 
 <?php
     if (!$error) {
