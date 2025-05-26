@@ -210,7 +210,7 @@ cursor: pointer;
     padding: 20px 0;         /* Vertical padding */
     font-family: Arial, sans-serif; /* Or your site's default font */
     font-size: 14px;          /* Base font size for footer */
-    position: fixed;
+    position: static;
     bottom: 0;
     width: 100%;
 }
