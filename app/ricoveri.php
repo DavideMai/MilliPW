@@ -7,52 +7,53 @@
 </head>
 <body>
 <?php
+    include 'header.html';
     include 'nav.html';
 ?>
     <h2>Elenco Ricoveri</h2>
-    <div class="forms-container">
-        <form method="GET" action="">
-        <div class="form-group"><label for="CSSNCittadino">CSSN Cittadino:</label>
-            <input type="text" name="CSSNCittadino" id="CSSNCittadino">
-        </div>
 
-        <div class="form-group"><label for="NomeOspedale">Nome Ospedale:</label>
-            <input type="text" name="NomeOspedale" id="NomeOspedale">
-        </div>
+    <form method="GET" action="">
+        <label for="CSSNCittadino">CSSN Cittadino:</label>
+        <input type="text" name="CSSNCittadino" id="CSSNCittadino" value="<?php echo htmlspecialchars($_GET['CSSNCittadino'] ?? ''); ?>"><br>
 
-        <div class="form-group"><label for="NomePatologia">Nome Patologia:</label>
-            <input type="text" name="NomePatologia" id="NomePatologia">
-        </div> 
+        <label for="NomeOspedale">Nome Ospedale:</label>
+        <input type="text" name="NomeOspedale" id="NomeOspedale" value="<?php echo htmlspecialchars($_GET['NomeOspedale'] ?? ''); ?>"><br>
 
-        <div class="form-group"><label for="DataRicovero">Data Ricovero:</label>
-            <input type="date" name="DataRicovero" id="DataRicovero">
-        </div>
+        <label for="DataRicovero">Data Ricovero:</label>
+        <input type="date" name="DataRicovero" id="DataRicovero" value="<?php echo htmlspecialchars($_GET['DataRicovero'] ?? ''); ?>"><br>
 
-        <div class="form-group"><label for="DurataRicovero">Durata Ricovero:</label>
-            <input type="number" name="DurataRicovero" id="DurataRicovero">
-        </div>
+        <label for="DurataRicovero">Durata Ricovero:</label>
+        <input type="number" name="DurataRicovero" id="DurataRicovero" value="<?php echo htmlspecialchars($_GET['DurataRicovero'] ?? ''); ?>"><br>
 
-        <div class="form-group"><label for="CostoRicovero">Costo Ricovero:</label>
-            <input type="number" name="CostoRicovero" id="CostoRicovero">
-        </div>
+        <label for="CostoRicovero">Costo Ricovero:</label>
+        <input type="number" step="0.01" name="CostoRicovero" id="CostoRicovero" value="<?php echo htmlspecialchars($_GET['CostoRicovero'] ?? ''); ?>"><br>
 
-        <div class="form-group"><label for="MotivoRicovero">Motivo Ricovero:</label>
-            <input type="text" name="MotivoRicovero" id="MotivoRicovero">
-        </div>
+        <label for="MotivoRicovero">Motivo Ricovero:</label>
+        <input type="text" name="MotivoRicovero" id="MotivoRicovero" value="<?php echo htmlspecialchars($_GET['MotivoRicovero'] ?? ''); ?>"><br>
 
-            <input type="submit" value="Cerca Ricoveri">
-        </form>
-</div>
+        <input type="submit" value="Cerca Ricoveri">
+        <input type="button" value="Mostra Tutti" onclick="window.location.href='ricoveri.php'">
+    </form>
 
     <?php
     include 'connect.php';
 
-    if (!$error) { //commento per commit heheh
+    if (!$error) {
         try {
-            $sql = "SELECT r.IDRicovero, r.CSSNCittadino, o.NomeOspedale, p.NomePatologia, r.DataRicovero, r.DurataRicovero, r.CostoRicovero, r.MotivoRicovero 
-                    FROM Ricoveri r
-                    JOIN Ospedali o ON r.IDOspedale = o.IDOspedale
-                    JOIN Patologie p ON r.IDPatologia = p.IDPatologia
+            // Seleziona i campi della tabella Ricoveri e il NomeOspedale dalla tabella Ospedali
+            // Verrà aggiunta dinamicamente la colonna delle patologie
+            $sql = "SELECT 
+                        r.IDRicovero, 
+                        r.CSSNCittadino, 
+                        o.NomeOspedale, 
+                        r.DataRicovero, 
+                        r.DurataRicovero, 
+                        r.CostoRicovero, 
+                        r.MotivoRicovero
+                    FROM 
+                        Ricoveri r
+                    JOIN 
+                        Ospedali o ON r.IDOspedale = o.IDOspedale
                     WHERE 1=1";
             $params = [];
 
@@ -64,10 +65,6 @@
             if (isset($_GET['NomeOspedale']) && $_GET['NomeOspedale'] != '') {
                 $sql .= " AND o.NomeOspedale LIKE :NomeOspedale";
                 $params[':NomeOspedale'] = '%' . $_GET['NomeOspedale'] . '%';
-            }
-            if (isset($_GET['NomePatologia']) && $_GET['NomePatologia'] != '') {
-                $sql .= " AND p.NomePatologia LIKE :NomePatologia";
-                $params[':NomePatologia'] = '%' . $_GET['NomePatologia'] . '%';
             }
             if (isset($_GET['DataRicovero']) && $_GET['DataRicovero'] != '') {
                 $sql .= " AND r.DataRicovero = :DataRicovero";
@@ -86,6 +83,9 @@
                 $params[':MotivoRicovero'] = '%' . $_GET['MotivoRicovero'] . '%';
             }
 
+            // Aggiungi un ORDER BY per garantire un ordine consistente
+            $sql .= " ORDER BY r.IDRicovero DESC";
+
             $stmt = $conn->prepare($sql);
             $stmt->execute($params);
             $ricoveri = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -93,16 +93,40 @@
             if (count($ricoveri) > 0) {
                 echo "<table>";
                 echo "<thead><tr>";
+                // Intestazioni della tabella
                 foreach ($ricoveri[0] as $colonna => $valore) {
-                    echo "<th>" . htmlspecialchars($colonna) . "</th>";
+                    if ($colonna != "IDRicovero") { // Non visualizzare IDRicovero
+                        echo "<th>" . htmlspecialchars($colonna) . "</th>";
+                    }
                 }
+                echo "<th>Patologie Associate</th>"; // Nuova colonna per le patologie
                 echo "</tr></thead><tbody>";
 
                 foreach ($ricoveri as $ricovero) {
                     echo "<tr>";
-                    foreach ($ricovero as $valore) {
-                        echo "<td>" . htmlspecialchars($valore) . "</td>";
+                    foreach ($ricovero as $colonna => $valore) {
+                        if ($colonna != "IDRicovero") { // Non visualizzare IDRicovero
+                            echo "<td>" . htmlspecialchars($valore) . "</td>";
+                        }
                     }
+
+                    // Recupera e visualizza le patologie associate a questo ricovero
+                    $idRicoveroCorrente = $ricovero['IDRicovero'];
+                    $sqlPatologie = "SELECT p.NomePatologia
+                                     FROM Ricovero_Patologie rp
+                                     JOIN Patologie p ON rp.IDPatologia = p.IDPatologia
+                                     WHERE rp.IDRicovero = :IDRicovero";
+                    $stmtPatologie = $conn->prepare($sqlPatologie);
+                    $stmtPatologie->execute([':IDRicovero' => $idRicoveroCorrente]);
+                    $patologieAssociate = $stmtPatologie->fetchAll(PDO::FETCH_COLUMN, 0); // Recupera solo la colonna NomePatologia
+
+                    echo "<td>";
+                    if (!empty($patologieAssociate)) {
+                        echo implode(", ", array_map('htmlspecialchars', $patologieAssociate));
+                    } else {
+                        echo "Nessuna";
+                    }
+                    echo "</td>";
                     echo "</tr>";
                 }
 
