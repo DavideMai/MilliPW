@@ -174,6 +174,11 @@
     
     <div class="forms-container">
         <form method="POST">
+            <?php
+                    if (isset($_GET['action']) && $_GET['action'] == 'edit'){
+                        echo "<a href=''> Annulla </a>";
+                    }
+                ?>
         <div class="form-group"><label for="nomeOspedale">Nome Ospedale:</label>
                 <input type="text" id="nomeOspedale" name="nomeOspedale" required 
                 value="<?php echo htmlspecialchars($oldNomeOspedale); ?>">
@@ -199,12 +204,6 @@
                 value="<?php echo htmlspecialchars($oldCodiceDirettoreSanitario); ?>">
         </div>
                 <input type="submit" value="Inserisci Ospedale">
-                <?php
-                    if (isset($_GET['action']) && $_GET['action'] == 'edit'){
-                        //echo "<a href=''> Annulla </a>";
-                        echo "<h1>test</h1>";
-                    }
-                ?>
         </form>
     </div>
     <?php if ($message): // Mostra il messaggio se esiste ?>
