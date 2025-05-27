@@ -155,24 +155,16 @@
                 //non deve mai finire qui, se succede allora c'è un id inesistente nel link
             }           
         } else{
-            if ($_GET['action'] == 'delete' && isset($_GET['id'])) {
+            /*if ($_GET['action'] == 'delete' && isset($_GET['id'])) {
                 $idToDelete = $_GET['id'];
                 $stmt = $conn->prepare("DELETE FROM Ospedali WHERE IDOspedale = :id");
                 $stmt->bindParam(':id', $idToDelete);
                 $stmt->execute();
                 $message = "Ospedale eliminato con successo!";
-            }
+            }*/
 
             $actionMessage = "<h1>Aggiungi un nuovo ospedale</h1>";
         }
-
-        /*if ($_GET['action'] == 'delete'){
-            $idToDelete = $_GET['id'];
-
-            $stmt = $conn->prepare("DELETE FROM Ospedali WHERE IDOspedale = :id");
-            $stmt->bindParam(':id', $idToEdit);
-            $stmt->execute();
-        }*/
     }
 
     echo $actionMessage;    
