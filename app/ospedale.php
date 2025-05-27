@@ -207,10 +207,15 @@
         </form>
     </div>
     
-    <?php if (isset($_GET['action']) && $_GET['action'] == 'delete') 
-        echo "<h1> Sei sicuro di voler rimuovere l'ospedale "  . htmlspecialchars($thisId) . "</h1>";
-    ?>
-
+    <?php if (isset($_GET['action']) && $_GET['action'] == 'delete') { ?>
+        <td>
+            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" style="display:inline;">
+                <input type="hidden" name="action" value="delete">
+                <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['NomeOspedale']); ?>">
+                <button type="submit">Elimina</button>
+            </form>
+        </td>
+    <?php } ?>
 
     <?php if ($message): // Mostra il messaggio se esiste ?>
         <div class="message <?php echo $messageType; ?>">
