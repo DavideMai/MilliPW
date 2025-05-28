@@ -93,11 +93,11 @@
                 }
             }else{
                 if ($_GET['action'] == 'deleteconfirm' && $_POST['action'] == 'delete'){
-                    /*$stmt = $conn->prepare("DELETE FROM Ospedali WHERE IDOspedale = :id");
+                    $stmt = $conn->prepare("DELETE FROM Ospedali WHERE IDOspedale = :id");
                     $stmt->bindParam(':id', $_POST['idDelete']);
                     $stmt->execute();
                     $message = "Ospedale eliminato con successo!";
-                    header("Location: " . htmlspecialchars($_SERVER['PHP_SELF']));*/
+                    header("Location: " . htmlspecialchars($_SERVER['PHP_SELF']));
                 }else{
                     $codiceDirettoreInserito = $_POST['codiceSanitarioDirettore'];
 
@@ -165,10 +165,6 @@
                 //non deve mai finire qui, se succede allora c'è un id inesistente nel link
             }           
         } else{
-            if ($_GET['action'] == 'deleteconfirm' && isset($_GET['id'])) {
-                $idToDelete = $_GET['id'];
-                
-            }
 
             $actionMessage = "<h1>Aggiungi un nuovo ospedale</h1>";
         }
@@ -216,7 +212,7 @@
     
     <?php if (isset($_GET['action']) && $_GET['action'] == 'deleteconfirm') { ?>
         <td>
-            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" style="display:inline;">
+            <form method="POST" style="display:inline;">
                 <input type="hidden" name="action" value="delete">
                 <input type="hidden" name="idDelete" value="<?php echo htmlspecialchars($idToDelete); ?>">
                 <button type="submit">Elimina</button>
