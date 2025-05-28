@@ -92,7 +92,14 @@
                     $messageType = 'success';
                 }
             }else{
-                $codiceDirettoreInserito = $_POST['codiceSanitarioDirettore'];
+                if ($_GET['action'] == 'deleteconfirm' && $_POST['action'] == 'delete'){
+                    $stmt = $conn->prepare("DELETE FROM Ospedali WHERE IDOspedale = :id");
+                    $stmt->bindParam(':id', $_POST['idDelete']);
+                    $stmt->execute();
+                    $message = "Ospedale eliminato con successo!";
+                    header("Location: " . htmlspecialchars($_SERVER['PHP_SELF']));
+                }else{
+                    $codiceDirettoreInserito = $_POST['codiceSanitarioDirettore'];
 
                 if (isCSDtaken($conn, $codiceDirettoreInserito, 0)) {
                     $message = "Errore: Il codice sanitario del direttore fornito è già in uso da un altro ospedale.";
@@ -113,14 +120,10 @@
                     $message = "Nuovo ospedale aggiunto con successo! ID: " . $lastId;
                     $messageType = 'success';
                 }
+                }  
+                
             }
-            if (isset($_GET['action'] == 'deleteconfirm' && $_POST['action'] == 'delete')){
-                    $stmt = $conn->prepare("DELETE FROM Ospedali WHERE IDOspedale = :id");
-                    $stmt->bindParam(':id', $_POST['idDelete']);
-                    $stmt->execute();
-                    $message = "Ospedale eliminato con successo!";
-                    header("Location: " . htmlspecialchars($_SERVER['PHP_SELF']));
-            }
+            
             
 
         } catch(PDOException $e) {
