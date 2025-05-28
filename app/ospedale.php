@@ -93,11 +93,11 @@
                 }
             }else{
                 if ($_GET['action'] == 'deleteconfirm' && $_POST['action'] == 'delete'){
-                    $stmt = $conn->prepare("DELETE FROM Ospedali WHERE IDOspedale = :id");
+                    /*$stmt = $conn->prepare("DELETE FROM Ospedali WHERE IDOspedale = :id");
                     $stmt->bindParam(':id', $_POST['idDelete']);
                     $stmt->execute();
                     $message = "Ospedale eliminato con successo!";
-                    header("Location: " . htmlspecialchars($_SERVER['PHP_SELF']));
+                    header("Location: " . htmlspecialchars($_SERVER['PHP_SELF']));*/
                 }else{
                     $codiceDirettoreInserito = $_POST['codiceSanitarioDirettore'];
 
