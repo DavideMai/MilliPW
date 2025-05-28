@@ -214,7 +214,7 @@
         <td>
             <form method="POST" style="display:inline;">
                 <input type="hidden" name="action" value="delete">
-                <input type="hidden" name="idDelete" value="<?php echo htmlspecialchars($idToDelete); ?>">
+                <input type="hidden" name="idDelete" value="<?php echo htmlspecialchars($_GET['id']); ?>">
                 <button type="submit">Elimina</button>
             </form>
         </td>
