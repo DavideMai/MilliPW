@@ -164,7 +164,7 @@
                     $stmt->bindParam(':id', $idToDelete);
                     $stmt->execute();
                     $message = "Ospedale eliminato con successo!";
-                    header("Location: " . htmlspecialchars($_SERVER['PHP_SELF']) .);
+                    header("Location: " . htmlspecialchars($_SERVER['PHP_SELF']));
                 }
             }
 
