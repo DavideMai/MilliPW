@@ -97,7 +97,7 @@
                     $stmt->bindParam(':id', $_POST['idDelete']);
                     $stmt->execute();                   
                     //header("Location: " . htmlspecialchars($_SERVER['PHP_SELF']));
-                    $message = "Ospedale eliminato con successo! ID: " . htmlspecialchars($_POST['idDelete']);
+                    $message = "Ospedale eliminato con successo! ID: " . htmlspecialchars($_POST['action']);
                 }else{
                     $codiceDirettoreInserito = $_POST['codiceSanitarioDirettore'];
 
