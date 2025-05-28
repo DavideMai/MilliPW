@@ -155,13 +155,17 @@
                 //non deve mai finire qui, se succede allora c'è un id inesistente nel link
             }           
         } else{
-            /*if ($_GET['action'] == 'delete' && isset($_GET['id'])) {
+            if ($_GET['action'] == 'deleteconfirm' && isset($_GET['id'])) {
                 $idToDelete = $_GET['id'];
-                $stmt = $conn->prepare("DELETE FROM Ospedali WHERE IDOspedale = :id");
-                $stmt->bindParam(':id', $idToDelete);
-                $stmt->execute();
-                $message = "Ospedale eliminato con successo!";
-            }*/
+                
+            }else{
+                if ($_GET['action'] == 'delete' && isset($_GET['id'])){
+                    $stmt = $conn->prepare("DELETE FROM Ospedali WHERE IDOspedale = :id");
+                    $stmt->bindParam(':id', $idToDelete);
+                    $stmt->execute();
+                    $message = "Ospedale eliminato con successo!";
+                }
+            }
 
             $actionMessage = "<h1>Aggiungi un nuovo ospedale</h1>";
         }
@@ -207,11 +211,11 @@
         </form>
     </div>
     
-    <?php if (isset($_GET['action']) && $_GET['action'] == 'delete') { ?>
+    <?php if (isset($_GET['action']) && $_GET['action'] == 'deleteconfirm') { ?>
         <td>
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" style="display:inline;">
                 <input type="hidden" name="action" value="delete">
-                <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['NomeOspedale']); ?>">
+                <input type="hidden" name="id" value="<?php echo htmlspecialchars($idToDelete); ?>">
                 <button type="submit">Elimina</button>
             </form>
         </td>
@@ -280,7 +284,7 @@
                     echo "</td>";
 
                     echo "<td>";
-                    echo "<a href='?action=delete&id=" . htmlspecialchars($thisId) . "'>Elimina</a>";
+                    echo "<a href='?action=deleteconfirm&id=" . htmlspecialchars($thisId) . "'>Elimina</a>";
                     echo "</td>";
 
                     echo "</tr>";                    
