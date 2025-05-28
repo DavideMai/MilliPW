@@ -95,9 +95,9 @@
                 if ($_GET['action'] == 'deleteconfirm' && $_POST['action'] == 'delete'){
                     $stmt = $conn->prepare("DELETE FROM Ospedali WHERE IDOspedale = :id");
                     $stmt->bindParam(':id', $_POST['idDelete']);
-                    $stmt->execute();
-                    $message = "Ospedale eliminato con successo!";
-                    //header("Location: " . htmlspecialchars($_SERVER['PHP_SELF']));
+                    $stmt->execute();                   
+                    header("Location: " . htmlspecialchars($_SERVER['PHP_SELF']));
+                    $message = "Ospedale eliminato con successo! ID: " . htmlspecialchars($idToDelete);
                 }else{
                     $codiceDirettoreInserito = $_POST['codiceSanitarioDirettore'];
 
