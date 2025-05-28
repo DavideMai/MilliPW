@@ -96,7 +96,7 @@
                     $stmt = $conn->prepare("DELETE FROM Ospedali WHERE IDOspedale = :id");
                     $stmt->bindParam(':id', $_POST['idDelete']);
                     $stmt->execute();                   
-                    header("Location: " . htmlspecialchars($_SERVER['PHP_SELF']));
+                    //header("Location: " . htmlspecialchars($_SERVER['PHP_SELF']));
                     $message = "Ospedale eliminato con successo! ID: " . htmlspecialchars($idToDelete);
                 }else{
                     $codiceDirettoreInserito = $_POST['codiceSanitarioDirettore'];
