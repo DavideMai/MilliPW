@@ -93,6 +93,7 @@
                 }
             }else{
                 if ($_GET['action'] == 'deleteconfirm' && $_POST['action'] == 'delete'){
+                    echo "<h1> got here</h1>";
                     $stmt = $conn->prepare("DELETE FROM Ospedali WHERE IDOspedale = :id");
                     $stmt->bindParam(':id', $_POST['idDelete']);
                     $stmt->execute();
