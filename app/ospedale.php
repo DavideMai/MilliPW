@@ -114,6 +114,13 @@
                     $messageType = 'success';
                 }
             }
+            if (isset($_GET['action'] == 'deleteconfirm' && $_POST['action'] == 'delete')){
+                    $stmt = $conn->prepare("DELETE FROM Ospedali WHERE IDOspedale = :id");
+                    $stmt->bindParam(':id', $_POST['idDelete']);
+                    $stmt->execute();
+                    $message = "Ospedale eliminato con successo!";
+                    header("Location: " . htmlspecialchars($_SERVER['PHP_SELF']));
+            }
             
 
         } catch(PDOException $e) {
@@ -158,14 +165,6 @@
             if ($_GET['action'] == 'deleteconfirm' && isset($_GET['id'])) {
                 $idToDelete = $_GET['id'];
                 
-            }else{
-                if ($_GET['action'] == 'delete' && isset($_GET['id'])){
-                    $stmt = $conn->prepare("DELETE FROM Ospedali WHERE IDOspedale = :id");
-                    $stmt->bindParam(':id', $idToDelete);
-                    $stmt->execute();
-                    $message = "Ospedale eliminato con successo!";
-                    header("Location: " . htmlspecialchars($_SERVER['PHP_SELF']));
-                }
             }
 
             $actionMessage = "<h1>Aggiungi un nuovo ospedale</h1>";
@@ -216,7 +215,7 @@
         <td>
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" style="display:inline;">
                 <input type="hidden" name="action" value="delete">
-                <input type="hidden" name="id" value="<?php echo htmlspecialchars($idToDelete); ?>">
+                <input type="hidden" name="idDelete" value="<?php echo htmlspecialchars($idToDelete); ?>">
                 <button type="submit">Elimina</button>
             </form>
         </td>
