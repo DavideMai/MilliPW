@@ -265,6 +265,8 @@
                         echo "<th>" . htmlspecialchars($colonna) . "</th>";
                     }
                 }
+                echo "<th>Modifica</th>"; // Aggiungi intestazione per la colonna Modifica
+                echo "<th>Elimina</th>"; // Aggiungi intestazione per la colonna Elimina
                 echo "</tr></thead><tbody>";
 
                 foreach    ( $ospedali as $ospedale) {

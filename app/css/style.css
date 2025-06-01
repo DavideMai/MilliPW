@@ -253,6 +253,7 @@ table {
   text-align: left;
   }
   th {
+  text-align: center;
   background-color: #800000; /* Red background for table headers */
   color: white; /* White text for better contrast */
   }
