@@ -236,17 +236,19 @@ cursor: pointer;
     font-size: 0.9em; /* Slightly smaller than the base footer font size */
 }
 
+
 table {
   width: 80%;
   margin: 20px auto;
   border-collapse: collapse;
   border-radius: 10px; /* Add rounded corners to the table */
   overflow: hidden; /* Ensures the rounded corners are applied to the internal borders as well */
+  border: 2px solid #800000; /* Bordeaux border around the table */
   }
   table,
   th,
   td {
-  border: 1px solid black;
+  border: 1px solid #800000; /* Bordeaux border for cells and headers */
   padding: 8px;
   text-align: left;
   }
