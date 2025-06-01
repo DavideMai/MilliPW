@@ -243,18 +243,18 @@ table {
   border-collapse: collapse;
   border-radius: 10px; /* Add rounded corners to the table */
   overflow: hidden; /* Ensures the rounded corners are applied to the internal borders as well */
-  border: 2px solid #800000; /* Bordeaux border around the table */
+  border: 2px solid #5c0120; /* Bordeaux border around the table */
   }
   table,
   th,
   td {
-  border: 1px solid #800000; /* Bordeaux border for cells and headers */
+  border: 1px solid #5c0120; /* Bordeaux border for cells and headers */
   padding: 8px;
   text-align: left;
   }
   th {
   text-align: center;
-  background-color: #800000; /* Red background for table headers */
+  background-color: #5c0120; /* Red background for table headers */
   color: white; /* White text for better contrast */
   }
   tr:nth-child(even) {
@@ -266,7 +266,7 @@ table {
 
   h2 {
     text-align: center; /* Centra il testo */
-    background-color: #800000; /* Sfondo bordeaux */
+    background-color: #5c0120; /* Sfondo bordeaux */
     color: white; /* Testo bianco */
     padding: 10px; /* Spazio interno al riquadro */
     margin: 20px auto; /* Margini per centrare il riquadro e dare un po' di spazio */
@@ -277,7 +277,7 @@ table {
 
   h1 {
     text-align: center; /* Centra il testo */
-    background-color: #800000; /* Sfondo bordeaux */
+    background-color: #5c0120; /* Sfondo bordeaux */
     color: white; /* Testo bianco */
     padding: 10px; /* Spazio interno al riquadro */
     margin: 20px auto; /* Margini per centrare il riquadro e dare un po' di spazio */
