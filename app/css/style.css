@@ -235,3 +235,28 @@ cursor: pointer;
 .footer .copy p {
     font-size: 0.9em; /* Slightly smaller than the base footer font size */
 }
+
+table {
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  border-radius: 10px; /* Add rounded corners to the table */
+  overflow: hidden; /* Ensures the rounded corners are applied to the internal borders as well */
+  }
+  table,
+  th,
+  td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+  }
+  th {
+  background-color: #800000; /* Red background for table headers */
+  color: white; /* White text for better contrast */
+  }
+  tr:nth-child(even) {
+  background-color: rgba(128, 0, 0, 0.2); /* Bordeaux with 20% transparency for even rows */
+  }
+  tr:nth-child(odd) {
+  background-color: rgba(128, 0, 0, 0.1); /* Slightly lighter bordeaux with transparency for odd rows */
+  }
