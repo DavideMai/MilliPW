@@ -9,7 +9,7 @@
 <?php
     include 'nav.html';
 ?>
-    <h2>Ricerca Patologie</h2>
+    <div class="formheader2"><h2>Ricerca Patologie</h2></div>
 
     <div class="forms-container">
         <form method="GET" action="">

@@ -267,24 +267,24 @@ table {
   background-color: rgba(128, 0, 0, 0.1); /* Slightly lighter bordeaux with transparency for odd rows */
   }
 
-  h2 {
+  .formheader2 {
     text-align: center; /* Centra il testo */
     background-color: #5c0120; /* Sfondo bordeaux */
     color: white; /* Testo bianco */
     padding: 10px; /* Spazio interno al riquadro */
     margin: 20px auto; /* Margini per centrare il riquadro e dare un po' di spazio */
-    width: 100%; /* Il riquadro si adatta alla larghezza del testo */
+    width: 20%; /* Il riquadro si adatta alla larghezza del testo */
     border-radius: 8px; /* Angoli leggermente smussati per il riquadro */
     box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Una leggera ombra per dare profondità */
   }
 
-  h1 {
+  .formheader1 {
     text-align: center; /* Centra il testo */
     background-color: #5c0120; /* Sfondo bordeaux */
     color: white; /* Testo bianco */
     padding: 10px; /* Spazio interno al riquadro */
     margin: 20px auto; /* Margini per centrare il riquadro e dare un po' di spazio */
-    width: 100%; /* Il riquadro si adatta alla larghezza del testo */
+    width: 40%; /* Il riquadro si adatta alla larghezza del testo */
     border-radius: 8px; /* Angoli leggermente smussati per il riquadro */
     box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Una leggera ombra per dare profondità */
   }

@@ -17,7 +17,7 @@
     include 'header.html';
     include 'nav.html';
 ?>
-    <h2>Ricerca Ricoveri</h2>
+    <div class="formheader2"><h2>Ricerca Ricoveri</h2></div>
         <div class="forms-container">
     <form method="GET" action="">
         <div class="form-group"><label for="CSSNCittadino">CSSN Cittadino:</label>

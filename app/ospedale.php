@@ -9,7 +9,7 @@
 <?php
     include 'nav.html';
 ?>
-    <h2>Ricerca Ospedali</h2>
+    <div class="formheader2"><h2>Ricerca Ospedali</h2></div>
     <div class="forms-container">
         <form method="GET" action="">
         <div class="form-group"><label for="NomeOspedale">Nome:</label>
@@ -193,7 +193,7 @@
         }
     }
 
-    $actionMessage = "<h1>Aggiungi un nuovo ospedale</h1>";
+    $actionMessage = '<div class="formheader1"><h1>Aggiungi un nuovo ospedale</h1><\div>';
     if (isset($_GET['action'])) {
 
         $oldNomeOspedale = "";
