@@ -271,15 +271,15 @@
         </form>
     </div>
     
-    <?php if (isset($_GET['action']) && $_GET['action'] == 'deleteconfirm') { ?>
-        <h1> Sei sicuro di voler rimuover questo ospedale? <h1>
+    <?php if (isset($_GET['action']) && $_GET['action'] == 'deleteconfirm') { ?>    
         <td>
+            <h1> Sei sicuro di voler rimuover questo ospedale? <h1>
             <form method="POST" style="display:inline;">
                 <input type="hidden" name="action" value="delete">
                 <input type="hidden" name="idDelete" value="<?php echo htmlspecialchars($_GET['id']); ?>">
                 <button type="submit">Elimina</button>
             </form>
-            
+            <a href='https://programmazionewebmaidavi.altervista.org/app/ospedale.php'> Annulla </a>
         </td>
         
     <?php } ?>
