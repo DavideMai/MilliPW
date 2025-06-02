@@ -5,11 +5,11 @@
     <title>Azienda ospedaliera</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
-<body style="height: 100%;">
+<body style="height: 100vh;">
 <?php	
 	include 'nav.html';
 ?>
-    Progetto Web 1
+<div style="height: 100%">Progetto Web 1</div>
 <?php	
     include 'footer.html';
 ?>
