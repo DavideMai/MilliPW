@@ -279,8 +279,9 @@
                 <input type="hidden" name="idDelete" value="<?php echo htmlspecialchars($_GET['id']); ?>">
                 <button type="submit">Elimina</button>
             </form>
+            <a href='https://programmazionewebmaidavi.altervista.org/app/ospedale.php'> Annulla </a>
         </td>
-        <a href='https://programmazionewebmaidavi.altervista.org/app/ospedale.php'> Annulla </a>
+        
     <?php } ?>
 
     <?php if ($message): // Mostra il messaggio se esiste ?>
