@@ -137,27 +137,43 @@
                     }
                     
                 }else{
+                    //Se non ci sono azioni settate allora si tratta di un inserimento
                     $codiceDirettoreInserito = $_POST['codiceSanitarioDirettore'];
 
-                if (isCSDtaken($conn, $codiceDirettoreInserito, 0)) {
-                    $message = "Errore: Il codice sanitario del direttore fornito è già in uso da un altro ospedale.";
-                    $messageType = 'error';
-                } else {
-                    $stmt = $conn->prepare("INSERT INTO Ospedali (IDOspedale, NomeOspedale, Indirizzo, NumeroCivico, Citta, NumeroTelefono, CodiceSanitarioDirettore) VALUES (:id, :nomeOspedale, :indirizzo, :numeroCivico, :citta, :numeroTelefono, :codiceSanitarioDirettore)");
+                    if (isCSDtaken($conn, $codiceDirettoreInserito, 0)) {
+                        $message = "Errore: Il codice sanitario del direttore fornito è già in uso da un altro ospedale.";
+                        $messageType = 'error';
+                    } else {
+                        try{
+                            $stmt = $conn->prepare("INSERT INTO Ospedali (IDOspedale, NomeOspedale, Indirizzo, NumeroCivico, Citta, NumeroTelefono, CodiceSanitarioDirettore) VALUES (:id, :nomeOspedale, :indirizzo, :numeroCivico, :citta, :numeroTelefono, :codiceSanitarioDirettore)");
 
-                    $stmt->bindParam(':id', getNewHospitalID($conn));
-                    $stmt->bindParam(':nomeOspedale', $_POST['nomeOspedale']);
-                    $stmt->bindParam(':indirizzo', $_POST['indirizzo']);
-                    $stmt->bindParam(':numeroCivico', $_POST['numeroCivico']);
-                    $stmt->bindParam(':citta', $_POST['citta']);
-                    $stmt->bindParam(':numeroTelefono', $_POST['numeroTelefono']);
-                    $stmt->bindParam(':codiceSanitarioDirettore', $codiceDirettoreInserito);
+                            $insertedId = getNewHospitalID($conn);
+                            $stmt->bindParam(':id', $insertedId);
+                            $stmt->bindParam(':nomeOspedale', $_POST['nomeOspedale']);
+                            $stmt->bindParam(':indirizzo', $_POST['indirizzo']);
+                            $stmt->bindParam(':numeroCivico', $_POST['numeroCivico']);
+                            $stmt->bindParam(':citta', $_POST['citta']);
+                            $stmt->bindParam(':numeroTelefono', $_POST['numeroTelefono']);
+                            $stmt->bindParam(':codiceSanitarioDirettore', $codiceDirettoreInserito);
 
-                    $stmt->execute();
+                            $stmt->execute();
 
-                    $message = "Nuovo ospedale aggiunto con successo! ID: " . $lastId;
-                    $messageType = 'success';
-                }
+                            $message = "Nuovo ospedale aggiunto con successo! ID: " . $insertedId;
+                            $messageType = 'success';
+                        }catch(PDOException $e){
+                            $message = "Errore nell'inserimento: " . $e->getMessage();
+                            //Riempi i campi con i valori già scritti
+                            $oldNomeOspedale = $_POST['nomeOspedale'];
+                            $oldIndirizzo = $_POST['indirizzo'];
+                            $oldNumeroCivico = $_POST['numeroCivico'];
+                            $oldCitta = $_POST['citta'];
+                            $oldNumeroTelefonico = $_POST['numeroTelefono'];
+                            $oldCodiceDirettoreSanitario = $codiceDirettoreInserito;
+
+                        }
+                        
+
+                    }
                 }  
                 
             }
