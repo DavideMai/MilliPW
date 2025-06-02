@@ -193,7 +193,7 @@
         }
     }
 
-    $actionMessage = '<div class="formheader1"><h1>Aggiungi un nuovo ospedale</h1><\div>';
+    $actionMessage = '<div class="formheader1"><h1>Aggiungi un nuovo ospedale</h1></div>';
     if (isset($_GET['action'])) {
 
         $oldNomeOspedale = "";
