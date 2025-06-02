@@ -2,14 +2,14 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Elenco Patologie</title>
+    <title>Ricerca Patologie</title>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 <body>
 <?php
     include 'nav.html';
 ?>
-    <h2>Elenco Patologie</h2>
+    <h2>Ricerca Patologie</h2>
 
     <div class="forms-container">
         <form method="GET" action="">

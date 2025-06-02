@@ -2,14 +2,14 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Elenco Ospedali</title>
+    <title>Ricerca Ospedali</title>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 <body>
 <?php
     include 'nav.html';
 ?>
-    <h2>Elenco Ospedali</h2>
+    <h2>Ricerca Ospedali</h2>
     <div class="forms-container">
         <form method="GET" action="">
         <div class="form-group"><label for="NomeOspedale">Nome:</label>
@@ -92,28 +92,99 @@
                     $messageType = 'success';
                 }
             }else{
-                $codiceDirettoreInserito = $_POST['codiceSanitarioDirettore'];
+                if ($_GET['action'] == 'deleteconfirm' && $_POST['action'] == 'delete'){
 
-                if (isCSDtaken($conn, $codiceDirettoreInserito, 0)) {
-                    $message = "Errore: Il codice sanitario del direttore fornito è già in uso da un altro ospedale.";
-                    $messageType = 'error';
-                } else {
-                    $stmt = $conn->prepare("INSERT INTO Ospedali (IDOspedale, NomeOspedale, Indirizzo, NumeroCivico, Citta, NumeroTelefono, CodiceSanitarioDirettore) VALUES (:id, :nomeOspedale, :indirizzo, :numeroCivico, :citta, :numeroTelefonico, :codiceSanitarioDirettore)");
+                    try {
+                        //Ogni cancellazione avviene in una singola transazione così che eventuali errori non causino stati impossibili
+                        $conn->beginTransaction();
 
-                    $stmt->bindParam(':id', getNewHospitalID($conn));
-                    $stmt->bindParam(':nomeOspedale', $_POST['nomeOspedale']);
-                    $stmt->bindParam(':indirizzo', $_POST['indirizzo']);
-                    $stmt->bindParam(':numeroCivico', $_POST['numeroCivico']);
-                    $stmt->bindParam(':citta', $_POST['citta']);
-                    $stmt->bindParam(':numeroTelefonico', $_POST['numeroTelefonico']);
-                    $stmt->bindParam(':codiceSanitarioDirettore', $codiceDirettoreInserito);
+                        $idToDelete = $_POST['idDelete'];
 
-                    $stmt->execute();
+                        //Ricoveri dell'ospedale da rimuovere
+                        $stmtGetRicoveri = $conn->prepare("SELECT IDRicovero FROM Ricoveri WHERE IDOspedale = :idOspedale");
+                        $stmtGetRicoveri->bindParam(':idOspedale', $idToDelete);
+                        $stmtGetRicoveri->execute();
+                        $ricoveriIds = $stmtGetRicoveri->fetchAll(PDO::FETCH_COLUMN, 0); 
 
-                    $message = "Nuovo ospedale aggiunto con successo! ID: " . $lastId;
-                    $messageType = 'success';
-                }
+                        //Elimina i ricoveri da Ricovero_Patologie
+                        if (!empty($ricoveriIds)) {
+                            //Crea stringa di ricoveri da rimuovere
+                            $toRemove = implode(',', array_fill(0, count($ricoveriIds), '?'));
+
+                            $stmtRicoveroPatologie = $conn->prepare("DELETE FROM Ricovero_Patologie WHERE IDRicovero IN (" . $toRemove . ")");
+         
+                            $stmtRicoveroPatologie->execute($ricoveriIds);
+                        }
+
+                        //Rimuovi i ricoveri
+                        $stmtRicoveri = $conn->prepare("DELETE FROM Ricoveri WHERE IDOspedale = :idOspedale");
+                        $stmtRicoveri->bindParam(':idOspedale', $idToDelete);
+                        $stmtRicoveri->execute();
+
+                        //Rimuovi l'ospedale
+                        $stmtOspedale = $conn->prepare("DELETE FROM Ospedali WHERE IDOspedale = :idOspedale");
+                        $stmtOspedale->bindParam(':idOspedale', $idToDelete, PDO::PARAM_INT);
+                        $stmtOspedale->execute();
+
+                        $conn->commit(); //commit transazione
+
+                        $message = "Ospedale eliminato con successo!";
+                        header("Location: " . htmlspecialchars($_SERVER['PHP_SELF']));
+                    } catch (PDOException $e) {
+                        //Rollback se c'è stato un errore
+                        $conn->rollBack();
+                        $message = "Errore durante l'eliminazione: " . $e->getMessage();
+                    }
+                    
+                }else{
+                    //Se non ci sono azioni settate allora si tratta di un inserimento
+                    $codiceDirettoreInserito = $_POST['codiceSanitarioDirettore'];
+
+                    if (isCSDtaken($conn, $codiceDirettoreInserito, 0)) {
+                        $message = "Errore: Il codice sanitario del direttore fornito è già in uso da un altro ospedale.";
+                        $messageType = 'error';
+                        //Riempi i campi con i valori già scritti
+                        $oldNomeOspedale = $_POST['nomeOspedale'];
+                        $oldIndirizzo = $_POST['indirizzo'];
+                        $oldNumeroCivico = $_POST['numeroCivico'];
+                        $oldCitta = $_POST['citta'];
+                        $oldNumeroTelefonico = $_POST['numeroTelefono'];
+                        $oldCodiceDirettoreSanitario = $codiceDirettoreInserito;
+                    } else {
+                        try{
+                            $stmt = $conn->prepare("INSERT INTO Ospedali (IDOspedale, NomeOspedale, Indirizzo, NumeroCivico, Citta, NumeroTelefono, CodiceSanitarioDirettore) VALUES (:id, :nomeOspedale, :indirizzo, :numeroCivico, :citta, :numeroTelefono, :codiceSanitarioDirettore)");
+
+                            $insertedId = getNewHospitalID($conn);
+                            $stmt->bindParam(':id', $insertedId);
+                            $stmt->bindParam(':nomeOspedale', $_POST['nomeOspedale']);
+                            $stmt->bindParam(':indirizzo', $_POST['indirizzo']);
+                            $stmt->bindParam(':numeroCivico', $_POST['numeroCivico']);
+                            $stmt->bindParam(':citta', $_POST['citta']);
+                            $stmt->bindParam(':numeroTelefono', $_POST['numeroTelefono']);
+                            $stmt->bindParam(':codiceSanitarioDirettore', $codiceDirettoreInserito);
+
+                            $stmt->execute();
+
+                            $message = "Nuovo ospedale aggiunto con successo! ID: " . $insertedId;
+                            $messageType = 'success';
+                        }catch(PDOException $e){
+                            $message = "Errore nell'inserimento: " . $e->getMessage();
+                            //Riempi i campi con i valori già scritti
+                            $oldNomeOspedale = $_POST['nomeOspedale'];
+                            $oldIndirizzo = $_POST['indirizzo'];
+                            $oldNumeroCivico = $_POST['numeroCivico'];
+                            $oldCitta = $_POST['citta'];
+                            $oldNumeroTelefonico = $_POST['numeroTelefono'];
+                            $oldCodiceDirettoreSanitario = $codiceDirettoreInserito;
+
+                        }
+                        
+
+                    }
+                }  
+                
             }
+            
             
 
         } catch(PDOException $e) {
@@ -122,6 +193,7 @@
         }
     }
 
+    $actionMessage = "<h1>Aggiungi un nuovo ospedale</h1>";
     if (isset($_GET['action'])) {
 
         $oldNomeOspedale = "";
@@ -149,24 +221,17 @@
                 $oldNumeroTelefonico = $ospedaleToEdit['NumeroTelefono'];
                 $oldCodiceDirettoreSanitario = $ospedaleToEdit['CodiceSanitarioDirettore'];
 
-                echo "<h1>Modifica i dati dell'ospedale</h1>";
+                $actionMessage = "<h1>Modifica i dati dell'ospedale</h1>";
             } else {
                 //non deve mai finire qui, se succede allora c'è un id inesistente nel link
             }           
         } else{
-            if ($_GET['action'] == 'delete' && isset($_GET['id'])) {
-                $idToDelete = $_GET['id'];
-                $stmt = $conn->prepare("DELETE FROM Ospedali WHERE IDOspedale = :id");
-                $stmt->bindParam(':id', $idToDelete);
-                $stmt->execute();
-                $message = "Ospedale eliminato con successo!";
-            }
 
-            echo "<h1>Aggiungi un nuovo ospedale</h1>";
+            $actionMessage = "<h1>Aggiungi un nuovo ospedale</h1>";
         }
     }
 
-    
+    echo $actionMessage;    
     
 ?>
 
@@ -198,13 +263,33 @@
                 value="<?php echo htmlspecialchars($oldCodiceDirettoreSanitario); ?>">
         </div>
                 <input type="submit" value="Inserisci Ospedale">
+                 <?php
+                    if (isset($_GET['action']) && $_GET['action'] == 'edit'){
+                        echo "<a href='https://programmazionewebmaidavi.altervista.org/app/ospedale.php'> Annulla </a>";
+                    }
+                ?>
         </form>
     </div>
+    
+    <?php if (isset($_GET['action']) && $_GET['action'] == 'deleteconfirm') { ?>    
+        <td>
+            <form method="POST" style="display:inline;">
+                <input type="hidden" name="action" value="delete">
+                <input type="hidden" name="idDelete" value="<?php echo htmlspecialchars($_GET['id']); ?>">
+                <button type="submit">Elimina</button>
+            </form>
+            <a href='https://programmazionewebmaidavi.altervista.org/app/ospedale.php'> Annulla </a>
+        </td>
+        
+    <?php } ?>
+
     <?php if ($message): // Mostra il messaggio se esiste ?>
         <div class="message <?php echo $messageType; ?>">
             <?php echo $message; ?>
         </div>
     <?php endif; ?>
+
+
 
 <?php
     if (!$error) {
@@ -243,6 +328,8 @@
                         echo "<th>" . htmlspecialchars($colonna) . "</th>";
                     }
                 }
+                echo "<th>Modifica</th>"; // Aggiungi intestazione per la colonna Modifica
+                echo "<th>Elimina</th>"; // Aggiungi intestazione per la colonna Elimina
                 echo "</tr></thead><tbody>";
 
                 foreach    ( $ospedali as $ospedale) {
@@ -261,7 +348,7 @@
                     echo "</td>";
 
                     echo "<td>";
-                    echo "<a href='?action=delete&id=" . htmlspecialchars($thisId) . "'>Elimina</a>";
+                    echo "<a href='?action=deleteconfirm&id=" . htmlspecialchars($thisId) . "'>Elimina</a>";
                     echo "</td>";
 
                     echo "</tr>";                    

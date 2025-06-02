@@ -2,14 +2,14 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Elenco Cittadini</title>
+    <title>Ricerca Cittadini</title>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 <body>
 <?php	
 	include 'nav.html';
 ?>
-    <h2>Elenco Cittadini</h2>
+    <h2>Ricerca Cittadini</h2>
     <div class="forms-container">
     <form method="GET" action="">
     <div class="form-group"><label for="CSSN">CSSN:</label>
