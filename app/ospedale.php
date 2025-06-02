@@ -143,6 +143,13 @@
                     if (isCSDtaken($conn, $codiceDirettoreInserito, 0)) {
                         $message = "Errore: Il codice sanitario del direttore fornito è già in uso da un altro ospedale.";
                         $messageType = 'error';
+                        //Riempi i campi con i valori già scritti
+                        $oldNomeOspedale = $_POST['nomeOspedale'];
+                        $oldIndirizzo = $_POST['indirizzo'];
+                        $oldNumeroCivico = $_POST['numeroCivico'];
+                        $oldCitta = $_POST['citta'];
+                        $oldNumeroTelefonico = $_POST['numeroTelefono'];
+                        $oldCodiceDirettoreSanitario = $codiceDirettoreInserito;
                     } else {
                         try{
                             $stmt = $conn->prepare("INSERT INTO Ospedali (IDOspedale, NomeOspedale, Indirizzo, NumeroCivico, Citta, NumeroTelefono, CodiceSanitarioDirettore) VALUES (:id, :nomeOspedale, :indirizzo, :numeroCivico, :citta, :numeroTelefono, :codiceSanitarioDirettore)");
