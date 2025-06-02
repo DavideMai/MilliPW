@@ -1,6 +1,4 @@
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
-</style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@100..900&display=swap');
 
 /* RESET GLOBALE FONDAMENTALE */
 html {
@@ -131,7 +129,7 @@ font-size: 1.8em;
 font-weight: bold;
 padding: 5px 0;
 letter-spacing: 1px;
-font-family: "Roboto Slab";
+font-family: "Bebas Neue", sans-serif;
 }
 
 .navbar-menu {

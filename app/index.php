@@ -6,14 +6,15 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
+    <div style="height: 100%" class="container">
 <?php	
 	include 'nav.html';
 ?>
-<div style="height: 100%" class="container">
     Progetto Web 1
-</div>
+
 <?php	
     include 'footer.html';
 ?>
+</div>
 </body>
 </html>
