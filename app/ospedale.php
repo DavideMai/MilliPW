@@ -272,6 +272,7 @@
     </div>
     
     <?php if (isset($_GET['action']) && $_GET['action'] == 'deleteconfirm') { ?>
+        <h1> Sei sicuro di voler rimuover questo ospedale? <h1>
         <td>
             <form method="POST" style="display:inline;">
                 <input type="hidden" name="action" value="delete">
@@ -279,6 +280,7 @@
                 <button type="submit">Elimina</button>
             </form>
         </td>
+        <a href='https://programmazionewebmaidavi.altervista.org/app/ospedale.php'> Annulla </a>
     <?php } ?>
 
     <?php if ($message): // Mostra il messaggio se esiste ?>
