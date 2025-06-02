@@ -9,7 +9,7 @@
 <?php	
 	include 'nav.html';
 ?>
-<div class="container">
+<div style="height: 100%" class="container">
     Progetto Web 1
 </div>
 <?php	
