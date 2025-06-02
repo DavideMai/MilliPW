@@ -129,7 +129,7 @@
                         $conn->commit(); //commit transazione
 
                         $message = "Ospedale eliminato con successo!";
-                        header("Location: " . htmlspecialchars($_SERVER['PHP_SELF']);
+                        header("Location: " . htmlspecialchars($_SERVER['PHP_SELF']));
                     } catch (PDOException $e) {
                         //Rollback se c'è stato un errore
                         $conn->rollBack();
