@@ -221,13 +221,13 @@
                 $oldNumeroTelefonico = $ospedaleToEdit['NumeroTelefono'];
                 $oldCodiceDirettoreSanitario = $ospedaleToEdit['CodiceSanitarioDirettore'];
 
-                $actionMessage = "<h1>Modifica i dati dell'ospedale</h1>";
+                $actionMessage = "<h2>Modifica i dati dell'ospedale</h2>";
             } else {
                 //non deve mai finire qui, se succede allora c'è un id inesistente nel link
             }           
         } else{
 
-            $actionMessage = "<h1>Aggiungi un nuovo ospedale</h1>";
+            $actionMessage = "<h2>Aggiungi un nuovo ospedale</h2>";
         }
     }
 
