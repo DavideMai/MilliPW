@@ -9,9 +9,9 @@
 <?php	
     include 'nav.html';
 ?>
-<div class="container" style="padding: 2rem; max-width: 900px; margin: auto;">
+<div class="container" style="padding: 2rem; max-width: 900px; margin: auto; display: flex; flex-direction: column; gap: 1.5rem;">
     <h1>Benvenuti all'Azienda Ospedaliera</h1>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Ospedale_Civile_di_Padova.jpg" alt="Ospedale" style="width:100%; max-width:600px; display:block; margin: 2rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+    <img src="https://storage.ecodibergamo.it/media/photologue/2019/2/11/photos/ospedale-papa-giovanni-i-nuovi-direttoriscelti-collaboratori-di-esperienz_09a5afe2-2e0f-11e9-b958-00af308fb976_900_512.jpg" alt="Ospedale" style="width:100%; max-width:600px; display:block; margin: 2rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
     <p>
         L'Azienda Ospedaliera è un punto di riferimento per la salute e il benessere della comunità. Offriamo servizi sanitari di alta qualità grazie a un team di professionisti qualificati e tecnologie all'avanguardia.
     </p>
