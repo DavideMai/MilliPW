@@ -29,7 +29,7 @@
     </div>
 
     <div class="form-group"><label for="NumeroCivico">Numero civico:</label>
-        <input type="int" name="NumeroCivico" id="NumeroCivico">
+        <input type="number" name="NumeroCivico" id="NumeroCivico">
     </div>
 
     <div class="form-group"><label for="LuogoNascita">Luogo di nascita:</label>
