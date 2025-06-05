@@ -21,7 +21,7 @@
         <div class="form-group">    <label for="Indirizzo">Indirizzo:</label>
             <input type="text" name="Indirizzo" id="Indirizzo">
         </div>
-            <input type="submit" value="Cerca Ospedali">
+            <button type="submit">Cerca Ospedali</button>
         </form>
     </div>
 

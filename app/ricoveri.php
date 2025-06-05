@@ -44,8 +44,9 @@
         <input type="text" name="MotivoRicovero" id="MotivoRicovero" value="<?php echo htmlspecialchars($_GET['MotivoRicovero'] ?? ''); ?>"><br>
         </div>
 
-        <div class="form-group"><input type="submit" value="Cerca Ricoveri">
-        <input type="button" value="Mostra Tutti" onclick="window.location.href='ricoveri.php'">
+        <div class="form-group">
+        <button type="submit">Cerca Ricoveri</button>
+        <button onclick="window.location.href='ricoveri.php'">Mostra Tutti</button>
         </div>
     </form>
     </div>

@@ -40,7 +40,7 @@
         <input type="date" name="DataNascita" id="DataNascita">
     </div>
     
-        <input type="submit" value="Cerca Cittadini">
+        <button type="submit">Cerca Cittadini</button>
     </form>
     </div>
 
