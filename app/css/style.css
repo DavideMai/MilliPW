@@ -91,7 +91,7 @@ form input[type="date"] {
   border-radius: 4px;
   min-width: 0; /* Permette all'input di ridursi fino a 0 */
 }
-form button[type="submit"] {
+form button {
   padding: 10px 20px;
   background-color: #800000;
   color: white;
@@ -102,7 +102,7 @@ form button[type="submit"] {
   margin-top: 0;
   flex-shrink: 0;
 }
-form button[type="submit"]:hover {
+form button:hover {
   background-color: #a00000;
 }
 
