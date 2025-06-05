@@ -1,11 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@100..900&display=swap");
 
 /* RESET GLOBALE FONDAMENTALE */
 html {
   box-sizing: border-box;
   /* overflow-x: hidden; <-- Rimosso per vedere se l'overflow è ancora un problema dopo le modifiche al form */
 }
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: inherit; /* Tutti gli elementi ereditano il box-sizing */
   margin: 0; /* Rimuovi i margini predefiniti del browser per evitare scroll indesiderati */
   padding: 0; /* Rimuovi i padding predefiniti del browser */
@@ -16,25 +18,24 @@ body {
   min-height: 100vh;
 }
 
-
 /* Existing styles for tables and forms (retained, but with global reset effects) */
 table {
-width: 80%;
-margin: 20px auto;
-border-collapse: collapse;
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
 }
 table,
 th,
 td {
-border: 1px solid black;
-padding: 8px;
-text-align: left;
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
 }
 th {
-background-color: #f2f2f2;
+  background-color: #f2f2f2;
 }
 tr:nth-child(even) {
-background-color: #dddddd;
+  background-color: #dddddd;
 }
 
 /* Contenitore per i form */
@@ -48,22 +49,21 @@ background-color: #dddddd;
   width: 100%;
 }
 
-
 /* Modifiche al form stesso: i campi vanno a capo quando non c'è spazio */
 form {
-max-width: 900px;
-width: 100%;
-padding: 15px;
-border: 1px solid #ccc;
-box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-border-radius: 8px;
+  max-width: 900px;
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 
-/* PROPRIETÀ FLEXBOX PER DISPORRE I GRUPPI DI CAMPI */
-display: flex;
-flex-wrap: wrap; /* Permette ai gruppi di campi di andare a capo */
-align-items: center; /* Allinea verticalmente i gruppi di campi */
-gap: 15px; /* Spazio tra i gruppi di campi e il bottone */
-justify-content: flex-start; /* Allinea i gruppi di campi a sinistra */
+  /* PROPRIETÀ FLEXBOX PER DISPORRE I GRUPPI DI CAMPI */
+  display: flex;
+  flex-wrap: wrap; /* Permette ai gruppi di campi di andare a capo */
+  align-items: center; /* Allinea verticalmente i gruppi di campi */
+  gap: 15px; /* Spazio tra i gruppi di campi e il bottone */
+  justify-content: flex-start; /* Allinea i gruppi di campi a sinistra */
 }
 
 /* NUOVO: Stile per il raggruppamento label-input */
@@ -77,168 +77,166 @@ justify-content: flex-start; /* Allinea i gruppi di campi a sinistra */
 }
 
 form label {
-margin-bottom: 0;
-white-space: nowrap; /* Impedisce al testo dell'etichetta di andare a capo */
-flex-shrink: 0; /* Impedisce all'etichetta di ridursi */
+  margin-bottom: 0;
+  white-space: nowrap; /* Impedisce al testo dell'etichetta di andare a capo */
+  flex-shrink: 0; /* Impedisce all'etichetta di ridursi */
 }
 form input[type="text"],
 form input[type="number"],
 form input[type="date"] {
-flex-grow: 1; /* Permette all'input di occupare lo spazio disponibile nel form-group */
-padding: 8px;
-margin-bottom: 0;
-border: 1px solid #ddd;
-border-radius: 4px;
-min-width: 0; /* Permette all'input di ridursi fino a 0 */
+  flex-grow: 1; /* Permette all'input di occupare lo spazio disponibile nel form-group */
+  padding: 8px;
+  margin-bottom: 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  min-width: 0; /* Permette all'input di ridursi fino a 0 */
 }
 form input[type="submit"] {
-padding: 10px 20px;
-background-color: #800000;
-color: white;
-border: none;
-cursor: pointer;
-border-radius: 5px;
-transition: background-color 0.3s ease;
-margin-top: 0;
-flex-shrink: 0;
+  padding: 10px 20px;
+  background-color: #800000;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  margin-top: 0;
+  flex-shrink: 0;
 }
 form input[type="submit"]:hover {
-background-color: #a00000;
+  background-color: #a00000;
 }
 
 /* Navbar (existing content) */
 .navbar {
-background-color: #5c0120;
-padding: 10px 20px;
-box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-color: #ecf0f1;
+  background-color: #5c0120;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  color: #ecf0f1;
 }
 
 .navbar-container {
-max-width: 1200px;
-margin: 0 auto;
-display: flex;
-justify-content: space-between;
-align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .navbar-brand {
-color: #ecf0f1;
-text-decoration: none;
-font-size: 1.8em;
-font-weight: bold;
-padding: 5px 0;
-letter-spacing: 1px;
-font-family: "Bebas Neue", sans-serif;
+  color: #ecf0f1;
+  text-decoration: none;
+  font-size: 1.8em;
+  font-weight: bold;
+  padding: 5px 0;
+  letter-spacing: 1px;
+  font-family: "Bebas Neue", sans-serif;
 }
 
 .navbar-menu {
-list-style: none;
-margin: 0;
-padding: 0;
-display: flex;
-flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .navbar-item {
-margin-left: 25px;
+  margin-left: 25px;
 }
 
 .navbar-link {
-color: #ecf0f1;
-text-decoration: none;
-padding: 8px 0;
-display: block;
-transition: color 0.3s ease, transform 0.2s ease;
-position: relative;
-font-weight: 500;
+  color: #ecf0f1;
+  text-decoration: none;
+  padding: 8px 0;
+  display: block;
+  transition: color 0.3s ease, transform 0.2s ease;
+  position: relative;
+  font-weight: 500;
 }
 
 .navbar-link:hover {
-color: #dbb8b8;
-transform: translateY(-2px);
+  color: #dbb8b8;
+  transform: translateY(-2px);
 }
 
 .navbar-link::after {
-content: '';
-position: absolute;
-width: 0;
-height: 2px;
-display: block;
-margin-top: 5px;
-right: 0;
-background: #800000;
-transition: width 0.3s ease;
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  display: block;
+  margin-top: 5px;
+  right: 0;
+  background: #800000;
+  transition: width 0.3s ease;
 }
 
 .navbar-link:hover::after,
 .navbar-link.active::after {
-width: 100%;
-left: 0;
-background: #800000;
+  width: 100%;
+  left: 0;
+  background: #800000;
 }
 
 .navbar-link.active {
-color: #ecf0f1;
-font-weight: bold;
+  color: #ecf0f1;
+  font-weight: bold;
 }
 
 .navbar-toggle {
-display: none;
-color: #ecf0f1;
-font-size: 2em;
-cursor: pointer;
+  display: none;
+  color: #ecf0f1;
+  font-size: 2em;
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {
   /* Il form-group gestirà il wrapping in modo più prevedibile */
   form {
-      justify-content: center; /* Centra i gruppi di campi */
+    justify-content: center; /* Centra i gruppi di campi */
   }
   .form-group {
-      flex-basis: 100%; /* Ogni gruppo label-input prende il 100% della larghezza */
-      margin-bottom: 10px; /* Spazio tra i gruppi */
-      justify-content: center; /* Centra label e input all'interno del gruppo su mobile */
+    flex-basis: 100%; /* Ogni gruppo label-input prende il 100% della larghezza */
+    margin-bottom: 10px; /* Spazio tra i gruppi */
+    justify-content: center; /* Centra label e input all'interno del gruppo su mobile */
   }
   form input[type="submit"] {
-      width: 100%; /* Il bottone occupa tutta la larghezza */
-      margin-bottom: 10px;
+    width: 100%; /* Il bottone occupa tutta la larghezza */
+    margin-bottom: 10px;
   }
 }
 
 /* --- General Footer Styling --- */
 .footer {
-    background-color: #5c0120; /* Dark background */
-    color: #ecf0f1;         /* Light text color */
-    padding: 20px 0;         /* Vertical padding */
-    font-family: Arial, sans-serif; /* Or your site's default font */
-    font-size: 14px;          /* Base font size for footer */
-    position: relative;
-    bottom: 0;
-    width: 100%;
+  background-color: #5c0120; /* Dark background */
+  color: #ecf0f1; /* Light text color */
+  padding: 20px 0; /* Vertical padding */
+  font-family: Arial, sans-serif; /* Or your site's default font */
+  font-size: 14px; /* Base font size for footer */
+  position: relative;
+  bottom: 0;
+  width: 100%;
 }
 
 .footer .container {
-    width: 90%; /* Or your preferred width */
-    max-width: 1140px; /* Common max-width, adjust as needed */
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 15px; /* Gutters */
-    padding-right: 15px; /* Gutters */
+  width: 90%; /* Or your preferred width */
+  max-width: 1140px; /* Common max-width, adjust as needed */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px; /* Gutters */
+  padding-right: 15px; /* Gutters */
 }
 
 /* --- Styling for the copyright text specifically --- */
 .footer .copy p {
-    margin-bottom: 0; /* Remove default bottom margin from paragraph */
-    text-align: center;
-
+  margin-bottom: 0; /* Remove default bottom margin from paragraph */
+  text-align: center;
 }
 
 /* --- (Optional) If you want the copyright text slightly smaller or different style --- */
 .footer .copy p {
-    font-size: 0.9em; /* Slightly smaller than the base footer font size */
+  font-size: 0.9em; /* Slightly smaller than the base footer font size */
 }
-
 
 table {
   width: 80%;
@@ -247,61 +245,71 @@ table {
   border-radius: 10px; /* Add rounded corners to the table */
   overflow: hidden; /* Ensures the rounded corners are applied to the internal borders as well */
   border: 2px solid #5c0120; /* Bordeaux border around the table */
-  }
-  table,
-  th,
-  td {
+}
+table,
+th,
+td {
   border: 1px solid #5c0120; /* Bordeaux border for cells and headers */
   padding: 8px;
   text-align: left;
-  }
-  th {
+}
+th {
   text-align: center;
   background-color: #5c0120; /* Red background for table headers */
   color: white; /* White text for better contrast */
-  }
-  tr:nth-child(even) {
-  background-color: rgba(128, 0, 0, 0.2); /* Bordeaux with 20% transparency for even rows */
-  }
-  tr:nth-child(odd) {
-  background-color: rgba(128, 0, 0, 0.1); /* Slightly lighter bordeaux with transparency for odd rows */
-  }
-  table a {
-    color: black; /* Colore di default: nero */
-    text-decoration: none; /* Rimuove la sottolineatura di default */
-  }
-  
-  table a:hover {
-    color: #a00000; /* Bordeaux chiaro al passaggio del mouse */
-    text-decoration: underline; /* Aggiunge una sottolineatura al passaggio del mouse per feedback visivo */
-  }
-  
-  table a:visited {
-    color: #800000; /* Bordeaux quando il link è stato visitato */
-  }
-  
-  table a:active {
-    color: #800000; /* Bordeaux quando il link viene cliccato (mantiene il colore del visited) */
-  }
+}
+tr:nth-child(even) {
+  background-color: rgba(
+    128,
+    0,
+    0,
+    0.2
+  ); /* Bordeaux with 20% transparency for even rows */
+}
+tr:nth-child(odd) {
+  background-color: rgba(
+    128,
+    0,
+    0,
+    0.1
+  ); /* Slightly lighter bordeaux with transparency for odd rows */
+}
+table a {
+  color: black; /* Colore di default: nero */
+  text-decoration: none; /* Rimuove la sottolineatura di default */
+}
 
-  .formheader2 {
-    text-align: center; /* Centra il testo */
-    background-color: #5c0120; /* Sfondo bordeaux */
-    color: white; /* Testo bianco */
-    padding: 10px; /* Spazio interno al riquadro */
-    margin: 20px auto; /* Margini per centrare il riquadro e dare un po' di spazio */
-    width: 20%; /* Il riquadro si adatta alla larghezza del testo */
-    border-radius: 8px; /* Angoli leggermente smussati per il riquadro */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Una leggera ombra per dare profondità */
-  }
+table a:hover {
+  color: #a00000; /* Bordeaux chiaro al passaggio del mouse */
+  text-decoration: underline; /* Aggiunge una sottolineatura al passaggio del mouse per feedback visivo */
+}
 
-  .formheader1 {
-    text-align: center; /* Centra il testo */
-    background-color: #5c0120; /* Sfondo bordeaux */
-    color: white; /* Testo bianco */
-    padding: 10px; /* Spazio interno al riquadro */
-    margin: 20px auto; /* Margini per centrare il riquadro e dare un po' di spazio */
-    width: 40%; /* Il riquadro si adatta alla larghezza del testo */
-    border-radius: 8px; /* Angoli leggermente smussati per il riquadro */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Una leggera ombra per dare profondità */
-  }
+table a:visited {
+  color: #800000; /* Bordeaux quando il link è stato visitato */
+}
+
+table a:active {
+  color: #800000; /* Bordeaux quando il link viene cliccato (mantiene il colore del visited) */
+}
+
+.formheader2 {
+  text-align: center; /* Centra il testo */
+  background-color: #5c0120; /* Sfondo bordeaux */
+  color: white; /* Testo bianco */
+  padding: 10px; /* Spazio interno al riquadro */
+  margin: 20px auto; /* Margini per centrare il riquadro e dare un po' di spazio */
+  width: 20%; /* Il riquadro si adatta alla larghezza del testo */
+  border-radius: 8px; /* Angoli leggermente smussati per il riquadro */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Una leggera ombra per dare profondità */
+}
+
+.formheader1 {
+  text-align: center; /* Centra il testo */
+  background-color: #5c0120; /* Sfondo bordeaux */
+  color: white; /* Testo bianco */
+  padding: 10px; /* Spazio interno al riquadro */
+  margin: 20px auto; /* Margini per centrare il riquadro e dare un po' di spazio */
+  width: 40%; /* Il riquadro si adatta alla larghezza del testo */
+  border-radius: 8px; /* Angoli leggermente smussati per il riquadro */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Una leggera ombra per dare profondità */
+}
