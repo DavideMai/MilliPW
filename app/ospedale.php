@@ -348,7 +348,7 @@
                     echo "</td>";
 
                     echo "<td>";
-                    echo "<a href='?action=deleteconfirm&id=" . htmlspecialchars($thisId) . "'>Elimina</a>";
+                    echo "<a href='?action=deleteconfirm&id=" . htmlspecialchars($thisId) . "'><img src='.\assets\delete.svg'></a>";
                     echo "</td>";
 
                     echo "</tr>";                    
