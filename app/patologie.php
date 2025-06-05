@@ -21,7 +21,7 @@
                 <input type="text" name="Tipologia" id="Tipologia">
             </div>
 
-            <button type="submit">Cerca Patologie<button>
+            <button type="submit">Cerca Patologie</button>
         </form>
     </div>
 
