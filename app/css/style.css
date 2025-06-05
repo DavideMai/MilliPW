@@ -323,3 +323,9 @@ svg {
 svg:hover {
   fill: red;
 }
+
+.noresult {
+  margin-top: 8rem;
+  margin-bottom: 8rem;
+  margin-left: 8rem;
+}

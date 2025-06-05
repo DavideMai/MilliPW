@@ -106,7 +106,7 @@
 
                 echo "</tbody></table>";
             } else {
-                echo "<p>Nessun cittadino trovato con i criteri di ricerca specificati.</p>";
+                echo "<p class='noresult'>Nessun cittadino trovato con i criteri di ricerca specificati.</p>";
             }
         } catch(PDOException $e) {
             echo "Errore durante la ricerca: " . $e->getMessage();

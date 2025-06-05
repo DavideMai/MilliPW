@@ -72,7 +72,7 @@
 
                 echo "</tbody></table>";
             } else {
-                echo "<p>Nessuna patologia trovata con i criteri di ricerca specificati.</p>";
+                echo "<p class='noresult'>Nessuna patologia trovata con i criteri di ricerca specificati.</p>";
             }
         } catch(PDOException $e) {
             echo "Errore durante la ricerca: " . $e->getMessage();
