@@ -313,3 +313,23 @@ table a:active {
   border-radius: 8px; /* Angoli leggermente smussati per il riquadro */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Una leggera ombra per dare profondità */
 }
+
+.action-buttons .icon {
+  width: 20px;
+  height: 20px;
+  color: #007bff;
+  transition: color 0.2s ease;
+}
+
+.action-buttons a:hover .icon {
+  color: #0056b3;
+}
+
+.action-buttons .icon {
+  stroke: #007bff;
+  stroke-width: 1.5;
+}
+
+.action-buttons a:hover .icon {
+  stroke: #0056b3;
+}
