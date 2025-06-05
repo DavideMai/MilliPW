@@ -348,7 +348,7 @@
                     echo "</td>";
 
                     echo "<td>";
-                    echo "<a href='?action=deleteconfirm&id=" . htmlspecialchars($thisId) . "'><img src='.\assets\delete.svg'></a>";
+                    echo "<a href='?action=deleteconfirm&id=" . htmlspecialchars($thisId) . "'> <svg class='icon' viewBox='0 0 24 24' fill='currentColor'> <path d='./assets/delete.svg'/> </svg>></a>";
                     echo "</td>";
 
                     echo "</tr>";                    
