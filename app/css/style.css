@@ -333,3 +333,11 @@ table a:active {
 .action-buttons a:hover .icon {
   stroke: #0056b3;
 }
+
+svg {
+  width: 70px;
+  height: 70px;
+}
+svg:hover {
+  fill: red;
+}
