@@ -193,7 +193,7 @@
         }
     }
 
-    $actionMessage = '<div class="formheader1"><h1>Aggiungi un nuovo ospedale</h1></div>';
+    $actionMessage = '<div class="formheader1"><h2>Aggiungi un nuovo ospedale</h2></div>';
     if (isset($_GET['action'])) {
 
         $oldNomeOspedale = "";
@@ -221,13 +221,13 @@
                 $oldNumeroTelefonico = $ospedaleToEdit['NumeroTelefono'];
                 $oldCodiceDirettoreSanitario = $ospedaleToEdit['CodiceSanitarioDirettore'];
 
-                $actionMessage = "<h2>Modifica i dati dell'ospedale</h2>";
+                $actionMessage = '<div class="formheader1"><h2>Modifica i dati dell\'ospedale</h2></div>';
             } else {
                 //non deve mai finire qui, se succede allora c'è un id inesistente nel link
             }           
         } else{
 
-            $actionMessage = "<h2>Aggiungi un nuovo ospedale</h2>";
+            $actionMessage = '<div class="formheader1"><h2>Aggiungi un nuovo ospedale</h2></div>';
         }
     }
 
