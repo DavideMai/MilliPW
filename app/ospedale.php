@@ -262,10 +262,10 @@
                 <input type="text" id="codiceSanitarioDirettore" name="codiceSanitarioDirettore" required 
                 value="<?php echo htmlspecialchars($oldCodiceDirettoreSanitario); ?>">
         </div>
-                <input type="submit" value="Inserisci Ospedale">
+                <button type="submit">Inserisci Ospedale</button>
                  <?php
                     if (isset($_GET['action']) && $_GET['action'] == 'edit'){
-                        echo "<a href='https://programmazionewebmaidavi.altervista.org/app/ospedale.php'> Annulla </a>";
+                        echo "<button href='https://programmazionewebmaidavi.altervista.org/app/ospedale.php'> Annulla </button>";
                     }
                 ?>
         </form>
