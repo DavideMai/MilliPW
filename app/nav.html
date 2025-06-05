@@ -10,3 +10,32 @@
         </ul>
     </div>
 </nav>
+
+<script>
+        // This script runs after the HTML document has been fully loaded and parsed.
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the filename of the current page from the URL (e.g., "patologie.php")
+            // We use `split('/')` to handle cases where the site is in a subfolder.
+            const currentPage = window.location.pathname.split('/').pop();
+
+            // Get all the navigation links inside the menu.
+            const navLinks = document.querySelectorAll('.navbar-menu .navbar-link');
+
+            // Find and remove the 'active' class from whichever link has it by default.
+            const currentActiveLink = document.querySelector('.navbar-link.active');
+            if (currentActiveLink) {
+                currentActiveLink.classList.remove('active');
+            }
+
+            // Loop through each navigation link to find the one that matches the current page.
+            navLinks.forEach(link => {
+                const linkPage = link.getAttribute('href').split('/').pop();
+
+                // Handle the special case for the home page (URL might be "/" or "index.php")
+                // and for all other pages.
+                if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.php')) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
