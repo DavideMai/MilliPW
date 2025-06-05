@@ -297,7 +297,7 @@
             
             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
             $sql = "SELECT * FROM Ospedali WHERE 1=1";
-            $params = []; //Commento per commit hehehehehehe
+            $params = [];
 
             // Costruisci la query dinamicamente in base ai campi compilati nel form
             if (isset($_GET['NomeOspedale']) && $_GET['NomeOspedale'] != '') {
