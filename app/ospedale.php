@@ -67,10 +67,12 @@
     }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
-        try {
+        
             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            
             if (isset($_GET['action']) && $_GET['action'] == 'edit'){
+                try {
                 $codiceDirettoreInserito = $_POST['codiceSanitarioDirettore'];
                 if (isCSDtaken($conn, $codiceDirettoreInserito, $_GET['id'])) {
                     $message = "Errore: Il codice sanitario del direttore fornito è già in uso da un altro ospedale.";
@@ -91,6 +93,10 @@
                     $message = "Ospedale modificato con successo!";
                     $messageType = 'success';
                 }
+            }catch(PDOException $e) {
+                $message = "Errore nella modifica: " . $e->getMessage();
+                $messageType = 'error';
+            }
             }else{
                 
                     
@@ -138,16 +144,8 @@
                         
 
                     }
-                }  
                 
-            }
-            
-            
-
-        } catch(PDOException $e) {
-            $message = "Errore nell'inserimento: " . $e->getMessage();
-            $messageType = 'error';
-        }
+            } 
     }
 
     $actionMessage = '<div class="formheader1"><h2>Aggiungi un nuovo ospedale</h2></div>';
