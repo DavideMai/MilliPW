@@ -92,13 +92,13 @@
                     $messageType = 'success';
                 }
             }else{
-                if ($_GET['action'] == 'deleteconfirm' && $_POST['action'] == 'delete'){
+                if ($_GET['action'] == 'delete'){
 
                     try {
                         //Ogni cancellazione avviene in una singola transazione così che eventuali errori non causino stati impossibili
                         $conn->beginTransaction();
 
-                        $idToDelete = $_POST['idDelete'];
+                        $idToDelete = $_GET['id'];
 
                         //Ricoveri dell'ospedale da rimuovere
                         $stmtGetRicoveri = $conn->prepare("SELECT IDRicovero FROM Ricoveri WHERE IDOspedale = :idOspedale");
@@ -348,8 +348,8 @@
                     echo "</td>";
 
                     echo "<td style='text-align: center;'>";
-                    echo "<a href='?action=deleteconfirm&id=" . htmlspecialchars($thisId) . "'
-                    class='delete-confirm-link' data-original-href='?action=deleteconfirm&id=" . htmlspecialchars($thisId) . "' ><svg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 -960 960 960' width='24px' fill='#8B1A10'><path class='icon-path-data' d='M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z'/></svg></a>";
+                    echo "<a href='?action=delete&id=" . htmlspecialchars($thisId) . "'
+                    class='delete-confirm-link' data-original-href='?action=delete&id=" . htmlspecialchars($thisId) . "' ><svg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 -960 960 960' width='24px' fill='#8B1A10'><path class='icon-path-data' d='M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z'/></svg></a>";
                     echo "</td>";
 
                     echo "</tr>";                    
