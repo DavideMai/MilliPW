@@ -94,7 +94,6 @@
             }else{
                 
                     
-                }else{
                     //Se non ci sono azioni settate allora si tratta di un inserimento
                     $codiceDirettoreInserito = $_POST['codiceSanitarioDirettore'];
 
