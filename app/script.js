@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const toggleIconLink = document.getElementById('deleteIcon');
-    const iconPath = document.getElementById('iconPath');
+    const deleteConfirmationLinks = document.querySelectorAll('.delete-confirm-link');
 
     // Dati dei path delle icone
     const iconPaths = {
@@ -8,32 +7,49 @@ document.addEventListener('DOMContentLoaded', function() {
         check: 'M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z'
     };
 
-    const redirectLink = '?action=deleteconfirm&id=';
+    // Itera su ogni link di eliminazione trovato nella pagina
+    deleteConfirmationLinks.forEach(link => {
+        let confirmationTimeout; // Per memorizzare il timer di revert
+        let isInConfirmationState = false; // Flag di stato per ogni singolo link
 
-    let isDeleteIcon = true;
+        // Trova l'elemento <path> all'interno dell'SVG di questo specifico link
+        const iconPathElement = link.querySelector('.icon-path-data');
+        const svgElement = link.querySelector('svg');
 
-    if (toggleIconLink && iconPath) { // Aggiungi un controllo per assicurarti che gli elementi esistano
-        toggleIconLink.addEventListener('click', function(event) {
-            // event.preventDefault(); // Rimuovi o commenta se il link deve comunque fare un'azione PHP
+        // Memorizza l'URL originale di eliminazione dal data-attribute
+        const originalActionHref = link.dataset.originalHref; // Accesso tramite dataset API
 
-            if (isDeleteIcon) {
-                toggleIconLink.setAttribute('href', redirectLink);
-                iconPath.setAttribute('d', iconPaths.check);
-                //iconPath.closest('svg').style.fill = '#4CAF50';
-                isDeleteIcon = false;
+        if (!iconPathElement || !svgElement || !originalActionHref) {
+            console.warn("Elementi SVG o URL originale non trovati per un link di eliminazione. Skipping:", link);
+            return; // Salta questo link se gli elementi necessari non sono presenti
+        }
+
+        link.addEventListener('click', function(event) {
+            event.preventDefault(); // Impedisce al browser di seguire subito il link
+
+            if (!isInConfirmationState) {
+                // PRIMO CLICK: Passa allo stato di conferma
+                iconPathElement.setAttribute('d', iconPaths.confirm);
+                svgElement.style.fill = confirmFillColor;
+                isInConfirmationState = true;
+
+                // Avvia il timer per tornare indietro dopo 3 secondi se non c'è un secondo click
+                confirmationTimeout = setTimeout(() => {
+                    iconPathElement.setAttribute('d', iconPaths.delete);
+                    svgElement.style.fill = originalFillColor;
+                    isInConfirmationState = false;
+                }, 3000); // 3000 ms = 3 secondi
             } else {
-                toggleIconLink.removeAttribute('href');
-                iconPath.setAttribute('d', iconPaths.delete);
-                //iconPath.closest('svg').style.fill = '#8B1A10';
-                isDeleteIcon = true;
-            }
+                // SECONDO CLICK: Esegui l'azione e reindirizza
+                clearTimeout(confirmationTimeout); // Annulla il timer, perché l'utente ha confermato
+                
+                // Opzionale: puoi aggiungere un'animazione o un messaggio "In elaborazione..."
+                // iconPathElement.setAttribute('d', iconPaths.processing); // Se hai un'icona di "loading"
+                // svgElement.style.fill = '#FFD700'; // Colore giallo per "in elaborazione"
 
-            // Opzionale: torna automaticamente allo stato iniziale dopo un po'
-            // setTimeout(function() {
-            //     iconPath.setAttribute('d', iconPaths.delete);
-            //     iconPath.closest('svg').style.fill = '#8B1A10';
-            //     isDeleteIcon = true;
-            // }, 1500);
+                // Esegui il reindirizzamento che attiverà l'eliminazione in PHP
+                window.location.href = originalActionHref;
+            }
         });
-    }
+    });
 });
