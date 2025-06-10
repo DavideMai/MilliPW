@@ -229,6 +229,7 @@
             $actionMessage = '<div class="formheader1"><h2>Aggiungi un nuovo ospedale</h2></div>';
         }
     }
+    }
 
     echo $actionMessage;    
     
