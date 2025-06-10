@@ -92,49 +92,7 @@
                     $messageType = 'success';
                 }
             }else{
-                if ($_GET['action'] == 'delete'){
-
-                    try {
-                        //Ogni cancellazione avviene in una singola transazione così che eventuali errori non causino stati impossibili
-                        $conn->beginTransaction();
-
-                        $idToDelete = $_GET['id'];
-
-                        //Ricoveri dell'ospedale da rimuovere
-                        $stmtGetRicoveri = $conn->prepare("SELECT IDRicovero FROM Ricoveri WHERE IDOspedale = :idOspedale");
-                        $stmtGetRicoveri->bindParam(':idOspedale', $idToDelete);
-                        $stmtGetRicoveri->execute();
-                        $ricoveriIds = $stmtGetRicoveri->fetchAll(PDO::FETCH_COLUMN, 0); 
-
-                        //Elimina i ricoveri da Ricovero_Patologie
-                        if (!empty($ricoveriIds)) {
-                            //Crea stringa di ricoveri da rimuovere
-                            $toRemove = implode(',', array_fill(0, count($ricoveriIds), '?'));
-
-                            $stmtRicoveroPatologie = $conn->prepare("DELETE FROM Ricovero_Patologie WHERE IDRicovero IN (" . $toRemove . ")");
-         
-                            $stmtRicoveroPatologie->execute($ricoveriIds);
-                        }
-
-                        //Rimuovi i ricoveri
-                        $stmtRicoveri = $conn->prepare("DELETE FROM Ricoveri WHERE IDOspedale = :idOspedale");
-                        $stmtRicoveri->bindParam(':idOspedale', $idToDelete);
-                        $stmtRicoveri->execute();
-
-                        //Rimuovi l'ospedale
-                        $stmtOspedale = $conn->prepare("DELETE FROM Ospedali WHERE IDOspedale = :idOspedale");
-                        $stmtOspedale->bindParam(':idOspedale', $idToDelete, PDO::PARAM_INT);
-                        $stmtOspedale->execute();
-
-                        $conn->commit(); //commit transazione
-
-                        $message = "Ospedale eliminato con successo!";
-                        header("Location: " . htmlspecialchars($_SERVER['PHP_SELF']));
-                    } catch (PDOException $e) {
-                        //Rollback se c'è stato un errore
-                        $conn->rollBack();
-                        $message = "Errore durante l'eliminazione: " . $e->getMessage();
-                    }
+                
                     
                 }else{
                     //Se non ci sono azioni settate allora si tratta di un inserimento
@@ -203,6 +161,50 @@
         $oldNumeroTelefonico = "";
         $oldCodiceDirettoreSanitario = "";
         
+        if ($_GET['action'] == 'delete'){
+
+        try {
+            //Ogni cancellazione avviene in una singola transazione così che eventuali errori non causino stati impossibili
+            $conn->beginTransaction();
+
+            $idToDelete = $_GET['id'];
+
+            //Ricoveri dell'ospedale da rimuovere
+            $stmtGetRicoveri = $conn->prepare("SELECT IDRicovero FROM Ricoveri WHERE IDOspedale = :idOspedale");
+            $stmtGetRicoveri->bindParam(':idOspedale', $idToDelete);
+            $stmtGetRicoveri->execute();
+            $ricoveriIds = $stmtGetRicoveri->fetchAll(PDO::FETCH_COLUMN, 0); 
+
+            //Elimina i ricoveri da Ricovero_Patologie
+            if (!empty($ricoveriIds)) {
+                //Crea stringa di ricoveri da rimuovere
+                $toRemove = implode(',', array_fill(0, count($ricoveriIds), '?'));
+
+                $stmtRicoveroPatologie = $conn->prepare("DELETE FROM Ricovero_Patologie WHERE IDRicovero IN (" . $toRemove . ")");
+
+                $stmtRicoveroPatologie->execute($ricoveriIds);
+            }
+
+            //Rimuovi i ricoveri
+            $stmtRicoveri = $conn->prepare("DELETE FROM Ricoveri WHERE IDOspedale = :idOspedale");
+            $stmtRicoveri->bindParam(':idOspedale', $idToDelete);
+            $stmtRicoveri->execute();
+
+            //Rimuovi l'ospedale
+            $stmtOspedale = $conn->prepare("DELETE FROM Ospedali WHERE IDOspedale = :idOspedale");
+            $stmtOspedale->bindParam(':idOspedale', $idToDelete, PDO::PARAM_INT);
+            $stmtOspedale->execute();
+
+            $conn->commit(); //commit transazione
+
+            $message = "Ospedale eliminato con successo!";
+            header("Location: " . htmlspecialchars($_SERVER['PHP_SELF']));
+        } catch (PDOException $e) {
+            //Rollback se c'è stato un errore
+            $conn->rollBack();
+            $message = "Errore durante l'eliminazione: " . $e->getMessage();
+        }
+
         if ($_GET['action'] == 'edit' && isset($_GET['id'])) {
             $idToEdit = $_GET['id'];
 
