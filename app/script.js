@@ -7,6 +7,10 @@ document.addEventListener('DOMContentLoaded', function() {
         check: 'M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z'
     };
 
+    const confirmFillColor = "#8B1A10";
+    const originalFillColor = "#8B1A10";
+
+
     // Itera su ogni link di eliminazione trovato nella pagina
     deleteConfirmationLinks.forEach(link => {
         let confirmationTimeout; // Per memorizzare il timer di revert
@@ -30,12 +34,14 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!isInConfirmationState) {
                 // PRIMO CLICK: Passa allo stato di conferma
                 iconPathElement.setAttribute('d', iconPaths.check);
-                isInConfirmationState = true;
+                svgElement.style.fill = confirmFillColor;
+                isInConfirmationState = true;            
 
                 // Avvia il timer per tornare indietro dopo 3 secondi se non c'è un secondo click
                 confirmationTimeout = setTimeout(() => {
                     iconPathElement.setAttribute('d', iconPaths.delete);
-                    isInConfirmationState = false;
+                    svgElement.style.fill = originalFillColor;
+                    isInConfirmationState = false;                   
                 }, 3000); // 3000 ms = 3 secondi
             } else {
                 // SECONDO CLICK: Esegui l'azione e reindirizza
