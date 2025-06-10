@@ -34,13 +34,13 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!isInConfirmationState) {
                 // PRIMO CLICK: Passa allo stato di conferma
                 iconPathElement.setAttribute('d', iconPaths.check);
-                svgElement.style.fill = confirmFillColor;
+                //svgElement.style.fill = confirmFillColor;
                 isInConfirmationState = true;            
 
                 // Avvia il timer per tornare indietro dopo 3 secondi se non c'è un secondo click
                 confirmationTimeout = setTimeout(() => {
                     iconPathElement.setAttribute('d', iconPaths.delete);
-                    svgElement.style.fill = originalFillColor;
+                    //svgElement.style.fill = originalFillColor;
                     isInConfirmationState = false;                   
                 }, 3000); // 3000 ms = 3 secondi
             } else {
