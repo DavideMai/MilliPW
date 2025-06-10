@@ -8,6 +8,11 @@ document.addEventListener('DOMContentLoaded', function() {
         check: 'M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z'
     };
 
+    const redirectLinks = {
+        delete: '',
+        check: '?action=deleteconfirm&id='
+    };
+
     let isDeleteIcon = true;
 
     if (toggleIconLink && iconPath) { // Aggiungi un controllo per assicurarti che gli elementi esistano
@@ -15,10 +20,12 @@ document.addEventListener('DOMContentLoaded', function() {
             // event.preventDefault(); // Rimuovi o commenta se il link deve comunque fare un'azione PHP
 
             if (isDeleteIcon) {
+                toggleIconLink.setAttribute('href', redirectLinks.check);
                 iconPath.setAttribute('d', iconPaths.check);
                 //iconPath.closest('svg').style.fill = '#4CAF50';
                 isDeleteIcon = false;
             } else {
+                toggleIconLink.setAttribute('href', redirectLinks.delete);
                 iconPath.setAttribute('d', iconPaths.delete);
                 //iconPath.closest('svg').style.fill = '#8B1A10';
                 isDeleteIcon = true;
