@@ -70,7 +70,7 @@
         
             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            
+            $message = "";
             if (isset($_GET['action']) && $_GET['action'] == 'edit'){
                 try {
                 $codiceDirettoreInserito = $_POST['codiceSanitarioDirettore'];
@@ -236,7 +236,7 @@
 
     
     <div class="forms-container">
-        <form method="POST">
+        <form>
         <div class="form-group"><label for="nomeOspedale">Nome Ospedale:</label>
                 <input type="text" id="nomeOspedale" name="nomeOspedale" required 
                 value="<?php echo htmlspecialchars($oldNomeOspedale); ?>">
@@ -269,18 +269,6 @@
                 ?>
         </form>
     </div>
-    
-    <?php if (isset($_GET['action']) && $_GET['action'] == 'deleteconfirm') { ?>    
-        <td>
-            <form method="POST" style="display:inline;">
-                <input type="hidden" name="action" value="delete">
-                <input type="hidden" name="idDelete" value="<?php echo htmlspecialchars($_GET['id']); ?>">
-                <button type="submit">Elimina</button>
-            </form>
-            <a href='https://programmazionewebmaidavi.altervista.org/app/ospedale.php'> Annulla </a>
-        </td>
-        
-    <?php } ?>
 
     <?php if ($message): // Mostra il messaggio se esiste ?>
         <div class="message <?php echo $messageType; ?>">
