@@ -264,7 +264,7 @@
                 <button type="submit">Inserisci Ospedale</button>
                  <?php
                     if (isset($_GET['action']) && $_GET['action'] == 'edit'){
-                        echo "<button type='button' onclick='window.location.href='ospedale.php''> Annulla </button>";
+                        echo "<button type='button' href='https://programmazionewebmaidavi.altervista.org/app/ospedale.php'> Annulla </button>";
                     }
                 ?>
         </form>
