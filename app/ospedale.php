@@ -148,7 +148,7 @@
             } 
     }
 
-    $actionMessage = '<div class="formheader1"><h2>Aggiungi un nuovo ospedale</h2></div>';
+    
     if (isset($_GET['action'])) {
 
         $oldNomeOspedale = "";
@@ -201,7 +201,7 @@
             $conn->rollBack();
             $message = "Errore durante l'eliminazione: " . $e->getMessage();
         }
-
+    }
         if ($_GET['action'] == 'edit' && isset($_GET['id'])) {
             $idToEdit = $_GET['id'];
 
@@ -224,11 +224,10 @@
             } else {
                 //non deve mai finire qui, se succede allora c'è un id inesistente nel link
             }           
-        } else{
-
-            $actionMessage = '<div class="formheader1"><h2>Aggiungi un nuovo ospedale</h2></div>';
         }
-    }
+    }else{
+        //Se non ci sono azioni, si tratta di un inserimento
+        $actionMessage = '<div class="formheader1"><h2>Aggiungi un nuovo ospedale</h2></div>';
     }
 
     echo $actionMessage;    
