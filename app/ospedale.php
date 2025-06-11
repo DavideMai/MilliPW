@@ -128,7 +128,7 @@
 
                             $stmt->execute();
 
-                            $message = "Nuovo ospedale aggiunto con successo! ID: " . $insertedId;
+                            $message = "Nuovo ospedale aggiunto con successo!";
                             $messageType = 'success';
                         }catch(PDOException $e){
                             $message = "Errore nell'inserimento: " . $e->getMessage();
