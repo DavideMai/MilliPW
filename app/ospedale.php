@@ -72,6 +72,12 @@
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $message = "";
             if (isset($_GET['action']) && $_GET['action'] == 'edit'){
+
+                //Controllo se si è premuto il tasto annulla e reindirizza in caso
+                if ($_POST['annulla'] == 'annulla'){
+                    header("Location: " . htmlspecialchars($_SERVER['PHP_SELF']));
+                }
+
                 try {
                 $codiceDirettoreInserito = $_POST['codiceSanitarioDirettore'];
                 if (isCSDtaken($conn, $codiceDirettoreInserito, $_GET['id'])) {
@@ -236,7 +242,7 @@
 
     
     <div class="forms-container">
-        <form>
+        <form method="POST">
         <div class="form-group"><label for="nomeOspedale">Nome Ospedale:</label>
                 <input type="text" id="nomeOspedale" name="nomeOspedale" required 
                 value="<?php echo htmlspecialchars($oldNomeOspedale); ?>">
@@ -264,7 +270,7 @@
                 <button type="submit">Inserisci Ospedale</button>
                  <?php
                     if (isset($_GET['action']) && $_GET['action'] == 'edit'){
-                        echo "<button href='https://programmazionewebmaidavi.altervista.org/app/ospedale.php'> Annulla </button>";
+                        echo "<button id='annulla' value='annulla'> Annulla </button>";
                     }
                 ?>
         </form>
