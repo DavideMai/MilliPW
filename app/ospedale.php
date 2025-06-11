@@ -261,11 +261,14 @@
                 <input type="text" id="codiceSanitarioDirettore" name="codiceSanitarioDirettore" required 
                 value="<?php echo htmlspecialchars($oldCodiceDirettoreSanitario); ?>">
         </div>
-                <button type="submit">Inserisci Ospedale</button>
+                
                  <?php
                     if (isset($_GET['action']) && $_GET['action'] == 'edit'){?>
-                        <button type="button" onclick="window.location.href='ospedale.php'"> Annulla </button>";
-                   <?php }?>
+                        <button type="submit">Modifica Ospedale</button>
+                        <button type="button" onclick="window.location.href='ospedale.php'"> Annulla </button>
+                   <?php }else{?>
+                        <button type="submit">Aggiungi Ospedale</button>
+                    <?php }?>
         </form>
     </div>
 
