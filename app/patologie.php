@@ -28,39 +28,49 @@
     <?php
     include 'connect.php';
 
-    if (!$error) {
+    if (!isset($error) || !$error) { // Assicurati che $error sia definita e non true
         try {
-            $sql = "SELECT * FROM Patologie WHERE 1=1";
+            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $sql = "SELECT P.IDPatologia, P.NomePatologia, P.Tipologia, COUNT(RP.IDRicovero) AS NumeroRicoveri
+                    FROM Patologie P
+                    LEFT JOIN Ricovero_Patologie RP ON P.IDPatologia = RP.IDPatologia
+                    WHERE 1=1";
             $params = [];
 
             // Costruisci la query dinamicamente in base ai campi compilati nel form
             if (isset($_GET['NomePatologia']) && $_GET['NomePatologia'] != '') {
-                $sql .= " AND NomePatologia LIKE :NomePatologia";
+                $sql .= " AND P.NomePatologia LIKE :NomePatologia";
                 $params[':NomePatologia'] = '%' . $_GET['NomePatologia'] . '%';
             }
             if (isset($_GET['Tipologia']) && $_GET['Tipologia'] != '') {
-                $sql .= " AND Tipologia LIKE :Tipologia";
+                $sql .= " AND P.Tipologia LIKE :Tipologia";
                 $params[':Tipologia'] = '%' . $_GET['Tipologia'] . '%';
             }
 
+            $sql .= " GROUP BY P.IDPatologia"; // Raggruppa per patologia per contare i ricoveri
 
             $stmt = $conn->prepare($sql);
             $stmt->execute($params);
             $patologie = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-
             if (count ($patologie) > 0) {
                 echo "<table>";
                 echo "<thead><tr>";
-                $firstRow = $patologie[0];
-                foreach   (  $firstRow as $colonna => $valore) {
+                foreach ($patologie[0] as $colonna => $valore) {
                     if ($colonna != "IDPatologia") {  // Escludi la colonna IDPatologia
-                        echo "<th>" . htmlspecialchars($colonna) . "</th>";
+                        // Renome la colonna NumeroRicoveri per una migliore leggibilità
+                        if ($colonna == "NumeroRicoveri") {
+                            echo "<th>Numero Ricoveri</th>";
+                        } else {
+                            echo "<th>" . htmlspecialchars($colonna) . "</th>";
+                        }
                     }
                 }
                 echo "</tr></thead><tbody>";
 
-                foreach    ( $patologie as $patologia) {
+                foreach ($patologie as $patologia) {
                     echo "<tr>";
                     foreach ($patologia as $colonna => $valore) {
                         if ($colonna != "IDPatologia") {  // Escludi la colonna IDPatologia
