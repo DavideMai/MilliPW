@@ -46,7 +46,6 @@
 
         <div class="form-group">
         <button type="submit">Cerca Ricoveri</button>
-        <button onclick="window.location.href='ricoveri.php'">Mostra Tutti</button>
         </div>
     </form>
     </div>
