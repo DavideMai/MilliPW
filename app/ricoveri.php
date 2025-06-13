@@ -110,6 +110,7 @@
                         echo "<th>" . htmlspecialchars($colonna) . "</th>";
                     }
                 }
+                echo "<th>Numero Patologie</th>"; // Nuova colonna per il conteggio
                 echo "<th>Patologie Associate</th>";
                 echo "</tr></thead><tbody>";
 
@@ -130,13 +131,17 @@
                     $stmtPatologie->execute([':IDRicovero' => $idRicoveroCorrente]);
                     $patologieAssociate = $stmtPatologie->fetchAll(PDO::FETCH_COLUMN, 0);
 
+                    // Aggiungi la nuova cella per il numero di patologie
+                    echo "<td>" . count($patologieAssociate) . "</td>";
+
+                    // Cella esistente per l'elenco delle patologie
                     echo "<td>";
                     if (!empty($patologieAssociate)) {
-                        echo "<ul>"; // Inizia l'elenco puntato
+                        echo "<ul>";
                         foreach (array_map('htmlspecialchars', $patologieAssociate) as $patologiaNome) {
-                            echo "<li>" . $patologiaNome . "</li>"; // Ogni patologia è un elemento dell'elenco
+                            echo "<li>" . $patologiaNome . "</li>";
                         }
-                        echo "</ul>"; // Chiude l'elenco puntato
+                        echo "</ul>";
                     } else {
                         echo "Nessuna";
                     }
