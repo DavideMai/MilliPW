@@ -67,10 +67,12 @@
     }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
-        try {
+        
             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $message = "";
             if (isset($_GET['action']) && $_GET['action'] == 'edit'){
+                try {
                 $codiceDirettoreInserito = $_POST['codiceSanitarioDirettore'];
                 if (isCSDtaken($conn, $codiceDirettoreInserito, $_GET['id'])) {
                     $message = "Errore: Il codice sanitario del direttore fornito è già in uso da un altro ospedale.";
@@ -91,52 +93,13 @@
                     $message = "Ospedale modificato con successo!";
                     $messageType = 'success';
                 }
+            }catch(PDOException $e) {
+                $message = "Errore nella modifica: " . $e->getMessage();
+                $messageType = 'error';
+            }
             }else{
-                if ($_GET['action'] == 'deleteconfirm' && $_POST['action'] == 'delete'){
-
-                    try {
-                        //Ogni cancellazione avviene in una singola transazione così che eventuali errori non causino stati impossibili
-                        $conn->beginTransaction();
-
-                        $idToDelete = $_POST['idDelete'];
-
-                        //Ricoveri dell'ospedale da rimuovere
-                        $stmtGetRicoveri = $conn->prepare("SELECT IDRicovero FROM Ricoveri WHERE IDOspedale = :idOspedale");
-                        $stmtGetRicoveri->bindParam(':idOspedale', $idToDelete);
-                        $stmtGetRicoveri->execute();
-                        $ricoveriIds = $stmtGetRicoveri->fetchAll(PDO::FETCH_COLUMN, 0); 
-
-                        //Elimina i ricoveri da Ricovero_Patologie
-                        if (!empty($ricoveriIds)) {
-                            //Crea stringa di ricoveri da rimuovere
-                            $toRemove = implode(',', array_fill(0, count($ricoveriIds), '?'));
-
-                            $stmtRicoveroPatologie = $conn->prepare("DELETE FROM Ricovero_Patologie WHERE IDRicovero IN (" . $toRemove . ")");
-         
-                            $stmtRicoveroPatologie->execute($ricoveriIds);
-                        }
-
-                        //Rimuovi i ricoveri
-                        $stmtRicoveri = $conn->prepare("DELETE FROM Ricoveri WHERE IDOspedale = :idOspedale");
-                        $stmtRicoveri->bindParam(':idOspedale', $idToDelete);
-                        $stmtRicoveri->execute();
-
-                        //Rimuovi l'ospedale
-                        $stmtOspedale = $conn->prepare("DELETE FROM Ospedali WHERE IDOspedale = :idOspedale");
-                        $stmtOspedale->bindParam(':idOspedale', $idToDelete, PDO::PARAM_INT);
-                        $stmtOspedale->execute();
-
-                        $conn->commit(); //commit transazione
-
-                        $message = "Ospedale eliminato con successo!";
-                        header("Location: " . htmlspecialchars($_SERVER['PHP_SELF']));
-                    } catch (PDOException $e) {
-                        //Rollback se c'è stato un errore
-                        $conn->rollBack();
-                        $message = "Errore durante l'eliminazione: " . $e->getMessage();
-                    }
+                
                     
-                }else{
                     //Se non ci sono azioni settate allora si tratta di un inserimento
                     $codiceDirettoreInserito = $_POST['codiceSanitarioDirettore'];
 
@@ -165,7 +128,7 @@
 
                             $stmt->execute();
 
-                            $message = "Nuovo ospedale aggiunto con successo! ID: " . $insertedId;
+                            $message = "Nuovo ospedale aggiunto con successo!";
                             $messageType = 'success';
                         }catch(PDOException $e){
                             $message = "Errore nell'inserimento: " . $e->getMessage();
@@ -181,19 +144,11 @@
                         
 
                     }
-                }  
                 
-            }
-            
-            
-
-        } catch(PDOException $e) {
-            $message = "Errore nell'inserimento: " . $e->getMessage();
-            $messageType = 'error';
-        }
+            } 
     }
 
-    $actionMessage = '<div class="formheader1"><h2>Aggiungi un nuovo ospedale</h2></div>';
+    
     if (isset($_GET['action'])) {
 
         $oldNomeOspedale = "";
@@ -203,6 +158,50 @@
         $oldNumeroTelefonico = "";
         $oldCodiceDirettoreSanitario = "";
         
+        if ($_GET['action'] == 'delete'){
+
+        try {
+            //Ogni cancellazione avviene in una singola transazione così che eventuali errori non causino stati impossibili
+            $conn->beginTransaction();
+
+            $idToDelete = $_GET['id'];
+
+            //Ricoveri dell'ospedale da rimuovere
+            $stmtGetRicoveri = $conn->prepare("SELECT IDRicovero FROM Ricoveri WHERE IDOspedale = :idOspedale");
+            $stmtGetRicoveri->bindParam(':idOspedale', $idToDelete);
+            $stmtGetRicoveri->execute();
+            $ricoveriIds = $stmtGetRicoveri->fetchAll(PDO::FETCH_COLUMN, 0); 
+
+            //Elimina i ricoveri da Ricovero_Patologie
+            if (!empty($ricoveriIds)) {
+                //Crea stringa di ricoveri da rimuovere
+                $toRemove = implode(',', array_fill(0, count($ricoveriIds), '?'));
+
+                $stmtRicoveroPatologie = $conn->prepare("DELETE FROM Ricovero_Patologie WHERE IDRicovero IN (" . $toRemove . ")");
+
+                $stmtRicoveroPatologie->execute($ricoveriIds);
+            }
+
+            //Rimuovi i ricoveri
+            $stmtRicoveri = $conn->prepare("DELETE FROM Ricoveri WHERE IDOspedale = :idOspedale");
+            $stmtRicoveri->bindParam(':idOspedale', $idToDelete);
+            $stmtRicoveri->execute();
+
+            //Rimuovi l'ospedale
+            $stmtOspedale = $conn->prepare("DELETE FROM Ospedali WHERE IDOspedale = :idOspedale");
+            $stmtOspedale->bindParam(':idOspedale', $idToDelete, PDO::PARAM_INT);
+            $stmtOspedale->execute();
+
+            $conn->commit(); //commit transazione
+
+            $message = "Ospedale eliminato con successo!";
+            header("Location: " . htmlspecialchars($_SERVER['PHP_SELF']));
+        } catch (PDOException $e) {
+            //Rollback se c'è stato un errore
+            $conn->rollBack();
+            $message = "Errore durante l'eliminazione: " . $e->getMessage();
+        }
+    }
         if ($_GET['action'] == 'edit' && isset($_GET['id'])) {
             $idToEdit = $_GET['id'];
 
@@ -225,10 +224,10 @@
             } else {
                 //non deve mai finire qui, se succede allora c'è un id inesistente nel link
             }           
-        } else{
-
-            $actionMessage = '<div class="formheader1"><h2>Aggiungi un nuovo ospedale</h2></div>';
         }
+    }else{
+        //Se non ci sono azioni, si tratta di un inserimento
+        $actionMessage = '<div class="formheader1"><h2>Aggiungi un nuovo ospedale</h2></div>';
     }
 
     echo $actionMessage;    
@@ -262,26 +261,16 @@
                 <input type="text" id="codiceSanitarioDirettore" name="codiceSanitarioDirettore" required 
                 value="<?php echo htmlspecialchars($oldCodiceDirettoreSanitario); ?>">
         </div>
-                <button type="submit">Inserisci Ospedale</button>
+                
                  <?php
-                    if (isset($_GET['action']) && $_GET['action'] == 'edit'){
-                        echo "<button href='https://programmazionewebmaidavi.altervista.org/app/ospedale.php'> Annulla </button>";
-                    }
-                ?>
+                    if (isset($_GET['action']) && $_GET['action'] == 'edit'){?>
+                        <button type="submit">Modifica Ospedale</button>
+                        <button type="button" onclick="window.location.href='ospedale.php'"> Annulla </button>
+                   <?php }else{?>
+                        <button type="submit">Aggiungi Ospedale</button>
+                    <?php }?>
         </form>
     </div>
-    
-    <?php if (isset($_GET['action']) && $_GET['action'] == 'deleteconfirm') { ?>    
-        <td>
-            <form method="POST" style="display:inline;">
-                <input type="hidden" name="action" value="delete">
-                <input type="hidden" name="idDelete" value="<?php echo htmlspecialchars($_GET['id']); ?>">
-                <button type="submit">Elimina</button>
-            </form>
-            <a href='https://programmazionewebmaidavi.altervista.org/app/ospedale.php'> Annulla </a>
-        </td>
-        
-    <?php } ?>
 
     <?php if ($message): // Mostra il messaggio se esiste ?>
         <div class="message <?php echo $messageType; ?>">
@@ -291,54 +280,62 @@
 
 
 
-<?php
-    if (!$error) {
+    <?php
+    if (!isset($error) || !$error) { // Assicurati che $error sia definita e non true
         try {
-            
             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-            $sql = "SELECT * FROM Ospedali WHERE 1=1";
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $sql = "SELECT O.IDOspedale, O.NomeOspedale, O.Indirizzo, O.NumeroCivico, O.Citta, O.NumeroTelefono, O.CodiceSanitarioDirettore, COUNT(R.IDRicovero) AS NumeroRicoveri
+                    FROM Ospedali O
+                    LEFT JOIN Ricoveri R ON O.IDOspedale = R.IDOspedale
+                    WHERE 1=1";
             $params = [];
 
             // Costruisci la query dinamicamente in base ai campi compilati nel form
             if (isset($_GET['NomeOspedale']) && $_GET['NomeOspedale'] != '') {
-                $sql .= " AND NomeOspedale LIKE :NomeOspedale";
+                $sql .= " AND O.NomeOspedale LIKE :NomeOspedale";
                 $params[':NomeOspedale'] = '%' . $_GET['NomeOspedale'] . '%';
             }
             if (isset($_GET['Citta']) && $_GET['Citta'] != '') {
-                $sql .= " AND Citta LIKE :Citta";
+                $sql .= " AND O.Citta LIKE :Citta";
                 $params[':Citta'] = '%' . $_GET['Citta'] . '%';
             }
             if (isset($_GET['Indirizzo']) && $_GET['Indirizzo'] != '') {
-                $sql .= " AND Indirizzo LIKE :Indirizzo";
+                $sql .= " AND O.Indirizzo LIKE :Indirizzo";
                 $params[':Indirizzo'] = '%' . $_GET['Indirizzo'] . '%';
             }
             
+            $sql .= " GROUP BY O.IDOspedale"; // Raggruppa per ospedale per contare i ricoveri
 
             $stmt = $conn->prepare($sql);
             $stmt->execute($params);
             $ospedali = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-
             if (count ($ospedali) > 0) {
                 echo "<table>";
                 echo "<thead><tr>";
-                $firstRow = $ospedali[0];
-                foreach   (  $firstRow as $colonna => $valore) {
+                foreach ($ospedali[0] as $colonna => $valore) {
                     if ($colonna != "IDOspedale") { // Escludi la colonna IDOspedale
-                        echo "<th>" . htmlspecialchars($colonna) . "</th>";
+                        // Renome la colonna NumeroRicoveri per una migliore leggibilità
+                        if ($colonna == "NumeroRicoveri") {
+                            echo "<th>Numero Ricoveri</th>";
+                        } else {
+                            echo "<th>" . htmlspecialchars($colonna) . "</th>";
+                        }
                     }
                 }
                 echo "<th>Modifica</th>"; // Aggiungi intestazione per la colonna Modifica
                 echo "<th>Elimina</th>"; // Aggiungi intestazione per la colonna Elimina
                 echo "</tr></thead><tbody>";
 
-                foreach    ( $ospedali as $ospedale) {
+                foreach ($ospedali as $ospedale) {
                     echo "<tr>";
                     $thisId = 0;
                     foreach ($ospedale as $colonna => $valore) {
                         if ($colonna != "IDOspedale") { // Escludi la colonna IDOspedale
                             echo "<td>" . htmlspecialchars($valore) . "</td>";
-                        }else{
+                        } else {
                             $thisId = $valore;
                         }
                     }
@@ -348,7 +345,8 @@
                     echo "</td>";
 
                     echo "<td style='text-align: center;'>";
-                    echo "<a href='?action=deleteconfirm&id=" . htmlspecialchars($thisId) . "'><svg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 -960 960 960' width='24px' fill='#8B1A10'><path d='M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z'/></svg></a>";
+                    echo "<a href='?action=delete&id=" . htmlspecialchars($thisId) . "'
+                    class='delete-confirm-link' data-original-href='?action=delete&id=" . htmlspecialchars($thisId) . "' ><svg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 -960 960 960' width='24px' fill='#8B1A10'><path class='icon-path-data' d='M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z'/></svg></a>";
                     echo "</td>";
 
                     echo "</tr>";                    
@@ -362,9 +360,10 @@
             echo "Errore durante la ricerca: " . $e->getMessage();
         }
     }
-    ?>
+?>
 <?php
     include 'footer.html';
 ?>
+<script src="script.js"></script> 
 </body>
 </html>
