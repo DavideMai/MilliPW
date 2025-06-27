@@ -1,0 +1,79 @@
+{% extends "hospital/base.html" %}
+
+{% block title %}Ricerca Cittadini{% endblock %}
+
+{% block content %}
+    <div class="formheader2"><h2>Ricerca Cittadini</h2></div>
+    <div class="forms-container">
+        <form method="GET" action="{% url 'cittadino_list' %}">
+            <div class="form-group">
+                <label for="CSSN">CSSN:</label>
+                <input type="text" name="CSSN" id="CSSN" value="{{ get_params.CSSN|default:'' }}">
+            </div>
+
+            <div class="form-group">
+                <label for="Nome">Nome:</label>
+                <input type="text" name="Nome" id="Nome" value="{{ get_params.Nome|default:'' }}">
+            </div>
+
+            <div class="form-group">
+                <label for="Cognome">Cognome:</label>
+                <input type="text" name="Cognome" id="Cognome" value="{{ get_params.Cognome|default:'' }}">
+            </div>
+
+            <div class="form-group">
+                <label for="Indirizzo">Indirizzo:</label>
+                <input type="text" name="Indirizzo" id="Indirizzo" value="{{ get_params.Indirizzo|default:'' }}">
+            </div>
+
+            <div class="form-group">
+                <label for="NumeroCivico">Numero civico:</label>
+                <input type="number" name="NumeroCivico" id="NumeroCivico" value="{{ get_params.NumeroCivico|default:'' }}">
+            </div>
+
+            <div class="form-group">
+                <label for="LuogoNascita">Luogo di nascita:</label>
+                <input type="text" name="LuogoNascita" id="LuogoNascita" value="{{ get_params.LuogoNascita|default:'' }}">
+            </div>
+
+            <div class="form-group">
+                <label for="DataNascita">Data di nascita:</label>
+                <input type="date" name="DataNascita" id="DataNascita" value="{{ get_params.DataNascita|default:'' }}">
+            </div>
+            
+            <button type="submit">Cerca Cittadini</button>
+        </form>
+    </div>
+
+    {% if cittadini %}
+        <table>
+            <thead>
+                <tr>
+                    <th>CSSN</th>
+                    <th>Nome</th>
+                    <th>Cognome</th>
+                    <th>Indirizzo</th>
+                    <th>Numero Civico</th>
+                    <th>Luogo Nascita</th>
+                    <th>Data Nascita</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cittadino in cittadini %}
+                    <tr>
+                        <td>{{ cittadino.cssn }}</td>
+                        <td>{{ cittadino.nome }}</td>
+                        <td>{{ cittadino.cognome }}</td>
+                        <td>{{ cittadino.indirizzo }}</td>
+                        <td>{{ cittadino.numero_civico }}</td>
+                        <td>{{ cittadino.luogo_nascita }}</td>
+                        <td>{{ cittadino.data_nascita|date:"d/m/Y" }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class='noresult'>Nessun cittadino trovato con i criteri di ricerca specificati.</p>
+    {% endif %}
+
+{% endblock %}

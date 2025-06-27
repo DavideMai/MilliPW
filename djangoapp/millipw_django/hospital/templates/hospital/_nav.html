@@ -1,0 +1,12 @@
+<nav class="navbar">
+    <div class="navbar-container">
+        <a href="{% url 'home' %}" class="navbar-brand">AZIENDA OSPEDALIERA S.P.A.</a>
+        <ul class="navbar-menu">
+            <li class="navbar-item"><a href="{% url 'home' %}" class="navbar-link {% if active_page == 'home' %}active{% endif %}">Home</a></li>
+            <li class="navbar-item"><a href="{% url 'ospedale_list' %}" class="navbar-link {% if active_page == 'ospedali' %}active{% endif %}">Ospedali</a></li>
+            <li class="navbar-item"><a href="{% url 'patologia_list' %}" class="navbar-link {% if active_page == 'patologie' %}active{% endif %}">Patologie</a></li>
+            <li class="navbar-item"><a href="{% url 'ricovero_list' %}" class="navbar-link {% if active_page == 'ricoveri' %}active{% endif %}">Ricoveri</a></li>
+            <li class="navbar-item"><a href="{% url 'cittadino_list' %}" class="navbar-link {% if active_page == 'cittadini' %}active{% endif %}">Cittadini</a></li>
+        </ul>
+    </div>
+</nav>

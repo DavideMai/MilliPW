@@ -1,0 +1,46 @@
+{% extends "hospital/base.html" %}
+
+{% block title %}Ricerca Patologie{% endblock %}
+
+{% block content %}
+    <div class="formheader2"><h2>Ricerca Patologie</h2></div>
+
+    <div class="forms-container">
+        <form method="GET" action="{% url 'patologia_list' %}">
+            <div class="form-group">
+                <label for="NomePatologia">Nome Patologia:</label>
+                <input type="text" name="NomePatologia" id="NomePatologia" value="{{ get_params.NomePatologia|default:'' }}">
+            </div>
+
+            <div class="form-group">
+                <label for="Tipologia">Tipologia:</label>
+                <input type="text" name="Tipologia" id="Tipologia" value="{{ get_params.Tipologia|default:'' }}">
+            </div>
+
+            <button type="submit">Cerca Patologie</button>
+        </form>
+    </div>
+
+    {% if patologie %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome Patologia</th>
+                    <th>Tipologia</th>
+                    <th>Numero Ricoveri</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for patologia in patologie %}
+                <tr>
+                    <td>{{ patologia.nome_patologia }}</td>
+                    <td>{{ patologia.tipologia }}</td>
+                    <td>{{ patologia.numero_ricoveri }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class='noresult'>Nessuna patologia trovata con i criteri di ricerca specificati.</p>
+    {% endif %}
+{% endblock %}

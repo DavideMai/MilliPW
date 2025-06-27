@@ -1,0 +1,134 @@
+{% extends "hospital/base.html" %}
+{% load static %}
+
+{% block title %}Gestione Ospedali{% endblock %}
+
+{% block content %}
+    <!-- Search Form -->
+    <div class="formheader2"><h2>Ricerca Ospedali</h2></div>
+    <div class="forms-container">
+        <form method="GET" action="{% url 'ospedale_list' %}">
+            <div class="form-group">
+                <label for="NomeOspedale">Nome:</label>
+                <input type="text" name="NomeOspedale" id="NomeOspedale" value="{{ get_params.NomeOspedale|default:'' }}">
+            </div>
+            <div class="form-group">
+                <label for="Citta">Città:</label>
+                <input type="text" name="Citta" id="Citta" value="{{ get_params.Citta|default:'' }}">
+            </div>
+            <div class="form-group">
+                <label for="Indirizzo">Indirizzo:</label>
+                <input type="text" name="Indirizzo" id="Indirizzo" value="{{ get_params.Indirizzo|default:'' }}">
+            </div>
+            <button type="submit">Cerca Ospedali</button>
+        </form>
+    </div>
+
+    <!-- Add/Edit Form -->
+    {% if edit_instance %}
+        <div class="formheader1"><h2>Modifica i dati dell'ospedale: {{ edit_instance.nome_ospedale }}</h2></div>
+    {% else %}
+        <div class="formheader1"><h2>Aggiungi un nuovo ospedale</h2></div>
+    {% endif %}
+    
+    <div class="forms-container">
+        {# Determine the form action URL based on whether we are editing or creating #}
+        <form method="POST" action="{% if edit_instance %}{% url 'ospedale_edit' pk=edit_instance.pk %}{% else %}{% url 'ospedale_new' %}{% endif %}">
+            {% csrf_token %}
+            
+            {# Django form errors #}
+            {% if form.non_field_errors %}
+                <div class="alert alert-danger" style="width: 100%;">
+                    {% for error in form.non_field_errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            {% for field in form %}
+                <div class="form-group">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {% if field.errors %}
+                        <div class="errorlist" style="color: red; font-size: 0.8em; width: 100%;">
+                        {% for error in field.errors %}
+                            {{ error }}
+                        {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            
+            {% if edit_instance %}
+                <button type="submit">Modifica Ospedale</button>
+                <a href="{% url 'ospedale_cancel_edit' %}" class="button-like-link" style="padding: 10px 20px; background-color: grey; color: white; border-radius: 5px; text-decoration: none;">Annulla</a>
+            {% else %}
+                <button type="submit">Aggiungi Ospedale</button>
+            {% endif %}
+        </form>
+    </div>
+
+    <!-- Messages from Django's messages framework -->
+    {% if messages %}
+        <div style="text-align: center; margin: 20px;">
+        {% for message in messages %}
+            <div class="message {{ message.tags }}" style="padding: 10px; border-radius: 5px; background-color: {% if message.tags == 'success' %}#d4edda{% else %}#f8d7da{% endif %}; color: {% if message.tags == 'success' %}#155724{% else %}#721c24{% endif %}; border: 1px solid {% if message.tags == 'success' %}#c3e6cb{% else %}#f5c6cb{% endif %};">
+                {{ message }}
+            </div>
+        {% endfor %}
+        </div>
+    {% endif %}
+
+
+    <!-- Results Table -->
+    {% if ospedali %}
+        <table>
+            <thead>
+                <tr>
+                    <th>NomeOspedale</th>
+                    <th>Indirizzo</th>
+                    <th>NumeroCivico</th>
+                    <th>Citta</th>
+                    <th>NumeroTelefono</th>
+                    <th>CodiceSanitarioDirettore</th>
+                    <th>Numero Ricoveri</th>
+                    <th>Modifica</th>
+                    <th>Elimina</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ospedale in ospedali %}
+                <tr>
+                    <td>{{ ospedale.nome_ospedale }}</td>
+                    <td>{{ ospedale.indirizzo }}</td>
+                    <td>{{ ospedale.numero_civico }}</td>
+                    <td>{{ ospedale.citta }}</td>
+                    <td>{{ ospedale.numero_telefono }}</td>
+                    <td>{{ ospedale.codice_sanitario_direttore.cssn }}</td>
+                    <td>{{ ospedale.numero_ricoveri }}</td>
+                    
+                    <td style='text-align: center;'>
+                        <a href="{% url 'ospedale_edit' pk=ospedale.id_ospedale %}">
+                            <svg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 -960 960 960' width='24px' fill='#8B1A10'><path d='M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z'/></svg>
+                        </a>
+                    </td>
+
+                    <td style='text-align: center;'>
+                        <a href="#" 
+                           class='delete-confirm-link' 
+                           data-original-href="{% url 'ospedale_delete' pk=ospedale.id_ospedale %}">
+                            <svg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 -960 960 960' width='24px' fill='#8B1A10'><path class='icon-path-data' d='M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z'/></svg>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class='noresult'>Nessun ospedale trovato con i criteri di ricerca specificati.</p>
+    {% endif %}
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/script.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends "hospital/base.html" %}
+
+{% block title %}Elenco Ricoveri{% endblock %}
+
+{% block extra_head %}
+    <style>
+        td ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="formheader2"><h2>Ricerca Ricoveri</h2></div>
+    <div class="forms-container">
+        <form method="GET" action="{% url 'ricovero_list' %}">
+            <div class="form-group">
+                <label for="CSSNCittadino">CSSN Cittadino:</label>
+                <input type="text" name="CSSNCittadino" id="CSSNCittadino" value="{{ get_params.CSSNCittadino|default:'' }}">
+            </div>
+            
+            <div class="form-group">
+                <label for="NomeOspedale">Nome Ospedale:</label>
+                <input type="text" name="NomeOspedale" id="NomeOspedale" value="{{ get_params.NomeOspedale|default:'' }}">
+            </div>
+            
+            <div class="form-group">
+                <label for="DataRicovero">Data Ricovero:</label>
+                <input type="date" name="DataRicovero" id="DataRicovero" value="{{ get_params.DataRicovero|default:'' }}">
+            </div>
+            
+            <div class="form-group">
+                <label for="DurataRicovero">Durata Ricovero:</label>
+                <input type="number" name="DurataRicovero" id="DurataRicovero" value="{{ get_params.DurataRicovero|default:'' }}">
+            </div>
+            
+            <div class="form-group">
+                <label for="CostoRicovero">Costo Ricovero:</label>
+                <input type="number" step="0.01" name="CostoRicovero" id="CostoRicovero" value="{{ get_params.CostoRicovero|default:'' }}">
+            </div>
+            
+            <div class="form-group">
+                <label for="MotivoRicovero">Motivo Ricovero:</label>
+                <input type="text" name="MotivoRicovero" id="MotivoRicovero" value="{{ get_params.MotivoRicovero|default:'' }}">
+            </div>
+
+            <button type="submit">Cerca Ricoveri</button>
+        </form>
+    </div>
+
+    {% if ricoveri %}
+        <table>
+            <thead>
+                <tr>
+                    <th>CSSNCittadino</th>
+                    <th>NomeOspedale</th>
+                    <th>DataRicovero</th>
+                    <th>DurataRicovero</th>
+                    <th>CostoRicovero</th>
+                    <th>MotivoRicovero</th>
+                    <th>Numero Patologie</th>
+                    <th>Patologie Associate</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ricovero in ricoveri %}
+                    <tr>
+                        <td>{{ ricovero.cittadino.cssn|default:"N/A" }}</td>
+                        <td>{{ ricovero.ospedale.nome_ospedale }}</td>
+                        <td>{{ ricovero.data_ricovero|date:"d/m/Y" }}</td>
+                        <td>{{ ricovero.durata_ricovero }}</td>
+                        <td>€{{ ricovero.costo_ricovero|default:"0.00" }}</td>
+                        <td>{{ ricovero.motivo_ricovero }}</td>
+                        <td>{{ ricovero.patologie.count }}</td>
+                        <td>
+                            {% if ricovero.patologie.all %}
+                                <ul>
+                                {% for patologia in ricovero.patologie.all %}
+                                    <li>{{ patologia.nome_patologia }}</li>
+                                {% endfor %}
+                                </ul>
+                            {% else %}
+                                Nessuna
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class='noresult'>Nessun ricovero trovato con i criteri di ricerca specificati.</p>
+    {% endif %}
+
+{% endblock %}
