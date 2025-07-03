@@ -95,7 +95,8 @@ form select {
   border-radius: 4px;
   min-width: 0; /* Permette all'input di ridursi fino a 0 */
 }
-form button {
+form button,
+form a {
   padding: 10px 20px;
   background-color: #800000;
   color: white;
