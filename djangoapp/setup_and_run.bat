@@ -1,12 +1,6 @@
 @echo off
 setlocal EnableDelayedExpansion
 
-:: =================================================================
-:: ===================== DEBUGGING VERSION =========================
-::  The purpose of this version is to PAUSE after every step
-::  to identify the exact point of failure.
-:: =================================================================
-
 ECHO.
 ECHO  ======================================================
 ECHO   MilliPW Django Project - Interactive Setup (DEBUG MODE)
