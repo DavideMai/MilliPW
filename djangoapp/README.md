@@ -48,6 +48,7 @@ This project includes scripts that automate the entire setup process for a local
     *   It will populate the tables with the initial data (`seed_db`).
     *   Finally, it will start the Django development server.
 
+ONCE you run the whole script don't close it. If you close it you can restart the server running the `run.bat` file in the root of the project directory.
 You can then access the application at **http://127.0.0.1:8000/**.
 
 ---
