@@ -111,10 +111,10 @@ form button:hover {
 }
 
 form a {
-  padding: 6px 20px;
+  padding: 10.6px 20px;
   background-color: #800000;
   color: white;
-  font-family: sans-serif;
+  font-family: Arial;
   text-decoration: none;
   border: none;
   cursor: pointer;
@@ -122,6 +122,7 @@ form a {
   transition: background-color 0.3s ease;
   margin-top: 0;
   flex-shrink: 0;
+  font-size: small;
 }
 
 /* Navbar (existing content) */
