@@ -12,7 +12,7 @@ This is a Django conversion of the original MilliPW PHP application. It provides
 *   **Modern Tech Stack:**
     *   Python 3.11+
     *   Django 4.2+
-    *   PostgreSQL
+    *   PostgreSQL 15+
 
 ---
 
@@ -23,7 +23,7 @@ This project includes scripts that automate the entire setup process for a local
 ### Prerequisites
 
 *   **Python 3.11+** must be installed and available in your system's PATH.
-*   **PostgreSQL** must be installed and running on your local machine. You must also have created an empty database for this project.
+*   **PostgreSQL 15+** must be installed and running on your local machine. **You must also have created an empty database for this project.**
 
 ### Instructions
 
@@ -34,11 +34,11 @@ This project includes scripts that automate the entire setup process for a local
         1.  Simply double-click the `setup_and_run.bat` file.
 
 3.  **Provide Database Details:** The script will pause and interactively ask for your local PostgreSQL connection details:
-    *   Database Name
-    *   Database User
-    *   Database Password
     *   Host (default is `localhost`)
     *   Port (default is `5432`)
+    *   Database User (default is `postgres`)
+    *   Database Name
+    *   Database Password
 
 4.  **Done!** The script will handle everything else:
     *   It will create a `.env` file with your database credentials.
