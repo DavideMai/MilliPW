@@ -85,7 +85,8 @@ form label {
 }
 form input[type="text"],
 form input[type="number"],
-form input[type="date"] {
+form input[type="date"],
+form select {
   flex-grow: 1; /* Permette all'input di occupare lo spazio disponibile nel form-group */
   padding: 8px;
   margin-bottom: 0;
