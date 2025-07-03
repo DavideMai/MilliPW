@@ -10,7 +10,7 @@ This is a Django conversion of the original MilliPW PHP application. It provides
 *   **Patologie (Pathologies):** Search and view pathologies, with a count of associated admissions.
 *   **Ricoveri (Admissions):** Search and view hospital admissions, including details of associated pathologies.
 *   **Modern Tech Stack:**
-    *   Python 3.10+
+    *   Python 3.11+
     *   Django 4.2+
     *   PostgreSQL
 
@@ -22,7 +22,7 @@ This project includes scripts that automate the entire setup process for a local
 
 ### Prerequisites
 
-*   **Python 3.10+** must be installed and available in your system's PATH.
+*   **Python 3.11+** must be installed and available in your system's PATH.
 *   **PostgreSQL** must be installed and running on your local machine. You must also have created an empty database for this project.
 
 ### Instructions
