@@ -111,9 +111,10 @@ form button:hover {
 }
 
 .button-like-link {
-  padding: 10px 20px;
+  padding: 6px 20px;
   background-color: #800000;
   color: white;
+  text-decoration: none;
   border: none;
   cursor: pointer;
   border-radius: 5px;
