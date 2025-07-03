@@ -110,7 +110,7 @@ form button:hover {
   background-color: #a00000;
 }
 
-.button-like-link {
+form a {
   padding: 6px 20px;
   background-color: #800000;
   color: white;
