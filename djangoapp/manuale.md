@@ -1,4 +1,4 @@
-# MilliPW - Guida all'uso
+# Milli - Guida all'uso
 
 ## Installazione automatizzata
 
@@ -70,3 +70,28 @@ Il progetto include alcuni script che automatizzano e velocizzano l'installazion
     python manage.py runserver
     ```
 2. Visualiizare l'applicazione. Aprire un browser e navigare a http://127.0.0.1:8000/. Verrà visualizzata l'homepage dell'applicazione.
+
+## Utilizzo del sito
+
+Una volta che si apre il sito, si viene indirizzati automaticamente alla homepage. Nella homepage si possono consultare diverse informazioni relative all'azienda ospedaliera, tra cui i contatti e i servizi disponibili.
+
+Nel sito è presente una barra di navigazione, che consente di accedere alle tabelle del database **Ospedali, Patologie, Ricoveri, Cittadini**.
+Per consultare una tabella, cliccare la tabella desiderata.
+Le tabelle **Patologie, Ricoveri, Cittadini** permettono di effettuare ricerche sui dati presenti nel database. Poco sopra la tabella, è presente un modulo con diversi campi. Digitare la richiesta nei campi e cliccare il pulsante **Cerca**. Verrà visualizzata una tabella contenente i risultati.
+La tabella **Ospedali** permette di consultare i dati come le altre tabelle, e permette anche l'inserimento, la modifica e l'eliminazione di dati.
+
+### Inserimento Dati
+
+Per inserire nuovi dati, è necessario inserire tutti i campi del nuovo ospedale. Cliccare poi su **Aggiungi ospedale**. Al termine dell'inserimento, il nuovo ospedale sarà aggiunto in fondo alla tabella.
+
+## Modifica Dati
+
+Si trovi nella tabella l'ospedale da modificare. Sulla destra sono presenti due icone. Selezionare la matita. Si verrà reindirizzati a un modulo già riempito con i dati dell'ospedale. Per modificare i dati, inserire i dati desiderati al posto di quelli già presenti. Cliccare poi su **Modifica ospedale**.
+
+## Eliminazione Dati
+
+Si trovi nella tabella l'ospedale da eliminare. Sulla destra sono presenti due icone. Selezionare il cestino della spazzatura. Dopo averlo cliccato, verrà sostituito da una spunta. Cliccare la spunta se si è sicuri dell'eliminazione dell'ospedale. Se dopo 5 secondi la spunta non è stata cliccata, si ritornerà al cestino della spazzatura.
+
+
+
+Grazie per aver scelto di utilizzare Milli. Ci contatti per qualsiasi tipo di problema riscontrato durante l'installazione o durante l'utilizzo, saremo lieti di aiutarla.
