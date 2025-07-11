@@ -1,6 +1,8 @@
 # Milli - Guida all'uso
 
-## Installazione automatizzata
+Questo progetto prevede due diverse modalità di installazione: una manuale e una automatizzata.
+
+## Installazione automatizzata (consigliato)
 
 Il progetto include alcuni script che automatizzano e velocizzano l'installazione.
 
@@ -80,7 +82,7 @@ Per consultare una tabella, cliccare la tabella desiderata.
 Le tabelle **Patologie, Ricoveri, Cittadini** permettono di effettuare ricerche sui dati presenti nel database. Poco sopra la tabella, è presente un modulo con diversi campi. Digitare la richiesta nei campi e cliccare il pulsante **Cerca**. Verrà visualizzata una tabella contenente i risultati.
 La tabella **Ospedali** permette di consultare i dati come le altre tabelle, e permette anche l'inserimento, la modifica e l'eliminazione di dati.
 
-### Inserimento Dati
+## Inserimento Dati
 
 Per inserire nuovi dati, è necessario inserire tutti i campi del nuovo ospedale. Cliccare poi su **Aggiungi ospedale**. Al termine dell'inserimento, il nuovo ospedale sarà aggiunto in fondo alla tabella.
 
@@ -94,4 +96,4 @@ Si trovi nella tabella l'ospedale da eliminare. Sulla destra sono presenti due i
 
 
 
-Grazie per aver scelto di utilizzare Milli. Ci contatti per qualsiasi tipo di problema riscontrato durante l'installazione o durante l'utilizzo, saremo lieti di aiutarla.
+Ci contatti per qualsiasi tipo di problema riscontrato durante l'installazione o durante l'utilizzo.
