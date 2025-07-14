@@ -1,4 +1,4 @@
-# MilliPW-Django: Documentazione Tecnica e Architetturale
+# Milli-Django: Documentazione Tecnica e Architetturale
 
 ## 1. Introduzione
 
