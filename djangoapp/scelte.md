@@ -16,8 +16,8 @@ Il file `settings.py` configura il comportamento del progetto, ovvero la sicurez
 
 Le entità da utilizzare sono state messe in relazione tra loro utilizzando l'ORM di Django, per evitare di scrivere query sql troppo complesse.
 
-Per semplificare l'installazione e l'utilizzo dell'applicazione abbiamo deciso di includere uno script `setup_and_run.bat` che installa automaticamente l'applicazione chiedendo all'utente solo il minimo necessario, come il nome del database, l'utente e la password. Al termine dell'installazione, esegue automaticamente il programma.
+Per semplificare l'installazione e l'utilizzo dell'applicazione su Windows abbiamo deciso di includere uno script `setup_and_run.bat` che installa automaticamente l'applicazione chiedendo all'utente solo il minimo necessario, come il nome del database, l'utente e la password. Al termine dell'installazione, esegue automaticamente il programma.
 
 Una volta che l'installazione è completata, è sufficiente eseguire lo script `run.bat`, che permette di eseguire il programma a seguito della sua installazione.
 
-Il programma si trova completamente in locale, e si interfaccia con un database locale.
+Il programma funziona completamente in locale, e si interfaccia con un database locale.
