@@ -2,7 +2,7 @@
 
 Questo progetto prevede due diverse modalità di installazione: una manuale e una automatizzata.
 
-## Installazione automatizzata (consigliato)
+## Installazione automatizzata per Windows (consigliato)
 
 Il progetto include alcuni script che automatizzano e velocizzano l'installazione.
 
@@ -13,7 +13,7 @@ Il progetto include alcuni script che automatizzano e velocizzano l'installazion
 
 ### Istruzioni
 1. Scaricare il progetto sul proprio computer. Se si scarica come archivio, estrarre l'archivio in una cartella.
-2. Eseguire lo script. Su windows, è sufficiente eseguire il file `setup_and_run.bat`.
+2. Eseguire il file `setup_and_run.bat`, è uno script batch per eseguire il setup automatizzato del progetto.
 3. Inserire i dettagli del database creato nei prerequisiti. Lo script chiede passo passo cosa inserire.
     - Host: di default è `localhost`
     - Port: di default è `5432`
