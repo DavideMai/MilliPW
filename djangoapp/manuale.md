@@ -2,6 +2,11 @@
 
 Questo progetto prevede due diverse modalità di installazione: una manuale e una automatizzata.
 
+## Cosa è Milli
+Milli consente di gestire database per aziende ospedaliere. 
+Fornisce la possibilità di aggiungere, visualizzare, modificare e rimuovere ospedali, oltre alla possibilità di cercare e visualizzare dati a essi correlati,
+quali cittadini, ricoveri, patologie ecc.
+
 ## Installazione automatizzata per Windows (consigliato)
 
 Il progetto include alcuni script che automatizzano e velocizzano l'installazione.
@@ -10,6 +15,15 @@ Il progetto include alcuni script che automatizzano e velocizzano l'installazion
 
 - Python 3.11 deve essere installato e presente nella PATH di sistema
 - PostgreSQL 15 o una versione successiva deve essere installato e deve essere in esecuzione. È necessario creare un database vuoto.
+
+## Creazione database vuoto (psql)
+1. Aprire SQL Shell (psql)
+2. Premere invio per confermare i valori default di server, database, port e username
+3. Scegliere una password. Sarà necessaria più avanti.
+4. Eseguire il comando "CREATE DATABASE nomedb;", dove nomedb è il nome scelto per il database. Il nome sarà necessario più avanti.
+5. Se necessario, si può verificare che il db sia stato creato eseguendo il comando \l per visualizzare la lista di db.
+
+Il procedimento con pgadmin è analogo ma più intuitivo grazie all'interfaccia grafica.
 
 ### Istruzioni
 1. Scaricare il progetto sul proprio computer. Se si scarica come archivio, estrarre l'archivio in una cartella.
@@ -27,7 +41,7 @@ Il progetto include alcuni script che automatizzano e velocizzano l'installazion
 ## Installazione manuale
 
 ### Prerequisiti
-- Python 3.10 o successivo deve essere installato.
+- Python 3.11 o successivo deve essere installato.
 - Deve esistere un database PostgreSQL locale o remoto.
 - (Opzionale) `git`
 
