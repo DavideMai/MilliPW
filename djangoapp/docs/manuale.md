@@ -3,7 +3,7 @@
 Questo progetto prevede due diverse modalità di installazione: una manuale e una automatizzata.
 
 ## Cosa è Milli
-Milli consente di gestire database per aziende ospedaliere. 
+Milli consente di gestire un'azienda ospedaliera. 
 Fornisce la possibilità di aggiungere, visualizzare, modificare e rimuovere ospedali, oltre alla possibilità di cercare e visualizzare dati a essi correlati,
 quali cittadini, ricoveri, patologie ecc.
 

@@ -13,7 +13,7 @@ L'applicazione funge da pannello di controllo amministrativo per un sistema ospe
 - **Relazioni tra Dati:** Visualizzazione delle connessioni tra le entità, come il numero di ricoveri per una patologia o le patologie specifiche associate a un ricovero.
 
 ### Stack Tecnologico
-- **Backend:** Python 3.11+ con il framework Django 5.2+.
+- **Backend:** Python 3.11 con il framework Django 5.2+.
 - **Database:** PostgreSQL 15+.
 - **Frontend:** HTML standard, CSS e JavaScript puro (vanilla).
 - **Gestione dell'Ambiente:** `python-dotenv` per la configurazione e `venv` per l'isolamento delle dipendenze.
@@ -116,7 +116,7 @@ Il progetto è progettato per essere facile da installare sia automaticamente (s
 
 ### 4.1. Prerequisiti
 
-- Python 3.11+
+- Python 3.11
 - PostgreSQL 15+ (il server deve essere in esecuzione)
 - Un database PostgreSQL vuoto creato per il progetto.
 
